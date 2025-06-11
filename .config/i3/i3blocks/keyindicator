@@ -1,0 +1,20 @@
+#!/bin/bash
+
+layout=$(xkb-switch)
+
+case "$layout" in
+    us)
+        echo "US "
+        echo "#fabd2f"
+        ;;
+    ara)
+        echo "AR "
+        echo "#fabd2f"
+        ;;
+    *)
+        echo "$layout"
+        echo "$layout"
+        echo "#fabd2f"
+        ;;
+esac
+

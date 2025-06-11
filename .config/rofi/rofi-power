@@ -1,0 +1,16 @@
+#!/bin/bash
+
+choice=$(echo -e "Shutdown\nReboot\nLogout\nSuspend" | rofi -dmenu -i -p "Power Menu")
+
+case "$choice" in
+  Shutdown) sudo poweroff ;;
+  Reboot) sudo reboot ;;
+  Logout) i3-msg exit ;;
+  Suspend) sudo zzz ;; 
+esac
+
+# to make this script work you need to add this command by type it in your terminal: (dont missing replace the zaid with your username!!)
+
+#echo "zaid ALL=(ALL) NOPASSWD: /sbin/poweroff, /sbin/reboot, /usr/sbin/zzz" | sudo EDITOR='tee -a' visudo
+
+# this command for make the three commands " poweroff , reboot, zzz," running without the passowrd sudo.

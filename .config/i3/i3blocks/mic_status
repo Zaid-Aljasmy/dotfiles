@@ -1,0 +1,9 @@
+#!/bin/bash
+
+status=$(amixer get Capture | grep '\[on\]')
+if [ -n "$status" ]; then
+    echo "ON"
+else
+    echo "MUTED"
+fi
+
