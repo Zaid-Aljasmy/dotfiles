@@ -44,7 +44,7 @@ size = 11.0
 
 
 [cursor]
-style = { shape = "Block", blinking = "On" }
+style = { shape = "Block", blinking = "off" }
 blink_interval = 500
 blink_timeout = 0
 unfocused_hollow = true

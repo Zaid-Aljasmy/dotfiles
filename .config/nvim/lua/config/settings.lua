@@ -25,8 +25,9 @@ vim.opt.guicursor = {
   "i-ci-ve:block",
   "r-cr:hor20",
   "o:hor50",
-  "a:blinkwait700-blinkoff400-blinkon250-Cursor",
-  "sm:block-blinkwait175-blinkoff150-blinkon175",
+    -- blinking cursor for neovim
+  -- "a:blinkwait700-blinkoff400-blinkon250-Cursor",
+  -- "sm:block-blinkwait175-blinkoff150-blinkon175",
 }
 -- Set syntax highlighting for .cpp files
 vim.api.nvim_create_autocmd("FileType", {
