@@ -4,11 +4,11 @@ layout=$(xkb-switch)
 
 case "$layout" in
     us)
-        echo "US "
+        echo "US"
         echo "#fabd2f"
         ;;
     ara)
-        echo "AR "
+        echo "AR"
         echo "#fabd2f"
         ;;
     *)
