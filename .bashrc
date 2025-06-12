@@ -23,6 +23,7 @@ alias u='sudo xbps-install -u xbps; sudo xbps-install -u; sudo flatpak update -y
 alias q='sudo xbps-query -Rs'
 alias r='sudo xbps-remove -R'
 alias ro='sudo xbps-remove -o; sudo xbps-remove -O'
-
+# git 
+alias shzaid='git remote set-url origin git@github.com:Zaid-Aljasmy/dotfiles.git'
 # pfetch
 pfetch
