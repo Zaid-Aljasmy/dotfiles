@@ -178,7 +178,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
-mode "resize" {
+mode "Resize" {
         # These bindings trigger as soon as you enter the resize mode
 
         # Pressing left will shrink the window’s width.
@@ -202,7 +202,7 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod+r mode "Resize"
 
 # class                 border  bground text    indicator child_border
 # client.focused          #83CAFA #51A2DA #FFFFFF #83CAFA   #51A2DA
@@ -277,9 +277,10 @@ exec --no-startup-id xset -b
 # Power system option on the rofi launcher 
 bindsym $mod+Shift+End exec ~/.config/rofi/rofi-power
 # Mouse 
-exec --no-startup-id xinput --set-prop 10 "libinput Accel Speed" 0.8
+exec --no-startup-id xinput --set-prop 10 "libinput Accel Speed" 0.9
 # Screensaver
 # exec --no-startup-id xscreensaver -nosplash
+exec --no-startup-id caffeine &
 exec --no-startup-id xautolock -time 1 -locker "~/.config/i3/i3lock-color/lock"
 # Conky 
 # exec --no-startup-id conky
