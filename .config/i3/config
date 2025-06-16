@@ -221,10 +221,12 @@ set $red #cc241d
 set $green #98971a
 set $yellow #fabd2f
 set $blue #458588
+set $lightblue #83a598
 set $purple #b16286
 set $aqua #689d68
 set $orange #d65d0e
 set $gray #a89984
+set $white #ebdbb2
 set $darkgray #1d2021
 # font used by i3 for titles and bars
 # font pango:Hack 8
@@ -251,14 +253,14 @@ bar {
 #start of window title bars & borders section
 
 #default_border  type none if you want no border or pixel 3 if you want a border (choose your favorite number)
-default_border pixel 3
-for_window [floating] border pixel 3
+default_border pixel 4
+for_window [floating] border pixel 4
 for_window [floating] move position center
 
 # green gruvbox
 # class                 border|backgr|text|indicator|child_border
 client.focused          $aqua $aqua $darkgray $aqua $aqua
-client.focused_inactive $orange $orange $darkgray $orange $orange
+client.focused_inactive $purple $purple $white $purple $purple
 client.unfocused        $purple $purple $darkgray $purple $purple
 client.urgent           $red $red $white $red $red
 
