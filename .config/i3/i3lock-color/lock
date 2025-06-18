@@ -48,8 +48,8 @@ i3lock \
   --pass-media-keys \
   --pass-screen-keys \
   --pass-volume-keys \
-#  --time-font="JetBrainsMono Nerd Font" \
-#  --date-font="JetBrainsMono Nerd Font" \
+ # --time-font="JetBrainsMono Nerd Font" \
+ # --date-font="Hack Nerd Font" \
 #  --layout-font="JetBrainsMono Nerd Font" \
 #  --verif-font="JetBrainsMono Nerd Font" \
 #  --wrong-font="JetBrainsMono Nerd Font" \
