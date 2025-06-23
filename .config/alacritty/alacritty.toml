@@ -21,7 +21,8 @@
 # Gruvbox dark theme:  https://github.com/alacritty/alacritty-theme
 [general]
 
-import = ["~/.config/alacritty/themes/gruvbox_dark.toml"]
+import = ["~/.config/alacritty/themes/tokyo_night.toml"]
+
 
 [window]
 
@@ -35,12 +36,12 @@ decorations_theme_variant = "Light" # "Dark"
 
 [font]
 
-normal.family = "Hack Nerd Font"
-bold.family = "Hack Nerd Font"
-italic.family = "Hack Nerd Font"
-bold_italic.family = "Hack Nerd Font"
+normal.family = "JetBrainsMonoNL NFP"
+bold.family = "JetBrainsMonoNL NFP"
+italic.family = "JetBrainsMonoNL NFP"
+bold_italic.family = "JetBrainsMonoNL NFP"
 
-size = 11.0
+size = 10.5
 
 
 [cursor]

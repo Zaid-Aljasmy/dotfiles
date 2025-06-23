@@ -13,6 +13,6 @@ if [[ "$state" == "up" ]]; then
     signal=$(grep "$wifi_iface" /proc/net/wireless | awk '{ print int($3 * 100 / 70) }')
     echo "${signal}%"
 else
-    echo "OFF"
+    echo "off"
 fi
 

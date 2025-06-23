@@ -4,8 +4,8 @@ return {
     config = function()
       require("toggleterm").setup{
         open_mapping = [[<c-\>]],  
-        direction = "horizontal",  
-        size = 60,  
+        direction = "float",  
+        size = 100,  
       }
     end
   }
