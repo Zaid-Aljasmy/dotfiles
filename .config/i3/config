@@ -26,7 +26,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:JetBrains Mono Nerd Font bold 15.8
+font pango:JetBrains Mono Nerd Font bold 16
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -214,7 +214,7 @@ set $yellow #e0af68
 set $blue #4d6a8e
 set $purple #ad8ee6
 set $cyan #449dab
-set $white #acb0d0     
+set $white #acb0d0
 # font used by i3 for titles and bars
 # font pango:Hack 8
 #
@@ -240,8 +240,8 @@ bar {
 #start of window title bars & borders section
 
 #default_border  type none if you want no border or pixel 3 if you want a border (choose your favorite number)
-default_border pixel 3
-for_window [floating] border pixel 3
+default_border pixel 4
+for_window [floating] border pixel 4
 for_window [floating] move position center
 
 # tokyo night 
@@ -264,7 +264,10 @@ exec --no-startup-id xinput --set-prop 10 "libinput Accel Speed" 0.9
 # Screensaver
 # exec --no-startup-id xscreensaver -nosplash
 exec --no-startup-id caffeine &
+# enable the screen lock 
 exec --no-startup-id xautolock -time 5 -locker "~/.config/i3/i3lock-color/lock"
+# lock screen 
+bindsym $mod+d exec --no-startup-id ~/.config/i3/i3lock-color/lock
 # Conky 
 # exec --no-startup-id conky
 # keyboard repeat rate

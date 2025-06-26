@@ -11,6 +11,6 @@ diff_total=$((total - prev_total))
 usage=$(( (100 * (diff_total - diff_idle)) / diff_total ))
 temp=$(sensors | grep -m 1 'Package id 0' | awk '{print $4}' | tr -d '+')
 
-echo "$usage% $temp"
+echo "$usage%-$temp"
 
 

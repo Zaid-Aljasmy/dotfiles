@@ -22,7 +22,7 @@ vim.opt.termguicolors = true
 -- Set the cursor style for different modes in Neovim
 vim.opt.guicursor = {
   "n-v-c:block",
-  "i-ci-ve:block",
+  "i-ci-ve:ver25",
   "r-cr:hor20",
   "o:hor50",
     -- blinking cursor for neovim
