@@ -19,7 +19,7 @@ return {
       dashboard.button("f", "  Find file", ":Telescope find_files<CR>"),
       dashboard.button("t", "  Find text", ":Telescope live_grep<CR>"),
       dashboard.button("r", "  Recent files", ":Telescope oldfiles<CR>"),
-      dashboard.button("l", "  Lazy", ":Lazy<CR>"),
+      dashboard.button("l", "  Lazy settings", ":Lazy<CR>"),
       dashboard.button("c", "  Config", ":NvimTreeToggle ~/.config/nvim/<CR>"),
       dashboard.button("q", "  Exit", ":qa<CR>"),
     }
