@@ -7,6 +7,6 @@ state=$(cat /sys/class/net/"$iface"/operstate 2>/dev/null) || state="down"
 if [[ "$state" == "up" ]]; then
     echo "up"
 else
-    echo "DOWN"
+    echo "down"
 fi
 
