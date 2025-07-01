@@ -1,3 +1,7 @@
+-- Keybindings:
+
+-- Enable zen mode
+vim.api.nvim_set_keymap('n', '<leader>z', ':ZenMode<CR>', { noremap = true, silent = true })
 -- Disable netrw banner
 vim.g.netrw_banner = 0
 -- copy line shortcut
@@ -7,7 +11,7 @@ vim.keymap.set("n", "<leader>f", ":Ex<CR>", { desc = "Open netrw file explorer" 
 -- Close the buffer tab 
 vim.keymap.set("n", "<leader>x", "<cmd>bd!<CR>", { desc = "Force close buffer (bd!)" })
 -- Set shortcut key to run python file
-vim.keymap.set("n", "<leader>r", function()
+vim.keymap.set("n", "<leader>q", function()
   vim.cmd("w")
   local filename = vim.fn.expand("%")
 
@@ -37,17 +41,17 @@ vim.keymap.set("n", "<leader>g", function()
 end, { noremap = true, silent = true })
 
 -- Set shortcut key to run C++ code
--- vim.keymap.set("n", "<leader>r", function()
---   local output = "./" .. vim.fn.expand("%:r")
---
---   vim.system({ output }, { text = true }, function(obj)
---     if obj.code == 0 then
---       vim.notify("Output:\n" .. obj.stdout, vim.log.levels.INFO)
---     else
---       vim.notify("Runtime error:\n" .. obj.stderr, vim.log.levels.ERROR)
---     end
---   end)
--- end, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>r", function()
+  local output = "./" .. vim.fn.expand("%:r")
+
+  vim.system({ output }, { text = true }, function(obj)
+    if obj.code == 0 then
+      vim.notify("Output:\n" .. obj.stdout, vim.log.levels.INFO)
+    else
+      vim.notify("Runtime error:\n" .. obj.stderr, vim.log.levels.ERROR)
+    end
+  end)
+end, { noremap = true, silent = true })
 
 -- Silence lazy.nvim config reload warning
 vim.notify_original = vim.notify

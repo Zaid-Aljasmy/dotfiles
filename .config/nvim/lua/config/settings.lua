@@ -15,7 +15,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undofile = true
+vim.opt.undofile = false
 vim.opt.colorcolumn = ""
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
@@ -51,6 +51,5 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- keybindings
 
 
