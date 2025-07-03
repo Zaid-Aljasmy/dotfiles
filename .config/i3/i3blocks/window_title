@@ -6,7 +6,7 @@ set -euo pipefail
 
 print_title() {
     local title="$1"
-    local max_len=30  # max length to avoid overlap
+    local max_len=23  # max length to avoid overlap
 
     # Remove non-printable characters
     title=$(echo "$title" | tr -cd '[:print:]')
@@ -23,7 +23,6 @@ print_title() {
 win_id=$(xdotool getactivewindow 2>/dev/null)
 
 if [[ -z "$win_id" ]]; then
-    # print_title "No active window"
     exit 0
 fi
 

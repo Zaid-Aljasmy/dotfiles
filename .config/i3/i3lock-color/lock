@@ -2,6 +2,7 @@
 
 alpha='dd'
 background='#1a1b26'
+foreground='#a9b1d6'
 selection='#1a1b26'
 comment='#9ece6a'
 
@@ -12,7 +13,7 @@ magenta='#ad8ee6'
 blue='#4d6a8e'
 cyan='#449dab'
 green='#9ece6a'
-
+white='#a9b1d6'
 i3lock \
   --insidever-color=$selection$alpha \
   --insidewrong-color=$selection$alpha \
@@ -23,15 +24,15 @@ i3lock \
   --ringwrong-color=$red$alpha \
   --ring-color=$blue$alpha \
   --line-uses-ring \
-  --keyhl-color=$magenta$alpha \
-  --bshl-color=$orange$alpha \
+  --keyhl-color=$green$alpha \
+  --bshl-color=$yellow$alpha \
   --separator-color=$selection$alpha \
   --verif-color=$green \
   --wrong-color=$red \
   --modif-color=$red \
   --layout-color=$blue \
-  --date-color=$blue \
-  --time-color=$blue \
+  --date-color=$foreground \
+  --time-color=$foreground \
   --screen 1 \
   --blur 1 \
   --clock \
@@ -49,7 +50,7 @@ i3lock \
   --pass-screen-keys \
   --pass-volume-keys \
  # --time-font="JetBrainsMono Nerd Font" \
- # --date-font="Hack Nerd Font" \
+# --date-font="JetBrainsMono Nerd Font " \
 #  --layout-font="JetBrainsMono Nerd Font" \
 #  --verif-font="JetBrainsMono Nerd Font" \
 #  --wrong-font="JetBrainsMono Nerd Font" \

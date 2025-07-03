@@ -71,15 +71,6 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 # launch rofi 
 bindsym $mod+p exec rofi -show drun
-# start dmenu (a program launcher)
-#bindsym $mod+d exec --no-startup-id "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#005577' -sf '#EEEEEE' -fn 'monospace-10'"
-# A more modern dmenu replacement is rofi:
-# bindcode $mod+40 exec "rofi -modi drun,run -show drun"
-# There also is i3-dmenu-desktop which only displays applications shipping a
-# .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
-
-
 #float a window
 bindsym $mod+Shift+f floating toggle
 
@@ -208,6 +199,7 @@ bindsym $mod+r mode "Resize"
 # finds out, if available)
 # set primary tokyonight colorscheme colors
 set $bg #1a1b26
+set $fg #a9b1d6
 set $red #f7768e
 set $green #9ece6a
 set $yellow #e0af68
@@ -215,9 +207,6 @@ set $blue #4d6a8e
 set $purple #ad8ee6
 set $cyan #449dab
 set $white #acb0d0
-# font used by i3 for titles and bars
-# font pango:Hack 8
-#
 
 #start of bar section
 bar {
@@ -231,8 +220,8 @@ bar {
         # workspaces section            
         #                    border  backgr. text
         focused_workspace    $blue $blue $bg
-        inactive_workspace   $bg $bg $white
-        active_workspace     $bg $bg $white
+        inactive_workspace   $bg $bg $fg
+        active_workspace     $bg $bg $fg
         urgent_workspace     $red $red $bg
     }
 }
@@ -247,8 +236,8 @@ for_window [floating] move position center
 # tokyo night 
 # class                 border|backgr|text|indicator|child_border
 client.focused          $blue $blue $bg $blue $blue
-client.focused_inactive $bg $bg $white $bg $bg
-client.unfocused        $bg $bg $white $bg $bg
+client.focused_inactive $bg $bg $fg $bg $bg
+client.unfocused        $bg $bg $fg $bg $bg
 client.urgent           $red $red $bg $red $red
 
 #end of window title bars & borders section

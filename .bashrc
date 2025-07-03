@@ -5,7 +5,7 @@
 
 alias ls='ls --color=auto'
 # PS1='[\u@\h \W]\$ '
-PS1='\[\e[38;2;122;162;247m\]$(if [[ $PWD == $HOME ]]; then echo "~ "; else echo "\w "; fi)\[\e[38;2;224;175;104m\]>\[\e[m\] '
+PS1='\[\e[38;2;122;162;247m\]$(if [[ $PWD == $HOME ]]; then echo "~ "; else echo "\w "; fi)\[\e[38;2;224;175;104m\]λ\[\e[m\] '
 
 # my alias
 
@@ -26,7 +26,7 @@ alias ro='sudo xbps-remove -o; sudo xbps-remove -O'
 # git 
 alias shzaid='git remote set-url origin git@github.com:Zaid-Aljasmy/dotfiles.git'
 # pfetch
-pfetch
+# pfetch
 
 # emacs
 # alias emacs='HOME=~/.config/emacs emacs'
