@@ -5,7 +5,7 @@ export XAUTHORITY="/home/zaid/.Xauthority"
 export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus"
 
 confirm() {
-    rofi -dmenu -p "Are you sure? [y/N]" <<< "" | grep -iq "^y"
+    rofi -dmenu -p "Are you sure? [Y/N]" <<< "" | grep -iq "^y"
 }
 
 choice=$(printf "<span foreground='#f7768e'></span> Shutdown\n<span foreground='#7aa2f7'></span> Reboot\n<span foreground='#9ece6a'>󰤄</span> Suspend\n<span foreground='#e0af68'>󰍃</span> Logout" | rofi -dmenu -i -markup-rows -p "󰤆 Power Menu:")
