@@ -5,7 +5,7 @@ configuration {
 	terminal: "alacritty";
 	icon-theme: "Papirus-Dark";
 	drun-display-format: "{name}";
-	display-drun: " ";
+	display-drun: " Search:";
   timeout {
       action: "kb-cancel";
       delay:  0;

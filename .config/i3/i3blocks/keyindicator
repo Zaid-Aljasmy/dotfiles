@@ -4,10 +4,10 @@ layout=$(xkb-switch)
 
 case "$layout" in
     us)
-        echo "[US]"
+        echo "<span color='#ad8ee6'> </span>US"
         ;;
     ara)
-        echo "[AR]"
+        echo "<span color='#ad8ee6'> </span>AR"
         ;;
     *)
         echo "$layout"

@@ -6,7 +6,7 @@ set -euo pipefail
 
 print_title() {
     local title="$1"
-    local max_len=23  # max length to avoid overlap
+    local max_len=25  # max length to avoid overlap
 
     # Remove non-printable characters
     title=$(echo "$title" | tr -cd '[:print:]')

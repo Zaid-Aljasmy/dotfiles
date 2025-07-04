@@ -27,5 +27,5 @@ else
     state="unk"
 fi
 
-echo "$capacity%-$state"
+echo "<span color='#f7768e'>󰄌 </span>$capacity%-$state"
 
