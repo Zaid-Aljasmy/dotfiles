@@ -261,6 +261,7 @@ bindsym $mod+d exec --no-startup-id ~/.config/i3/i3lock-color/lock
 # exec --no-startup-id conky
 # keyboard repeat rate
 exec --no-startup-id xset r rate 200 40
-
 # emacs daemon
 exec --no-startup-id emacs --daemon
+# color gitter tool
+bindsym $mod+c exec --no-startup-id xcolor | xclip -selection clipboard
