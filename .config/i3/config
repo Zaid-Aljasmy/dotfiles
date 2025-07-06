@@ -233,8 +233,8 @@ bar {
 #start of window title bars & borders section
 
 #default_border  type none if you want no border or pixel 3 if you want a border (choose your favorite number)
-default_border pixel 3
-for_window [floating] border pixel 3
+default_border pixel 4
+for_window [floating] border pixel 4
 for_window [floating] move position center
 
 # tokyo night 
@@ -256,7 +256,6 @@ bindsym $mod+Shift+End exec ~/.config/rofi/rofi-power
 exec --no-startup-id xinput --set-prop 10 "libinput Accel Speed" 0.9
 # Screensaver
 # exec --no-startup-id xscreensaver -nosplash
-exec --no-startup-id caffeine &
 # enable the screen lock 
 exec --no-startup-id xautolock -time 5 -locker "~/.config/i3/i3lock-color/lock"
 # lock screen 
@@ -265,7 +264,5 @@ bindsym $mod+d exec --no-startup-id ~/.config/i3/i3lock-color/lock
 # exec --no-startup-id conky
 # keyboard repeat rate
 exec --no-startup-id xset r rate 200 40
-# emacs daemon
-exec --no-startup-id emacs --daemon
 # color gitter tool
 bindsym $mod+c exec --no-startup-id xcolor | xclip -selection clipboard
