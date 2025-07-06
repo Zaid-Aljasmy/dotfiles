@@ -18,18 +18,18 @@ capacity=$(cat "$BAT_PATH/capacity")
 status_lower=$(echo "$status" | tr '[:upper:]' '[:lower:]')
 
 if [[ "$status_lower" == "discharging" ]]; then
-    state="dis"
+    state=""
 elif [[ "$status_lower" == "charging" ]]; then
-    state="chr"
+    state="-chr"
 elif [[ "$status_lower" == "full" || "$status_lower" == "not charging" || "$capacity" -ge 100 ]]; then
-    state="full"
+    state="-full"
 else
-    state="unk"
+    state="-unk"
 fi
 
 if [[ "$capacity" -le 10 ]]; then
-    echo "<span color='#f7768e'>󰄌 </span><span color='#ff0000'>$capacity%-$state</span>"
+    echo "<span color='#f7768e'>󰄌 </span><span color='#ff0000'>$capacity%$state</span>"
 else
-    echo "<span color='#f7768e'>󰄌 </span>$capacity%-$state"
+    echo "<span color='#f7768e'>󰄌 </span>$capacity%$state"
 fi
 
