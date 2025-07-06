@@ -1,0 +1,11 @@
+#!/bin/bash
+
+BRIGHTNESS_PATH="/sys/class/backlight/intel_backlight"
+
+current=$(cat "$BRIGHTNESS_PATH/brightness")
+max=$(cat "$BRIGHTNESS_PATH/max_brightness")
+
+percent=$(( 100 * current / max ))
+
+echo "<span color='#ad8ee6'>󰃠 </span>$percent%"
+

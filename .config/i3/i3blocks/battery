@@ -1,0 +1,35 @@
+#!/bin/bash
+
+BAT_PATH="/sys/class/power_supply/BAT0"
+
+if [[ ! -d "$BAT_PATH" ]]; then
+    echo "bat not found"
+    exit 1
+fi
+
+if [[ ! -f "$BAT_PATH/status" ]] || [[ ! -f "$BAT_PATH/capacity" ]]; then
+    echo "bat info missing"
+    exit 1
+fi
+
+status=$(cat "$BAT_PATH/status")
+capacity=$(cat "$BAT_PATH/capacity")
+
+status_lower=$(echo "$status" | tr '[:upper:]' '[:lower:]')
+
+if [[ "$status_lower" == "discharging" ]]; then
+    state="dis"
+elif [[ "$status_lower" == "charging" ]]; then
+    state="chr"
+elif [[ "$status_lower" == "full" || "$status_lower" == "not charging" || "$capacity" -ge 100 ]]; then
+    state="full"
+else
+    state="unk"
+fi
+
+if [[ "$capacity" -le 10 ]]; then
+    echo "<span color='#f7768e'>󰄌 </span><span color='#ff0000'>$capacity%-$state</span>"
+else
+    echo "<span color='#f7768e'>󰄌 </span>$capacity%-$state"
+fi
+

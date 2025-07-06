@@ -1,0 +1,17 @@
+#!/bin/bash
+
+layout=$(xkb-switch)
+
+case "$layout" in
+    us)
+        echo "<span color='#ad8ee6'> </span>US"
+        ;;
+    ara)
+        echo "<span color='#ad8ee6'> </span>AR"
+        ;;
+    *)
+        echo "$layout"
+        echo "$layout"
+        ;;
+esac
+

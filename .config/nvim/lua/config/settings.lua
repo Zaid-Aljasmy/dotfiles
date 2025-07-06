@@ -1,0 +1,78 @@
+-- settings.lua
+vim.opt.termguicolors = true
+vim.opt.splitright = true
+vim.cmd("language en_US.UTF-8")
+vim.opt.mouse = ""
+vim.opt.number = true 
+vim.opt.relativenumber = false 
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.smartindent = true
+vim.opt.wrap = false
+vim.opt.cursorline = true
+vim.opt.cursorcolumn = true
+vim.cmd([[ hi Normal guibg=NONE ]]) -- Enable the trans
+vim.opt.termguicolors = true  
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.colorcolumn = ""
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
+vim.opt.showmode = false
+vim.opt.ruler = false
+
+-- Navigate between windows
+vim.keymap.set("n", "<M-Left>", "<C-w>h", { noremap = true, silent = true })
+vim.keymap.set("n", "<M-Down>", "<C-w>j", { noremap = true, silent = true })
+vim.keymap.set("n", "<M-Up>", "<C-w>k", { noremap = true, silent = true })
+vim.keymap.set("n", "<M-Right>", "<C-w>l", { noremap = true, silent = true })
+
+-- Navigate between tabs
+vim.keymap.set("n", "<C-Right>", ":bnext<CR>", { desc = "Next buffer with Ctrl+Right" })
+vim.keymap.set("n", "<C-Left>", ":bprevious<CR>", { desc = "Previous buffer with Ctrl+Left" })
+
+-- Fast horizontal movement (left/right) with Shift + Arrow keys in normal mode
+vim.keymap.set("n", "<S-Right>", "7l", { noremap = true, silent = true })  -- Move 7 characters right
+vim.keymap.set("n", "<S-Left>", "7h", { noremap = true, silent = true })   -- Move 7 characters left
+
+-- Fast horizontal movement (left/right) with Shift + Arrow keys in visual mode
+vim.keymap.set("v", "<S-Right>", "7l", { noremap = true, silent = true })  -- Move 7 characters right
+vim.keymap.set("v", "<S-Left>", "7h", { noremap = true, silent = true })   -- Move 7 characters left
+
+-- Fast vertical movement (up/down) with Shift + Arrow keys in normal mode
+vim.keymap.set("n", "<S-Down>", "4j", { noremap = true, silent = true })   -- Move 4 lines down
+vim.keymap.set("n", "<S-Up>", "4k", { noremap = true, silent = true })     -- Move 4 lines up
+
+-- Fast vertical movement (up/down) with Shift + Arrow keys in visual mode
+vim.keymap.set("v", "<S-Down>", "4j", { noremap = true, silent = true })   -- Move 4 lines down
+vim.keymap.set("v", "<S-Up>", "4k", { noremap = true, silent = true })     -- Move 4 lines up
+
+-- Restore cursor position:
+vim.cmd([[
+  autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal! g'\"" |
+    \ endif
+]])
+
+-- Set the cursor style for different modes in Neovim
+vim.opt.guicursor = {
+  "n-v-c:block",
+  "i-ci-ve:ver25-blinkwait300-blinkon200-blinkoff150",
+  "r-cr:hor20",
+  "o:hor50",
+}
+
+-- Set syntax highlighting for .cpp files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "cpp",
+  callback = function()
+    vim.cmd("syntax enable")
+  end,
+})
+
+
+
