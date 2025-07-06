@@ -1,4 +1,5 @@
 -- settings.lua
+vim.opt.splitright = true
 vim.cmd("language en_US.UTF-8")
 vim.opt.mouse = ""
 vim.opt.number = true 
@@ -9,6 +10,7 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.wrap = false
 vim.opt.cursorline = true
+vim.opt.cursorcolumn = true
 vim.cmd([[ hi Normal guibg=NONE ]]) -- Enable the trans
 vim.opt.termguicolors = true  
 vim.opt.ignorecase = true

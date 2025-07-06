@@ -229,8 +229,8 @@ bar {
 #start of window title bars & borders section
 
 #default_border  type none if you want no border or pixel 3 if you want a border (choose your favorite number)
-default_border pixel 4
-for_window [floating] border pixel 4
+default_border pixel 3
+for_window [floating] border pixel 3
 for_window [floating] move position center
 
 # tokyo night 
