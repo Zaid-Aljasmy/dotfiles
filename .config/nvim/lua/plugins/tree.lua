@@ -67,7 +67,7 @@ return {
       on_attach = my_on_attach,
     })
 
-    vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+    vim.keymap.set("n", "<M-z>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
   end,
 }
 

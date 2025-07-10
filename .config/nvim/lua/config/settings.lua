@@ -50,6 +50,16 @@ vim.keymap.set("n", "<S-Up>", "4k", { noremap = true, silent = true })     -- Mo
 vim.keymap.set("v", "<S-Down>", "4j", { noremap = true, silent = true })   -- Move 4 lines down
 vim.keymap.set("v", "<S-Up>", "4k", { noremap = true, silent = true })     -- Move 4 lines up
 
+-- Esc to exit insert mode
+vim.keymap.set("i", "<A-c>", "<Esc>", { noremap = true, silent = true })
+
+-- Redo shortcut
+vim.keymap.set("n", "<M-r>", "<C-r>", { noremap = true })
+
+-- split window
+vim.keymap.set("n", "ss", ":split", { noremap = true, silent = true })
+vim.keymap.set("n", "sv", ":vsplit", { noremap = true, silent = true })
+
 -- Restore cursor position:
 vim.cmd([[
   autocmd BufReadPost *

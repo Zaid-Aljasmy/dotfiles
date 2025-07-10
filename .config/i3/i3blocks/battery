@@ -20,15 +20,16 @@ status_lower=$(echo "$status" | tr '[:upper:]' '[:lower:]')
 if [[ "$status_lower" == "discharging" ]]; then
     state=""
 elif [[ "$status_lower" == "charging" ]]; then
-    state="-chr"
+    state="-(<span color='#00ff00'>chr</span>)"
 elif [[ "$status_lower" == "full" || "$status_lower" == "not charging" || "$capacity" -ge 100 ]]; then
-    state="-full"
+    state="-(<span color='#ffc107'>full</span>)"
 else
-    state="-unk"
+    state="-(<span color='#ff0000'>unk</span>)"
 fi
 
 if [[ "$capacity" -le 10 ]]; then
-    echo "<span color='#f7768e'>󰄌 </span><span color='#ff0000'>$capacity%$state</span>"
+    echo "<span color='#f7768e'>󰄌 </span>$capacity%$state-(<span color='#ff0000'>low</span>)"
+
 else
     echo "<span color='#f7768e'>󰄌 </span>$capacity%$state"
 fi

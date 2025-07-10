@@ -5,7 +5,7 @@ vim.api.nvim_set_keymap('n', '<leader>z', ':ZenMode<CR>', { noremap = true, sile
 -- Disable netrw banner
 vim.g.netrw_banner = 0
 -- copy line shortcut
-vim.keymap.set("v", "<C-s>", '"+y')
+vim.keymap.set("v", "<M-s>", '"+y')
 -- Open the netrw file explorer
 vim.keymap.set("n", "<leader>f", ":Ex<CR>", { desc = "Open netrw file explorer" })
 -- Close the buffer tab 

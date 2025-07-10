@@ -14,7 +14,7 @@ return {
           right_mouse_command = function(idx) vim.api.nvim_buf_delete(idx, {force = true}) end,
           left_mouse_command = function(idx) vim.api.nvim_set_current_buf(idx) end,
           middle_mouse_command = nil,
-          indicator = { icon = "▎", style = "icon" },
+          indicator = { icon = " ", style = "icon" },  -- use this ▎ if you want
           buffer_close_icon = "",
           modified_icon = "●",
           close_icon = "",

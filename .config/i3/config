@@ -16,7 +16,7 @@ exec --no-startup-id nitrogen --restore
 # exec --no-startup-id autotiling
 
 # picom
-# exec picom
+exec picom
 
 #gaps
 gaps inner 9
@@ -247,11 +247,11 @@ client.urgent           $red $red $bg $red $red
 #end of window title bars & borders section
 
 # Switch to another language
-exec_always --no-startup-id setxkbmap -model pc104 -layout us,ara -option grp:win_space_toggle
-# disable the beep sound of the keyboard
+exec_always --no-startup-id setxkbmap -model pc104 -layout us,ara -option grp:alt_space_toggle
+# disable the beeound of the keyboard
 exec --no-startup-id xset -b
 # Power system option on the rofi launcher 
-bindsym $mod+Shift+End exec ~/.config/rofi/rofi-power
+bindsym $mod+Shift+e exec ~/.config/rofi/rofi-power
 # Mouse 
 exec --no-startup-id xinput --set-prop 10 "libinput Accel Speed" 0.9
 # Screensaver
