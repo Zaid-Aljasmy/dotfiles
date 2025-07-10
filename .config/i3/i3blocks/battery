@@ -28,9 +28,9 @@ else
 fi
 
 if [[ "$capacity" -le 10 ]]; then
-    echo "<span color='#f7768e'>󰄌 </span>$capacity%$state-(<span color='#ff0000'>low</span>)"
+    echo "<span color='#d76335'>󰄌 </span>$capacity%$state-(<span color='#ff0000'>low</span>)"
 
 else
-    echo "<span color='#f7768e'>󰄌 </span>$capacity%$state"
+    echo "<span color='#d76335'>󰄌 </span>$capacity%$state"
 fi
 

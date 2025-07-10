@@ -21,12 +21,12 @@
 # Gruvbox dark theme:  https://github.com/alacritty/alacritty-theme
 [general]
 
-import = ["~/.config/alacritty/themes/tokyo_night.toml"]
+import = ["~/.config/alacritty/themes/solarized.toml"]
 
 
 [window]
 
-opacity = 0.9
+opacity = 0.8
 
 padding.x = 9
 padding.y = 7

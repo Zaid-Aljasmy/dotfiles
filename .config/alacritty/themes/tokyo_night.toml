@@ -1,6 +1,8 @@
 # Colors (Tokyo Night)
 # Source https//github.com/zatchheems/tokyo-night-alacritty-theme
 
+# #4d6a8e
+
 # Default colors
 [colors.primary]
 background = '#1a1b26'

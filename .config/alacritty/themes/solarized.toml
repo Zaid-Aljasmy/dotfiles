@@ -4,7 +4,7 @@
 # Default colors
 [colors.primary]
 background = '#001a1d'
-foreground = '#93a1a1'
+foreground = '#a0b0b0'
 
 # Normal colors
 [colors.normal]
@@ -27,3 +27,22 @@ blue    = '#839496'
 magenta = '#6c71c4'
 cyan    = '#93a1a1'
 white   = '#fdf6e3'
+
+
+
+# my solarized colcor for i3bar and border 
+
+# black = '#073642'
+# red = '#e25a57'
+# orange = '#d76335'
+# green = '#9cb321'
+# yellow = '#caa52b'
+# blue = '#4a9fe0'
+# magenta = '#e05a9b'
+# purple = '#9397dc'
+# cyan = '#3bb7ae'   # for i3 borders use this #1f7977
+# white = '#eee8d5
+
+
+
+

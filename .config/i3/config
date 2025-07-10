@@ -19,8 +19,8 @@ exec --no-startup-id nitrogen --restore
 exec picom
 
 #gaps
-gaps inner 2
-gaps outer 2
+gaps inner 6
+gaps outer 6
 
 set $mod Mod4
 
@@ -202,15 +202,15 @@ bindsym $mod+r mode "Resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 # set primary tokyonight colorscheme colors
-set $bg #1a1b26
-set $fg #a9b1d6
-set $red #f7768e
-set $green #9ece6a
-set $yellow #e0af68
-set $blue #4d6a8e
-set $purple #ad8ee6
-set $cyan #449dab
-set $white #acb0d0
+set $bg #001a1d
+set $fg #a0b0b0
+set $red #dc322f
+set $green #859900
+set $yellow #b58900
+set $blue #268bd2
+set $purple #6c71c4
+set $cyan #1f7977
+set $white #eee8d5
 
 #start of bar section
 bar {
@@ -223,7 +223,7 @@ bar {
         statusline $yellow
         # workspaces section            
         #                    border  backgr. text
-        focused_workspace    $blue $blue $bg
+        focused_workspace    $cyan $cyan $bg
         inactive_workspace   $bg $bg $fg
         active_workspace     $bg $bg $fg
         urgent_workspace     $red $red $bg
@@ -239,7 +239,7 @@ for_window [floating] move position center
 
 # tokyo night 
 # class                 border|backgr|text|indicator|child_border
-client.focused          $blue $blue $bg $blue $blue
+client.focused          $cyan $cyan $bg $cyan $cyan
 client.focused_inactive $bg $bg $fg $bg $bg
 client.unfocused        $bg $bg $fg $bg $bg
 client.urgent           $red $red $bg $red $red

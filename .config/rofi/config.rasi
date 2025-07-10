@@ -19,10 +19,10 @@ configuration {
 @theme "/dev/null"
 
 * {
-    bg: #1a1b26;
-    fg: #a9b1d6;
-    selected: #2d3543;
-    accent: #4d6a8e;
+    bg: #001a1d;
+    fg: #a0b0b0;
+    selected: #073642;
+    accent: #1f7977;
     background-color: @bg;
 
     color: @fg;
