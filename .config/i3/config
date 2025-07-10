@@ -19,8 +19,8 @@ exec --no-startup-id nitrogen --restore
 exec picom
 
 #gaps
-gaps inner 9
-gaps outer 9
+gaps inner 2
+gaps outer 2
 
 set $mod Mod4
 
@@ -233,8 +233,8 @@ bar {
 #start of window title bars & borders section
 
 #default_border  type none if you want no border or pixel 3 if you want a border (choose your favorite number)
-default_border pixel 3
-for_window [floating] border pixel 3
+default_border pixel 2
+for_window [floating] border pixel 2
 for_window [floating] move position center
 
 # tokyo night 
