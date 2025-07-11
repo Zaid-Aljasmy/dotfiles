@@ -1,12 +1,12 @@
 return {
   {
-    "craftzdog/solarized-osaka.nvim",
+    "EdenEast/nightfox.nvim",
     lazy = false,
     priority = 1000,
     transparent = false,
     terminal_colors = true,
     config = function()
-    vim.cmd[[colorscheme solarized-osaka]]
+    vim.cmd[[colorscheme nightfox]]
     -- vim.api.nvim_set_hl(0, "Visual", { bg = "#504945", fg = "NONE" }) -- enable this only for gruvbox theme
     end,
   },

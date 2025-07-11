@@ -26,7 +26,7 @@ import = ["~/.config/alacritty/themes/nightfox.toml"]
 
 [window]
 
-opacity = 0.9
+opacity = 0.8
 
 padding.x = 9
 padding.y = 7
@@ -36,12 +36,12 @@ decorations_theme_variant = "Light" # "Dark"
 
 [font]
 
-normal.family = "JetBrainsMonoNL NFP"
+normal.family = "CaskaydiaCove Nerd Font"
 bold.family = "JetBrainsMonoNL NFP"
 italic.family = "JetBrainsMonoNL NFP"
 bold_italic.family = "JetBrainsMonoNL NFP"
 
-size = 10.5
+size = 12
 
 
 [cursor]
