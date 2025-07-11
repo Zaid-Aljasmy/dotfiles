@@ -2,8 +2,8 @@
 
 status=$(amixer get Capture | grep '\[on\]')
 if [ -n "$status" ]; then
-    echo "<span color='#3bb7ae'></span> on"
+    echo "<span color='#54aeb0'></span> on"
 else
-    echo "<span color='#3bb7ae'></span> off"
+    echo "<span color='#54aeb0'></span> off"
 fi
 

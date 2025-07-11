@@ -5,8 +5,7 @@
 
 alias ls='ls --color=auto'
 # PS1='[\u@\h \W]\$ '
-PS1='\[\e[38;2;42;161;152m\]$(if [[ $PWD == $HOME ]]; then echo "~ "; else echo "\w "; fi)\[\e[38;2;181;137;0m\]λ\[\e[m\] '
-
+PS1='\[\e[38;2;113;156;214m\]$(if [[ $PWD == $HOME ]]; then echo "~ "; else echo "\w "; fi)\[\e[38;2;216;189;115m\]λ\[\e[m\] '
 # my alias
 
 # system

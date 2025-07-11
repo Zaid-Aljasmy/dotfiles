@@ -1,4 +1,4 @@
 #!/bin/bash
 
-echo "<span color='#9cb321'></span> $(date +'%I:%M %p ')"
+echo "<span color='#8ebaa4'></span> $(date +'%I:%M %p ')"
 

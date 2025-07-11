@@ -6,6 +6,6 @@ mute=$(amixer get Master | grep -oP '\[(on|off)\]' | head -1 | tr -d '[]')
 if [ "$mute" = "off" ]; then
     echo "MUTED"
 else
-    echo "<span color='#caa52b'>󰕾 </span>$volume"
+    echo "<span color='#e0c989'>󰕾 </span>$volume"
 fi
 
