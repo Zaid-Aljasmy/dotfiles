@@ -29,34 +29,34 @@ set notification-error-fg       "#192330" # Background
 set notification-warning-bg     "#e0c989" # Dark Yellow
 set notification-warning-fg     "#192330" # Background
 set notification-bg             "#192330" # Background
-set notification-fg             "#bebebe" # Foreground
+set notification-fg             "#cdcecf" # Foreground
 
 set completion-bg               "#192330" # Background
-set completion-fg               "#bebebe" # Foreground
+set completion-fg               "#cdcecf" # Foreground
 set completion-group-bg         "#192330" # Background
-set completion-group-fg         "#bebebe" # Foreground
+set completion-group-fg         "#cdcecf" # Foreground
 set completion-highlight-bg     "#e0c989" # Dark Yellow
 set completion-highlight-fg     "#162320" # Background
 
 set index-bg                    "#192330" # Background
-set index-fg                    "#bebebe" # Foreground
+set index-fg                    "#cdcecf" # Foreground
 set index-active-bg             "#e0c989" # Dark Yellow 
 set index-active-fg             "#192330" # Background
 
 set inputbar-bg                 "#192330" # Background
-set inputbar-fg                 "#bebebe" # Foreground
+set inputbar-fg                 "#cdcecf" # Foreground
 set statusbar-bg                "#192330" # Background
-set statusbar-fg                "#bebebe" # Foreground
+set statusbar-fg                "#cdcecf" # Foreground
 
 set highlight-color             "#e0c989" # Dark Yellow
 set highlight-active-color      "#d16983" # Dark Red 
 
 set default-bg                  "#192330" # Background
-set default-fg                  "#bebebe" # Foreground
+set default-fg                  "#cdcecf" # Foreground
 
 set render-loading              true
 set render-loading-fg           "#192330" # Background
-set render-loading-bg           "#bebebe" # Foreground
+set render-loading-bg           "#cdcecf" # Foreground
 
 set recolor-lightcolor          "#192330" # Background
-set recolor-darkcolor           "#bebebe" # Foreground
+set recolor-darkcolor           "#cdcecf" # Foreground

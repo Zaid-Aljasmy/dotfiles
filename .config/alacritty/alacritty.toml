@@ -41,7 +41,7 @@ bold.family = "JetBrainsMonoNL NFP"
 italic.family = "JetBrainsMonoNL NFP"
 bold_italic.family = "JetBrainsMonoNL NFP"
 
-size = 12
+size = 11.5
 
 
 [cursor]

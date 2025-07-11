@@ -203,7 +203,7 @@ bindsym $mod+r mode "Resize"
 # finds out, if available)
 # set primary tokyonight colorscheme colors
 set $bg #192330
-set $fg #bebebe
+set $fg #cdcecf
 set $red #d16983
 set $green #8ebaa4
 set $yellow #e0c989

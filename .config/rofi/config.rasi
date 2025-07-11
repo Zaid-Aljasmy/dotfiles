@@ -20,8 +20,8 @@ configuration {
 
 * {
     bg: #192330;
-    fg: #bebebe;
-    selected: #2e3440;
+    fg: #cdcecf;
+    selected: #2f4159;
     accent: #54709a;
     background-color: @bg;
 

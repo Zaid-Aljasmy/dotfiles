@@ -315,7 +315,7 @@
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
     background = "#192330"
-    foreground = "#bebebe"
+    foreground = "#cdcecf"
     frame_color = "#8ebaa4"
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
@@ -323,7 +323,7 @@
 
 [urgency_normal]
     background = "#192330"
-    foreground = "#bebebe"
+    foreground = "#cdcecf"
     frame_color = "#54709a"
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
@@ -331,7 +331,7 @@
 
 [urgency_critical]
     background = "#192330"
-    foreground = "#bebebe"
+    foreground = "#cdcecf"
     frame_color = "#d16983"
     timeout = 0
     # Icon for notifications with critical urgency, uncomment to enable
