@@ -55,7 +55,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Brightness
-exec --no-startup-id brightnessctl set 25%
+exec --no-startup-id brightnessctl set 20%
 
 # ScreenShot
 # bindsym Print exec scrot ~/Pictures/Screenshots/screenshot_%Y-%m-%d-%H%M%S.png
@@ -266,3 +266,12 @@ bindsym $mod+d exec --no-startup-id ~/.config/i3/i3lock-color/lock
 exec --no-startup-id xset r rate 200 40
 # color gitter tool
 bindsym $mod+c exec --no-startup-id xcolor | xclip -selection clipboard
+
+# redshift 
+exec --no-startup-id redshift -P -O 4500
+
+# run
+bindsym $mod+Shift+d exec --no-startup-id redshift -P -O 4500
+# off
+bindsym $mod+Shift+x exec --no-startup-id redshift -x
+
