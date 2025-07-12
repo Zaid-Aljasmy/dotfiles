@@ -4,8 +4,8 @@ volume=$(amixer get Master | grep -oP '\[\d+%\]' | head -1 | tr -d '[]')
 mute=$(amixer get Master | grep -oP '\[(on|off)\]' | head -1 | tr -d '[]')
 
 if [ "$mute" = "off" ]; then
-    echo "<span color='#e0c989'>󰕾 </span>MUTED"
+    echo "<span color='#dbc074'>󰕾 </span>MUTED"
 else
-    echo "<span color='#e0c989'>󰕾 </span>$volume"
+    echo "<span color='#dbc074'>󰕾 </span>$volume"
 fi
 

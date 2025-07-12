@@ -5,8 +5,8 @@ iface=$(ip -o link show | awk -F': ' '/ether/ {print $2}' | grep -E '^(en|eth|en
 state=$(cat /sys/class/net/"$iface"/operstate 2>/dev/null) || state="down"
 
 if [[ "$state" == "up" ]]; then
-    echo "<span color='#54aeb0'> </span>up"
+    echo "<span color='#5fb4b4'> </span>up"
 else
-    echo "<span color='#54aeb0'> </span>down"
+    echo "<span color='#5fb4b4'> </span>down"
 fi
 

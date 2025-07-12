@@ -5,7 +5,8 @@
 
 alias ls='ls --color=auto'
 # PS1='[\u@\h \W]\$ '
-PS1='\[\e[38;2;113;156;214m\]$(if [[ $PWD == $HOME ]]; then echo "~ "; else echo "\w "; fi)\[\e[38;2;216;189;115m\]λ\[\e[m\] '
+PS1='\[\e[38;2;113;156;214m\]$(if [[ $PWD == $HOME ]]; then echo "\[\e[38;2;113;156;214m\]~ "; else echo "\[\e[38;2;113;156;214m\]\w "; fi)\[\e[38;2;219;192;116m\]λ\[\e[m\] '
+
 # my alias
 
 # system
@@ -27,6 +28,3 @@ alias shzaid='git remote set-url origin git@github.com:Zaid-Aljasmy/dotfiles.git
 # pfetch
 # pfetch
 
-# emacs
-# alias emacs='HOME=~/.config/emacs emacs'
-export PATH="$HOME/.emacs.d/bin:$PATH"

@@ -50,6 +50,10 @@ vim.keymap.set("n", "<S-Up>", "4k", { noremap = true, silent = true })     -- Mo
 vim.keymap.set("v", "<S-Down>", "4j", { noremap = true, silent = true })   -- Move 4 lines down
 vim.keymap.set("v", "<S-Up>", "4k", { noremap = true, silent = true })     -- Move 4 lines up
 
+-- Fast vertical movement (up/down) with Shift + Arrow keys in insert mode
+vim.keymap.set("i", "<S-Down>", "<C-o>4j", { noremap = true, silent = true })   -- Move 4 lines down
+vim.keymap.set("i", "<S-Up>", "<C-o>4k", { noremap = true, silent = true })     -- Move 4 lines up
+
 -- Esc to exit insert mode
 vim.keymap.set("i", "<A-c>", "<Esc>", { noremap = true, silent = true })
 

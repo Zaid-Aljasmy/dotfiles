@@ -21,7 +21,7 @@
 # Gruvbox dark theme:  https://github.com/alacritty/alacritty-theme
 [general]
 
-import = ["~/.config/alacritty/themes/nightfox.toml"]
+import = ["~/.config/alacritty/themes/carbonfox.toml"]
 
 
 [window]
@@ -41,7 +41,7 @@ bold.family = "JetBrainsMonoNL NFP"
 italic.family = "JetBrainsMonoNL NFP"
 bold_italic.family = "JetBrainsMonoNL NFP"
 
-size = 11.5
+size = 12
 
 
 [cursor]

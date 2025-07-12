@@ -19,8 +19,8 @@ exec --no-startup-id nitrogen --restore
 # exec picom
 
 #gaps
-gaps inner 6
-gaps outer 6
+gaps inner 7
+gaps outer 7
 
 set $mod Mod4
 
@@ -202,15 +202,15 @@ bindsym $mod+r mode "Resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 # set primary tokyonight colorscheme colors
-set $bg #192330
-set $fg #cdcecf
-set $red #d16983
-set $green #8ebaa4
-set $yellow #e0c989
-set $blue #54709a
-set $purple #baa1e2
-set $cyan #7ad5d6
-set $white #bebebe
+set $bg #161616
+set $fg #e4e4e5
+set $red #d16969
+set $green #a3be8c
+set $yellow #ebc074
+set $blue #4f7299
+set $purple #c397d8
+set $cyan #5fb4b4
+set $white #e4e4e5
 
 #start of bar section
 bar {
