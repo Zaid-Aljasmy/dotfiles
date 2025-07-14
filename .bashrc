@@ -8,7 +8,8 @@ alias ls='ls --color=auto'
 PS1='\[\e[38;2;120;169;255m\]$(if [[ $PWD == $HOME ]]; then echo "~ "; else echo "\w "; fi)\[\e[38;2;219;192;116m\]λ\[\e[m\] '
 
 # my alias
-
+# run tlauncher
+alias tl='java -jar ~/Documents/tlauncher/TLauncher.jar'
 # system
 alias ll='ls -la'
 alias vi='nvim'

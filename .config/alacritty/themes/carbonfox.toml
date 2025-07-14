@@ -4,13 +4,13 @@
 
 [colors.primary]
 background = "#161616"
-foreground = "#f2f4f8"
+foreground = "#e4e4e5"
 dim_foreground = "#b6b8bb"
 bright_foreground = "#f9fbff"
 
-[colors.cursor]
-text = "#f2f4f8"
-cursor = "#b6b8bb"
+# [colors.cursor]
+# text = "#f2f4f8"
+# cursor = "#b6b8bb"
 
 [colors.vi_mode_cursor]
 text = "#f2f4f8"
