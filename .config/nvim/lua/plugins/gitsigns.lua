@@ -9,18 +9,44 @@ return {
       topdelete    = { text = "‾" },
       changedelete = { text = "~" },
     },
+    signcolumn = true,
+    numhl = false,
+    linehl = false,
+    word_diff = false,
     current_line_blame = true,
-  },
-  keys = {
-    { "<leader>gb", "<cmd>Gitsigns blame_line<CR>", desc = "Git Blame current line" },
-    { "<leader>gp", "<cmd>Gitsigns preview_hunk<CR>", desc = "Preview current hunk" },
-    { "<leader>gr", "<cmd>Gitsigns reset_hunk<CR>", desc = "Reset current hunk" },
-    { "<leader>gs", "<cmd>Gitsigns stage_hunk<CR>", desc = "Stage current hunk" },
-    { "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<CR>", desc = "Undo stage hunk" },
-    { "]g", "<cmd>Gitsigns next_hunk<CR>", desc = "Next git hunk" },
-    { "[g", "<cmd>Gitsigns prev_hunk<CR>", desc = "Previous git hunk" },
-    { "<leader>gt", "<cmd>Gitsigns toggle_current_line_blame<CR>", desc = "Toggle current line blame" },
-    { "<leader>gd", "<cmd>Gitsigns diffthis<CR>", desc = "Git diff this" },
+    current_line_blame_opts = {
+      virt_text = true,
+      virt_text_pos = 'eol',
+      delay = 500,
+      ignore_whitespace = false,
+    },
+    current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
+
+    preview_config = {
+      border = "rounded",
+      style = "minimal",
+      relative = "cursor",
+      row = 0,
+      col = 1
+    },
+
+    on_attach = function(bufnr)
+      local gs = package.loaded.gitsigns
+
+      local function map(mode, l, r, desc)
+        vim.keymap.set(mode, l, r, { buffer = bufnr, desc = desc })
+      end
+
+      map('n', '<leader>gb', gs.blame_line, "Git Blame current line")
+      map('n', '<leader>gp', gs.preview_hunk, "Preview current hunk")
+      map('n', '<leader>gr', gs.reset_hunk, "Reset current hunk")
+      map('n', '<leader>gs', gs.stage_hunk, "Stage current hunk")
+      map('n', '<leader>gu', gs.undo_stage_hunk, "Undo stage hunk")
+      map('n', ']g', gs.next_hunk, "Next git hunk")
+      map('n', '[g', gs.prev_hunk, "Previous git hunk")
+      map('n', '<leader>gt', gs.toggle_current_line_blame, "Toggle current line blame")
+      map('n', '<leader>gd', gs.diffthis, "Git diff this")
+    end
   },
 }
 

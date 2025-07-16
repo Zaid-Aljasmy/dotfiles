@@ -3,17 +3,39 @@ return {
     'mfussenegger/nvim-dap',
     dependencies = {
       'rcarriga/nvim-dap-ui',
-      'mfussenegger/nvim-dap-python',
-      'nvim-neotest/nvim-nio', -- ✅ أضف هذا السطر
+      'nvim-neotest/nvim-nio',
     },
     config = function()
       local dap = require('dap')
       local dapui = require('dapui')
-      local dap_python = require('dap-python')
 
       dapui.setup()
-      dap_python.setup('~/python-env/bin/python') 
 
+      -- 🢂 إعداد LLDB
+      dap.adapters.lldb = {
+        type = 'executable',
+        command = 'lldb-vscode', -- ✅ تأكد أن lldb-vscode مثبت بالنظام
+        name = 'lldb'
+      }
+
+      dap.configurations.cpp = {
+        {
+          name = "Launch LLDB",
+          type = "lldb",
+          request = "launch",
+          program = function()
+            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+          end,
+          cwd = '${workspaceFolder}',
+          stopOnEntry = true,
+          args = {},
+        },
+      }
+
+      -- 🢂 نفس الإعداد لـ C أيضاً
+      dap.configurations.c = dap.configurations.cpp
+
+      -- 🢂 الاستماع لأحداث DAP UI
       dap.listeners.after.event_initialized["dapui_config"] = function()
         dapui.open()
       end
@@ -24,6 +46,7 @@ return {
         dapui.close()
       end
 
+      -- 🢂 الاختصارات
       vim.keymap.set('n', '<F5>', function() dap.continue() end)
       vim.keymap.set('n', '<F10>', function() dap.step_over() end)
       vim.keymap.set('n', '<F11>', function() dap.step_into() end)

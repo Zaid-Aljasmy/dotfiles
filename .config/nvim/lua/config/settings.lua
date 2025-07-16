@@ -64,6 +64,19 @@ vim.keymap.set("n", "<M-r>", "<C-r>", { noremap = true })
 vim.keymap.set("n", "ss", ":split", { noremap = true, silent = true })
 vim.keymap.set("n", "sv", ":vsplit", { noremap = true, silent = true })
 
+-- Increase vertical split width (Alt + Shift + Right Arrow)
+vim.keymap.set('n', '<A-S-Left>', ':vertical resize +2<CR>', { noremap = true, silent = true })
+
+-- Decrease vertical split width (Alt + Shift + Left Arrow)
+vim.keymap.set('n', '<A-S-Right>', ':vertical resize -2<CR>', { noremap = true, silent = true })
+
+-- Increase window height (Alt + Shift + Up Arrow)
+vim.keymap.set('n', '<A-S-Down>', ':resize +2<CR>', { noremap = true, silent = true })
+
+-- Decrease window height (Alt + Shift + Down Arrow)
+vim.keymap.set('n', '<A-S-Up>', ':resize -2<CR>', { noremap = true, silent = true })
+
+
 -- Restore cursor position:
 vim.cmd([[
   autocmd BufReadPost *
@@ -87,6 +100,3 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.cmd("syntax enable")
   end,
 })
-
-
-

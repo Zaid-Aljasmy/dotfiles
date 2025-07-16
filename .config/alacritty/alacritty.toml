@@ -37,11 +37,11 @@ decorations_theme_variant = "Light" # "Dark"
 [font]
 
 normal.family = "CaskaydiaCove Nerd Font"
-bold.family = "JetBrainsMonoNL NFP"
-italic.family = "JetBrainsMonoNL NFP"
-bold_italic.family = "JetBrainsMonoNL NFP"
+bold.family = "CaskaydiaCove Nerd Font"
+italic.family = "CaskaydiaCove Nerd Font"
+bold_italic.family = "CaskaydiaCove Nerd Font"
 
-size = 12
+size = 13
 
 
 [cursor]

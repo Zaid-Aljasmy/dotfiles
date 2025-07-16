@@ -6,15 +6,17 @@ return {
     event = "BufWinEnter",
     config = function()
       vim.opt.termguicolors = true
-      local bufferline = require("bufferline")
-      bufferline.setup {
+      require("bufferline").setup({
         options = {
           numbers = "none",
-          close_command = function(idx) vim.api.nvim_buf_delete(idx, {force = true}) end,
-          right_mouse_command = function(idx) vim.api.nvim_buf_delete(idx, {force = true}) end,
-          left_mouse_command = function(idx) vim.api.nvim_set_current_buf(idx) end,
+          close_command = "bdelete! %d",
+          right_mouse_command = "bdelete! %d",
+          left_mouse_command = "buffer %d",
           middle_mouse_command = nil,
-          indicator = { icon = " ", style = "icon" },  -- use this ▎ if you want
+          indicator = {
+            icon = " ", -- choose this ▎ if you want no separators between buffers
+            style = "icon",
+          },
           buffer_close_icon = "",
           modified_icon = "●",
           close_icon = "",
@@ -32,8 +34,7 @@ return {
             },
           },
         },
-      }
+      })
     end,
   },
 }
-

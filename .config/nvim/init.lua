@@ -10,48 +10,23 @@ vim.keymap.set("v", "<M-s>", '"+y')
 vim.keymap.set("n", "<leader>f", ":Ex<CR>", { desc = "Open netrw file explorer" })
 -- Close the buffer tab 
 vim.keymap.set("n", "<leader>x", "<cmd>bd!<CR>", { desc = "Force close buffer (bd!)" })
+
 -- Set shortcut key to run python file
 vim.keymap.set("n", "<leader>q", function()
-  vim.cmd("w")
+  vim.cmd("update")
   local filename = vim.fn.expand("%")
-
-  vim.system({ "python3", filename }, { text = true }, function(obj)
-    if obj.code == 0 then
-      vim.notify("Output:\n" .. obj.stdout, vim.log.levels.INFO)
-    else
-      vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
-    end
-  end)
+  vim.cmd('vsplit | terminal python3 ' .. filename)
+  vim.cmd("startinsert")
 end, { noremap = true, silent = true })
 
--- Compile the C++ code
-vim.keymap.set("n", "<leader>g", function()
-  vim.cmd("w")
-  local filename = vim.fn.expand("%")
-  local output = vim.fn.expand("%:r")
-  local compile_cmd = { "g++", filename, "-o", output }
-
-  vim.system(compile_cmd, { text = true }, function(obj)
-    if obj.code == 0 then
-      vim.notify("Compilation succeeded", vim.log.levels.INFO)
-    else
-      vim.notify("Compilation failed:\n" .. obj.stderr, vim.log.levels.ERROR)
-    end
-  end)
-end, { noremap = true, silent = true })
-
--- Set shortcut key to run C++ code
+-- Set shortcut key to run & compile c++ file
 vim.keymap.set("n", "<leader>r", function()
+  vim.cmd("update")
   local output = "./" .. vim.fn.expand("%:r")
-
-  vim.system({ output }, { text = true }, function(obj)
-    if obj.code == 0 then
-      vim.notify("Output:\n" .. obj.stdout, vim.log.levels.INFO)
-    else
-      vim.notify("Runtime error:\n" .. obj.stderr, vim.log.levels.ERROR)
-    end
-  end)
+  vim.cmd("vsplit | terminal g++ " .. vim.fn.expand("%") .. " -o " .. vim.fn.expand("%:r") .. " && " .. output)
+  vim.cmd("startinsert")
 end, { noremap = true, silent = true })
+
 
 -- Silence lazy.nvim config reload warning
 vim.notify_original = vim.notify
