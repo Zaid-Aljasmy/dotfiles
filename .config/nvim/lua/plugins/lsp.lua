@@ -13,7 +13,7 @@ return {
     dependencies = { "williamboman/mason.nvim" },
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "pyright" },
+        ensure_installed = { "lua_ls", "pyright", "clangd" },
       })
     end,
   },
@@ -25,6 +25,7 @@ return {
 
       lspconfig.lua_ls.setup({})
       lspconfig.pyright.setup({})
+      lspconfig.clangd.setup({})
 
       vim.diagnostic.config({
         virtual_text = true,
@@ -43,3 +44,4 @@ return {
     end,
   },
 }
+
