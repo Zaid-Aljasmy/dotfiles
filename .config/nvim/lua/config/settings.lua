@@ -100,3 +100,14 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.cmd("syntax enable")
   end,
 })
+
+-- disable italic font in the code 
+-- vim.api.nvim_set_hl(0, "Comment", { italic = false })
+-- vim.api.nvim_set_hl(0, "Keyword", { italic = false })
+-- vim.api.nvim_set_hl(0, "Function", { italic = false })
+-- vim.api.nvim_set_hl(0, "Type", { italic = false })
+-- vim.api.nvim_set_hl(0, "Identifier", { italic = false })
+-- vim.api.nvim_set_hl(0, "Statement", { italic = false })
+-- vim.api.nvim_set_hl(0, "@keyword.return", { italic = false })
+--
+
