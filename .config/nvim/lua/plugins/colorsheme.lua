@@ -7,7 +7,7 @@ return {
     terminal_colors = true,
     config = function()
     vim.cmd[[colorscheme carbonfox]]
-    -- vim.api.nvim_set_hl(0, "Visual", { bg = "#504945", fg = "NONE" }) -- enable this only for gruvbox theme
+    vim.api.nvim_set_hl(0, "Visual", { bg = "#374352", fg = "NONE" }) -- visual mode color
     end,
   },
 }
