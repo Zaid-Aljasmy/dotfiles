@@ -76,7 +76,6 @@ vim.keymap.set('n', '<A-S-Down>', ':resize +2<CR>', { noremap = true, silent = t
 -- Decrease window height (Alt + Shift + Down Arrow)
 vim.keymap.set('n', '<A-S-Up>', ':resize -2<CR>', { noremap = true, silent = true })
 
-
 -- Restore cursor position:
 vim.cmd([[
   autocmd BufReadPost *
@@ -101,13 +100,22 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- disable italic font in the code 
--- vim.api.nvim_set_hl(0, "Comment", { italic = false })
--- vim.api.nvim_set_hl(0, "Keyword", { italic = false })
--- vim.api.nvim_set_hl(0, "Function", { italic = false })
--- vim.api.nvim_set_hl(0, "Type", { italic = false })
--- vim.api.nvim_set_hl(0, "Identifier", { italic = false })
--- vim.api.nvim_set_hl(0, "Statement", { italic = false })
--- vim.api.nvim_set_hl(0, "@keyword.return", { italic = false })
---
+-- disable italic font in the code
+local function remove_italic(group)
+  local ok, syntax = pcall(vim.api.nvim_get_hl, 0, { name = group, link = false })
+  if ok and syntax then
+    syntax.italic = false
+    vim.api.nvim_set_hl(0, group, syntax)
+  end
+end
 
+remove_italic("Keyword")
+remove_italic("Statement")
+remove_italic("Type")
+remove_italic("Namespace")
+remove_italic("@namespace")
+remove_italic("@type")
+remove_italic("@keyword")
+remove_italic("@keyword.namespace")
+remove_italic("Comment")
+remove_italic("@comment")

@@ -3,9 +3,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
+# alias ls='ls --color=auto'
 # PS1='[\u@\h \W]\$ '
-PS1='\[\e[38;2;120;169;255m\]$(if [[ $PWD == $HOME ]]; then echo "~ "; else echo "\w "; fi)\[\e[38;2;219;192;116m\]λ\[\e[m\] '
+PS1='\[\e[38;2;97;175;239m\]$(if [[ $PWD == $HOME ]]; then echo "~ "; else echo "\w "; fi)\[\e[38;2;229;192;123m\]λ\[\e[m\] '
 
 # my alias
 # run tlauncher
@@ -18,9 +18,11 @@ alias usage='ncdu'
 alias aud='alsamixer'
 alias bt='acpi'
 alias z='zathura'
+alias ls='exa --color=always --icons'
+alias ll='exa -lah --color=always --icons'
 # xbps
 alias i='sudo xbps-install -S'
-alias u='sudo xbps-install -u xbps; sudo xbps-install -u; sudo flatpak update -y'
+alias u='sudo xbps-install -u xbps; sudo xbps-install -u'
 alias q='sudo xbps-query -Rs'
 alias r='sudo xbps-remove -R'
 alias ro='sudo xbps-remove -o; sudo xbps-remove -O'
@@ -28,4 +30,4 @@ alias ro='sudo xbps-remove -o; sudo xbps-remove -O'
 alias shzaid='git remote set-url origin git@github.com:Zaid-Aljasmy/dotfiles.git'
 # pfetch
 # pfetch
-
+bash ~/.colorscripts/square

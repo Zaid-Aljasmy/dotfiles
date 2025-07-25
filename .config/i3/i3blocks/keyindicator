@@ -1,17 +1,8 @@
 #!/bin/bash
 
-layout=$(xkb-switch)
-
-case "$layout" in
-    us)
-        echo "<span color='#c397d8'> </span>us"
-        ;;
-    ara)
-        echo "<span color='#c397d8'> </span>ar"
-        ;;
-    *)
-        echo "$layout"
-        echo "$layout"
-        ;;
+case "$(xkb-switch)" in
+    us)  echo "<span color='#c678dd'> </span>us" ;;
+    ara) echo "<span color='#c678dd'> </span>ar" ;;
+    *)   xkb-switch | tee /dev/stderr ;;
 esac
 

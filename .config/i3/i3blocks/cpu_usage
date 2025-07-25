@@ -11,4 +11,4 @@ diff_total=$((total - prev_total))
 usage=$(( (100 * (diff_total - diff_idle)) / diff_total ))
 temp=$(sensors | grep -m 1 'Package id 0' | awk '{print $4}' | tr -d '+')
 
-echo "<span color='#719cd6'> </span>$usage%-$temp"
+echo "<span color='#61afef'> </span>$usage%-$temp"

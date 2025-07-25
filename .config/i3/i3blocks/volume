@@ -1,11 +1,11 @@
 #!/bin/bash
 
-volume=$(amixer get Master | grep -oP '\[\d+%\]' | head -1 | tr -d '[]')
-mute=$(amixer get Master | grep -oP '\[(on|off)\]' | head -1 | tr -d '[]')
+volume=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+%' | head -1)
+mute=$(pactl get-sink-mute @DEFAULT_SINK@ | grep -oP '(yes|no)')
 
-if [ "$mute" = "off" ]; then
-    echo "<span color='#dbc074'>󰕾 </span>MUTED"
+if [[ $mute == "yes" ]]; then
+    echo "<span color='##E5C07B'>󰕾 </span>off"
 else
-    echo "<span color='#dbc074'>󰕾 </span>$volume"
+    echo "<span color='#E5C07B'>󰕾 </span>$volume"
 fi
 
