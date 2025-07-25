@@ -8,7 +8,7 @@ confirm() {
     rofi -dmenu -p "Are you sure? [Y/N]" <<< "" | grep -iq "^y"
 }
 
-choice=$(printf "<span foreground='#d16969'></span> Shutdown\n<span foreground='#719cd6'></span> Reboot\n<span foreground='#a3be8c'>󰤄</span> Suspend\n<span foreground='#dbc074'>󰍃</span> Logout" | rofi -dmenu -i -markup-rows -p "󰤆 Power Menu:")
+choice=$(printf "<span foreground='#e06c75'></span> Shutdown\n<span foreground='#61afef'></span> Reboot\n<span foreground='#98c379'>󰤄</span> Suspend\n<span foreground='#e5c07b'>󰍃</span> Logout" | rofi -dmenu -i -markup-rows -p "󰤆 Power Menu:")
 
 case "$choice" in
   *Shutdown*)

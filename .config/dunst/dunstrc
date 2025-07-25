@@ -324,7 +324,7 @@
 [urgency_normal]
     background = "#282c34"
     foreground = "#bbc2cf"
-    frame_color = "#2577b8"
+    frame_color = "#3D8EC9"
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
     #new_icon = /path/to/icon

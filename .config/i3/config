@@ -207,7 +207,7 @@ set $fg #bbc2cf
 set $red #e06c75
 set $green #98c379
 set $yellow #e5c07b
-set $blue #2577B8 
+set $blue #3D8EC9 
 set $purple #c678dd
 set $cyan #56b6c2
 set $white #abb2bf
