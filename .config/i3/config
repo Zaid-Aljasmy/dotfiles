@@ -59,7 +59,7 @@ exec --no-startup-id brightnessctl set 25%
 
 # ScreenShot
 # bindsym Print exec scrot ~/Pictures/Screenshots/screenshot_%Y-%m-%d-%H%M%S.png
-bindsym Shift+P exec scrot -s ~/Pictures/Screenshots/screenshot_%Y-%m-%d-%H%M%S.png
+bindsym $mod+g exec gscreenshot -s
 bindsym $mod+shift+p exec gscreenshot
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
