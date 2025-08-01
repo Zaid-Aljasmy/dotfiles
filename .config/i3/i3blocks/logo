@@ -1,0 +1,88 @@
+#!/bin/bash
+
+distro_id=$(source /etc/os-release && echo "$ID")
+
+case "$distro_id" in
+    void)
+        icon=""
+        name="void"
+        ;;
+    arch)
+        icon=""
+        name="arch"
+        ;;
+    debian)
+        icon=""
+        name="debian"
+        ;;
+    ubuntu)
+        icon=""
+        name="ubuntu"
+        ;;
+    fedora)
+        icon=""
+        name="fedora"
+        ;;
+    nixos)
+        icon=""
+        name="nixos"
+        ;;
+    gentoo)
+        icon=""
+        name="gentoo"
+        ;;
+    opensuse*|suse)
+        icon=""
+        name="opensuse"
+        ;;
+    manjaro)
+        icon=""
+        name="manjaro"
+        ;;
+    elementary)
+        icon=""
+        name="elementary"
+        ;;
+    zorin)
+        icon=""
+        name="zorin"
+        ;;
+    linuxmint)
+        icon=""
+        name="linuxmint"
+        ;;
+    pop)
+        icon=""
+        name="pop!_os"
+        ;;
+    raspbian|raspios)
+        icon=""
+        name="raspbian"
+        ;;
+    parrot)
+        icon=""
+        name="parrot"
+        ;;
+    kali)
+        icon=""
+        name="kali"
+        ;;
+    alpine)
+        icon=""
+        name="alpine"
+        ;;
+    mageia)
+        icon=""
+        name="mageia"
+        ;;
+    deepin)
+        icon=""
+        name="deepin"
+        ;;
+    *)
+        icon=""
+        name="$distro_id"
+        ;;
+esac
+
+echo "$icon $name "

@@ -7,5 +7,5 @@ max=$(cat "$BRIGHTNESS_PATH/max_brightness")
 
 percent=$(( 100 * current / max ))
 
-echo "<span color='#c678dd'>󰃠 </span>$percent%"
+echo "$percent%"
 

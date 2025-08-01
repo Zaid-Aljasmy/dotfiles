@@ -11,8 +11,8 @@ state=$(cat /sys/class/net/"$wifi_iface"/operstate 2>/dev/null)
 
 if [[ "$state" == "up" ]]; then
     signal=$(grep "$wifi_iface" /proc/net/wireless | awk '{ print int($3 * 100 / 70) }')
-    echo "<span color='#e5c07b'>󰤨 </span>${signal}%"
+    echo "${signal}%"
 else
-    echo "<span color='#e5c07b'>󰤨 </span>off"
+    echo "off"
 fi
 

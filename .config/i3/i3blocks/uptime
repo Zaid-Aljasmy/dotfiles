@@ -1,0 +1,23 @@
+#!/bin/bash
+
+uptime_sec=$(cut -d. -f1 /proc/uptime)
+hours=$(( uptime_sec / 3600 ))
+minutes=$(( (uptime_sec % 3600) / 60 ))
+seconds=$(( uptime_sec % 60 ))
+
+output=""
+
+if (( hours > 0 )); then
+    output+="${hours}h"
+fi
+
+if (( minutes > 0 || hours > 0 )); then
+    [[ -n "$output" ]] && output+=" "
+    output+="${minutes}m"
+fi
+
+[[ -n "$output" ]] && output+=" "
+output+="${seconds}s"
+
+echo "$output"
+

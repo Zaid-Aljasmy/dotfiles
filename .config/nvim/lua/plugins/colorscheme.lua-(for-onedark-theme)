@@ -1,10 +1,10 @@
 return {
-  "folke/tokyonight.nvim",
+  "navarasu/onedark.nvim",
   lazy = false,            -- Load during startup
   priority = 1000,         -- Ensure it loads before other plugins
   config = function()
-    require("tokyonight").setup({
-      style = "night",      -- Available styles: dark, cool, deep, warm, warmer, light
+    require("onedark").setup({
+      style = "deep",      -- Available styles: dark, cool, deep, warm, warmer, light
       transparent = true, -- Set to true if you want a transparent background
       term_colors = true,  -- Enable terminal colors
       code_style = {
@@ -29,7 +29,8 @@ return {
         -- Visual = { bg = "#374352", fg = "NONE" },
       },
     })
-    require("tokyonight").load() -- Apply the configured theme
+    require("onedark").load() -- Apply the configured theme
   end,
 }
+
 
