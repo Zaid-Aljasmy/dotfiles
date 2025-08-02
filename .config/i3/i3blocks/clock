@@ -1,3 +1,7 @@
 #!/bin/bash
 
-echo "$(date +'%I:%M %p')"
+hour=$(date +'%l' | sed 's/^ *//')
+minute=$(date +'%M' | sed 's/^0*//')
+ampm=$(date +'%p')
+
+echo "$hour:$minute $ampm"
