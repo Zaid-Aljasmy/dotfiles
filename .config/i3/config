@@ -224,17 +224,22 @@ client.focused_inactive $bg $bg $fg $bg $bg
 client.unfocused        $bg $bg $fg $bg $bg
 client.urgent           $red $red $bg $red $red
 
-
-# start of window title bars & borders section
-
 # default_border  type none if you want no border or pixel 3 if you want a border (choose your favorite number)
-default_border pixel 3
-for_window [floating] border pixel 3
+default_border pixel 5
+for_window [floating] border pixel 5
 for_window [floating] move position center
-bindsym $mod+u border none
-bindsym $mod+y border pixel 3
-bindsym $mod+n border normal
 # smart_borders on
+
+set $mode_borders Borders: (d) disable, (p) pixel, (n) normal
+bindsym $mod+b mode "$mode_borders"
+
+mode "$mode_borders" {
+    bindsym d border none
+    bindsym p border pixel 5
+    bindsym n border normal
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
 
 # gaps
 gaps inner 7
@@ -246,27 +251,25 @@ gaps outer 7
 # Press one of + / - (in-/decrement for current workspace) 
 # or 0 (remove gaps for current workspace). If you also press Shift 
 # with these keys, the change will be global for all workspaces.
-set $mode_gaps Gaps: (o) outer, (i) inner
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $mod+Shift+g mode "$mode_gaps"
-bindsym $mod+g mode "gaps"
-
+set $mode_gaps Gaps: (o) outer, (i) inner, (d) disable, (e) enable 
+set $mode_gaps_outer Gaps Outer: [+] [-]  (local) | Shift [+] [-]  (global)
+set $mode_gaps_inner Gaps Inner: [+] [-]  (local) | Shift [+] [-]  (global)
+bindsym $mod+g mode "$mode_gaps"
 
 mode "$mode_gaps" {
         bindsym o      mode "$mode_gaps_outer"
         bindsym i      mode "$mode_gaps_inner"
+        bindsym d      gaps inner all set 0; gaps outer all set 0; mode "default"
+        bindsym e      gaps inner all set 7; gaps outer all set 7; mode "default"
+
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
 mode "$mode_gaps_inner" {
         bindsym plus  gaps inner current plus 5
         bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
-
         bindsym Shift+plus  gaps inner all plus 5
         bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -274,23 +277,14 @@ mode "$mode_gaps_inner" {
 mode "$mode_gaps_outer" {
         bindsym plus  gaps outer current plus 5
         bindsym minus gaps outer current minus 5
-        bindsym 0     gaps outer current set 0
-
         bindsym Shift+plus  gaps outer all plus 5
         bindsym Shift+minus gaps outer all minus 5
-        bindsym Shift+0     gaps outer all set 0
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
 
 
-mode "gaps" {
-    bindsym q gaps inner all set 0; gaps outer all set 0; mode "default"
-    bindsym s gaps inner all set 7; gaps outer all set 7; mode "default"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
 
 
 # Switch to another language
