@@ -85,4 +85,4 @@ case "$distro_id" in
         ;;
 esac
 
-echo "$icon $name "
+echo "$icon  $name  "

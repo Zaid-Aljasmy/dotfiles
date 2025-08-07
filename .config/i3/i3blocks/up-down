@@ -51,4 +51,4 @@ done
 rx_human=$(convert_unit "$rx_rate")
 tx_human=$(convert_unit "$tx_rate")
 
-echo " $rx_human  $tx_human"
+echo "  $rx_human    $tx_human"
