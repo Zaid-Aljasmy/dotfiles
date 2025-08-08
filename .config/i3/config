@@ -201,23 +201,23 @@ set $cyan #449dab
 set $white #a9b1d6
 
 #start of bar section
-bar {
-    position top
-    status_command i3blocks -c ~/.config/i3/i3blocks.conf
-   colors {
-        # bar background color
-        background $bg
-        # text color used for blocks that do not have a color specified.
-        statusline $yellow
-        # workspaces section            
-        #                    border  backgr. text
-        focused_workspace    $blue $blue $bg
-        inactive_workspace   $bg $bg $fg
-        active_workspace     $bg $bg $fg
-        urgent_workspace     $red $red $bg
-    }
-}
-# exec --no-startup-id ~/.config/polybar/launch.sh
+# bar {
+#     position top
+#     status_command i3blocks -c ~/.config/i3/i3blocks.conf
+#    colors {
+#         # bar background color
+#         background $bg
+#         # text color used for blocks that do not have a color specified.
+#         statusline $yellow
+#         # workspaces section            
+#         #                    border  backgr. text
+#         focused_workspace    $blue $blue $bg
+#         inactive_workspace   $bg $bg $fg
+#         active_workspace     $bg $bg $fg
+#         urgent_workspace     $red $red $bg
+#     }
+# }
+exec --no-startup-id ~/.config/polybar/launch.sh
 
 # class                 border|backgr|text|indicator|child_border
 client.focused          $blue $blue $bg $blue $blue
