@@ -243,7 +243,7 @@ mode "$mode_borders" {
 
 # gaps
 gaps inner 10
-gaps outer 7
+gaps outer 5
 # smart_gaps on
 
 # Press $mod+Shift+g to enter the gap mode. 

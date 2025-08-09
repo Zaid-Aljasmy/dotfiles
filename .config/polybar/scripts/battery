@@ -11,16 +11,14 @@ capacity=$(echo "$acpi_output" | awk -F', ' '{print $2}' | tr -d '%')
 
 status_lower=$(echo "$status" | tr '[:upper:]' '[:lower:]')
 
-# اللون الافتراضي: أزرق
 color="#7aa2f7"
 
-# تغيير اللون حسب الحالة
 if [[ "$status_lower" == "charging" ]]; then
-    color="#66bb6a"  # أخضر
+    color="#66bb6a" 
 elif [[ "$status_lower" == "full" || "$status_lower" == "not" ]]; then
-    color="#f6c453"  # أصفر
+    color="#f6c453"
 elif [[ "$capacity" -le 20 && "$status_lower" == "discharging" ]]; then
-    color="#e57373"  # أحمر عند بطارية منخفضة
+    color="#e57373"
 fi
 
 echo "%{F$color}Bat%{F-} $capacity%"
