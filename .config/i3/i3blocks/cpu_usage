@@ -1,5 +1,7 @@
 #!/bin/bash
 
+color="#7aa2f7"
+
 prev_idle=$(grep 'cpu ' /proc/stat | awk '{print $5}')
 prev_total=$(grep 'cpu ' /proc/stat | awk '{total=0; for (i=2;i<=NF;i++) total+=$i; print total}')
 sleep 1
@@ -10,4 +12,5 @@ diff_idle=$((idle - prev_idle))
 diff_total=$((total - prev_total))
 usage=$(( (100 * (diff_total - diff_idle)) / diff_total ))
 
-echo "$usage%"
+echo "<span foreground='$color'>Cpu</span> $usage%"
+

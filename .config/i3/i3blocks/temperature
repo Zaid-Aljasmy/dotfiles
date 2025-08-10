@@ -1,6 +1,8 @@
 #!/bin/bash
 
+color="#7aa2f7"
+
 temp=$(sensors | grep -m 1 'Package id' | awk '{print $4}' | tr -d '+')
 temp=${temp/\.0/}
 
-echo "$temp"
+echo "<span foreground='$color'>Temp</span> $temp"

@@ -10,7 +10,7 @@ function fish_prompt
         echo -n (prompt_pwd) ""
     end
     echo -n (printf '\033[38;2;224;175;104m')
-    echo -n "λ "
+    echo -n "> "    # or λ
     echo -n (printf '\033[0m')
 end
 

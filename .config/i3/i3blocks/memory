@@ -1,5 +1,7 @@
 #!/bin/bash
 
+color="#7aa2f7"
+
 mem_total=$(grep MemTotal /proc/meminfo | awk '{print $2}')
 mem_available=$(grep MemAvailable /proc/meminfo | awk '{print $2}')
 
@@ -7,5 +9,5 @@ mem_used=$((mem_total - mem_available))
 
 mem_percent=$((mem_used * 100 / mem_total))
 
-echo "${mem_percent}%"
+echo "<span foreground='$color'>Ram</span> ${mem_percent}%"
 

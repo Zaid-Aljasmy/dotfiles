@@ -1,18 +1,19 @@
 #!/bin/bash
 
+color="#7aa2f7"
+
 wifi_iface=$(iw dev | awk '$1=="Interface"{print $2}' | head -n1)
 
 if [[ -z "$wifi_iface" ]]; then
-    echo "down"
+    echo "<span foreground='$color'>Wifi</span> down"
     exit 0
 fi
 
 state=$(cat /sys/class/net/"$wifi_iface"/operstate 2>/dev/null)
 
 if [[ "$state" == "up" ]]; then
-    signal=$(grep "$wifi_iface" /proc/net/wireless | awk '{ print int($3 * 100 / 70) }')
-    echo "${signal}%"
+    echo "<span foreground='$color'>Wifi</span> up"
 else
-    echo "off"
+    echo "<span foreground='$color'>Wifi</span> down"
 fi
 

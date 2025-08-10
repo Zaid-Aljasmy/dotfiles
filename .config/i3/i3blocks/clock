@@ -4,4 +4,4 @@ hour=$(date +'%l' | sed 's/^ *//')
 minute=$(date +'%M' | sed 's/^0*//')
 ampm=$(date +'%p')
 
-echo "$hour:$minute $ampm"
+echo "$hour:$minute $ampm "

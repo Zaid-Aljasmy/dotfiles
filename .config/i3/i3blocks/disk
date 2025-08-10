@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# الحصول على معلومات القسم /home
+color="#7aa2f7"
+
 read -r used total <<< $(df -h / | awk 'NR==2 {print $3, $2}')
 
-# طباعة النتيجة بالشكل المطلوب
-echo "$used/$total"
+echo "<span foreground='$color'>Disk</span> $used/$total"
 

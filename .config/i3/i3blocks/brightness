@@ -1,5 +1,7 @@
 #!/bin/bash
 
+color="#7aa2f7"
+
 BRIGHTNESS_PATH="/sys/class/backlight/intel_backlight"
 
 current=$(cat "$BRIGHTNESS_PATH/brightness")
@@ -7,5 +9,5 @@ max=$(cat "$BRIGHTNESS_PATH/max_brightness")
 
 percent=$(( 100 * current / max ))
 
-echo "$percent%"
+echo "<span foreground='$color'>Bright</span> $percent%"
 

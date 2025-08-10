@@ -1,9 +1,10 @@
 #!/bin/bash
 
+color="#7aa2f7"
 status=$(amixer get Capture | grep '\[on\]')
 if [ -n "$status" ]; then
-    echo "on"
+    echo "<span foreground='$color'>Mic</span> on"
 else
-    echo "off"
+    echo "<span foreground='$color'>Mic</span> muted"
 fi
 

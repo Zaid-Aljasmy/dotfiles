@@ -1,8 +1,12 @@
 #!/bin/bash
 
+color="#7aa2f7"
+
 case "$(xkb-switch)" in
-    us)  echo "us" ;;
-    ara) echo "ar" ;;
-    *)   xkb-switch | tee /dev/stderr ;;
+    us)  echo "<span foreground='$color'>Key</span> us" ;;
+    ara) echo "<span foreground='$color'>Key</span> ara" ;;
+    *)   layout=$(xkb-switch)
+         echo "<span foreground='$color'>Key</span> $layout"
+         ;;
 esac
 

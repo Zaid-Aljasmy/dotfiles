@@ -14,11 +14,11 @@ status_lower=$(echo "$status" | tr '[:upper:]' '[:lower:]')
 color="#7aa2f7"
 
 if [[ "$status_lower" == "charging" ]]; then
-    color="#66bb6a" 
+    color="#9ece6e" 
 elif [[ "$status_lower" == "full" || "$status_lower" == "not" ]]; then
-    color="#f6c453"
+    color="#e0af68"
 elif [[ "$capacity" -le 20 && "$status_lower" == "discharging" ]]; then
-    color="#e57373"
+    color="#f7768e"
 fi
 
 echo "%{F$color}Bat%{F-} $capacity%"

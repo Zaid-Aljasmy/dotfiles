@@ -1,52 +1,26 @@
 #!/bin/bash
 
-BAT_PATH="/sys/class/power_supply/BAT0"
-
-# Check if battery path exists
-if [[ ! -d "$BAT_PATH" ]]; then
+acpi_output=$(acpi -b)
+if [[ -z "$acpi_output" ]]; then
     echo "Battery not found"
     exit 1
 fi
-# Check if status and capacity files exist
-if [[ ! -f "$BAT_PATH/status" ]] || [[ ! -f "$BAT_PATH/capacity" ]]; then
-    echo "Battery info missing"
-    exit 1
-fi
 
-status=$(cat "$BAT_PATH/status")
-capacity=$(cat "$BAT_PATH/capacity")
+status=$(echo "$acpi_output" | awk -F', ' '{print $1}' | awk '{print $3}')
+capacity=$(echo "$acpi_output" | awk -F', ' '{print $2}' | tr -d '%')
+
 status_lower=$(echo "$status" | tr '[:upper:]' '[:lower:]')
 
-# Determine base icon based on capacity
-if [[ "$capacity" -ge 90 ]]; then
-    icon=" "
-elif [[ "$capacity" -ge 70 ]]; then
-    icon=" "
-elif [[ "$capacity" -ge 50 ]]; then
-    icon=" "
-elif [[ "$capacity" -ge 40 ]]; then
-    icon=" "
-elif [[ "$capacity" -ge 30 ]]; then
-    icon=" "
-elif [[ "$capacity" -ge 20 ]]; then
-    icon=" "
-else
-    icon=" "
-fi
+color="#7aa2f7"
 
-# Modify icon based on charging status
 if [[ "$status_lower" == "charging" ]]; then
-    icon="<span color='#66bb6a'>  </span>$icon"  # green bolt + battery
-elif [[ "$status_lower" == "full" || "$status_lower" == "not charging" || "$capacity" -ge 100 ]]; then
-    icon="<span color='#f6c453'>   </span>$icon"  # yellow check + battery
-elif [[ "$status_lower" != "discharging" ]]; then
-    icon="<span color='#e57373'>   </span>$icon"  # red warning + battery
+    color="#9ece6e" 
+elif [[ "$status_lower" == "full" || "$status_lower" == "not" ]]; then
+    color="#e0af68"
+elif [[ "$capacity" -le 20 && "$status_lower" == "discharging" ]]; then
+    color="#f7768e"
 fi
 
-# Add low battery warning
-if [[ "$capacity" -le 20 && "$status_lower" == "discharging" ]]; then
-    icon="<span color='#e57373'>   $icon</span>"  # red alert + battery
-fi
+# إخراج بصيغة Pango markup
+echo "<span foreground='$color'>Bat</span> $capacity%"
 
-# Final output
-echo "$icon $capacity%"
