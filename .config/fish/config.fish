@@ -7,10 +7,12 @@ function fish_prompt
     if test $PWD = $HOME
         echo -n "~ "
     else
+        echo -n (printf '\033[38;2;157;124;216m')
         echo -n (prompt_pwd) ""
+        echo -n (printf '\033[38;2;122;162;247m')
     end
     echo -n (printf '\033[38;2;224;175;104m')
-    echo -n "> "    # or λ
+    echo -n "> "        # or λ
     echo -n (printf '\033[0m')
 end
 

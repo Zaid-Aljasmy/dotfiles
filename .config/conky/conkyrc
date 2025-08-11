@@ -37,7 +37,7 @@ conky.config = {
 	stippled_borders = 0,
 
 	format_human_readable = true,
-	font = 'CaskaydiaCove Nerd Font:bold:size=11',
+	font = 'JetBrainsMono Nerd Font:bold:size=11',
 	font2 = 'Raleway:bold:size=30',
 	font3 = 'Ubuntu:size=14',
 	font4 = 'Raleway:bold:size=9',
@@ -51,14 +51,13 @@ conky.config = {
 	use_spacer = 'none',
 	use_xft = true,
 	xftalpha = 1,
-
 	own_window = true,
-	own_window_argb_value = 255,
+	own_window_argb_value = 70,
 	own_window_argb_visual = true,
 	own_window_class = 'Conky',
 	own_window_colour = '#1a1b26',
 	own_window_transparent = false,
-	own_window_title = 'xmonad_conky',
+	own_window_title = 'i3_conky',
 	own_window_type = 'override',
 	own_window_hints = 'undecorated,below,above,sticky,skip_taskbar,skip_pager',
 
