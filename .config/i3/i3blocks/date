@@ -1,9 +1,0 @@
-#!/bin/bash
-
-day=$(date +'%a')
-month=$(date +'%B')
-daynumb=$(date +'%e')
-
-color="#7aa2f7"
-echo "<span foreground='$color'>$day $daynumb $month</span>"
-

@@ -1,7 +1,2 @@
 #!/bin/bash
-
-hour=$(date +'%l' | sed 's/^ *//')
-minute=$(date +'%M' | sed 's/^0*//')
-ampm=$(date +'%p')
-
-echo "$hour:$minute $ampm "
+date +"<span foreground='#7aa2f7'>%a %e %b</span> <span foreground='#707880'>-</span> %-l:%M %p "

@@ -9,10 +9,19 @@ function fish_prompt
     else
         echo -n (printf '\033[38;2;157;124;216m')
         echo -n (prompt_pwd) ""
-        echo -n (printf '\033[38;2;122;162;247m')
+
+        if command git rev-parse --is-inside-work-tree >/dev/null 2>&1
+            set branch (git branch --show-current 2>/dev/null)
+            if test -n "$branch"
+                echo -n ""
+                echo -n (printf '\033[38;2;247;118;142m') 
+                echo -n "$branch "
+                echo -n (printf '\033[38;2;122;162;247m') 
+            end
+        end
     end
     echo -n (printf '\033[38;2;224;175;104m')
-    echo -n "> "        # or λ
+    echo -n "> "      # or λ
     echo -n (printf '\033[0m')
 end
 
@@ -36,5 +45,5 @@ alias ro='sudo xbps-remove -o; and sudo xbps-remove -O; and sudo xbps-remove -O 
 
 alias shzaid='git remote set-url origin git@github.com:Zaid-Aljasmy/dotfiles.git'
 
-bash ~/.colorscripts/elfman
-
+# bash ~/.colorscripts/elfman
+# pfetch

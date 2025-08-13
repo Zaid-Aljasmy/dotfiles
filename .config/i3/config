@@ -217,13 +217,23 @@ set $white #a9b1d6
 #         urgent_workspace     $red $red $bg
 #     }
 # }
-exec --no-startup-id ~/.config/polybar/launch.sh
 
 # class                 border|backgr|text|indicator|child_border
 client.focused          $blue $blue $bg $blue $blue
 client.focused_inactive $bg $bg $fg $bg $bg
 client.unfocused        $bg $bg $fg $bg $bg
 client.urgent           $red $red $bg $red $red
+
+# Polybar
+
+# autostart polybar
+exec --no-startup-id polybar
+# manual start polybar
+bindsym $mod+shift+s exec --no-startup-id polybar 
+# hide & show polybar
+bindsym $mod+shift+h exec --no-startup-id polybar-msg cmd toggle
+# kill polybar
+bindsym $mod+q exec --no-startup-id polybar-msg cmd quit
 
 # default_border  type none if you want no border or pixel 3 if you want a border (choose your favorite number)
 default_border  none
@@ -283,7 +293,6 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
 
 
 # Switch to another language
