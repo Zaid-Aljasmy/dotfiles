@@ -46,11 +46,9 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 exec --no-startup-id brightnessctl set 30%
 
 # ScreenShot
-# bindsym Print exec scrot ~/Pictures/Screenshots/screenshot_%Y-%m-%d-%H%M%S.png
-# bindsym $mod+g exec gscreenshot -s
-bindsym $mod+shift+p exec gscreenshot
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+
+bindsym $mod+Shift+p exec --no-startup-id scrot ~/Pictures/Screenshots/screenshot_%Y-%m-%d-%H%M%S.png -e 'xclip -selection clipboard -t image/png -i $f && notify-send "Screenshot saved and copied to clipboard"'
+bindsym $mod+Shift+g exec --no-startup-id scrot -s ~/Pictures/Screenshots/screenshot_%Y-%m-%d-%H%M%S.png -e 'xclip -selection clipboard -t image/png -i $f && notify-send "Screenshot saved and copied to clipboard"'
 
 # start a terminal
 bindsym $mod+Return exec alacritty
@@ -61,6 +59,8 @@ bindsym $mod+Shift+q kill
 bindsym $mod+p exec rofi -show drun
 #float a window
 bindsym $mod+Shift+f floating toggle
+#Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
 
 # change focus
 # bindsym $mod+j focus left
