@@ -1,4 +1,5 @@
 return {
+  -- Mason: مدير لتنزيل LSPs
   {
     "williamboman/mason.nvim",
     cmd = { "Mason" },
@@ -8,24 +9,28 @@ return {
     end,
   },
 
+  -- Mason LSPConfig: ربط Mason بـ LSPConfig تلقائيًا
   {
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "williamboman/mason.nvim" },
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "pyright" },
+        ensure_installed = { "lua_ls", "pyright", "clangd" }, -- أضف أي سيرفر آخر هنا حسب حاجتك
+        handlers = {
+          -- الإعداد التلقائي لكل LSP يتم تنصيبه
+          function(server_name)
+            require("lspconfig")[server_name].setup({})
+          end,
+        },
       })
     end,
   },
 
+  -- LSP Config الأساسي
   {
     "neovim/nvim-lspconfig",
     config = function()
-      local lspconfig = require("lspconfig")
-
-      lspconfig.lua_ls.setup({})
-      lspconfig.pyright.setup({})
-
+      -- إعدادات التشخيص (diagnostics)
       vim.diagnostic.config({
         virtual_text = true,
         signs = {
@@ -43,3 +48,4 @@ return {
     end,
   },
 }
+

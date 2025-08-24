@@ -1,0 +1,33 @@
+#!/bin/bash
+
+CPU_CACHE=""
+TEMP_CACHE=""
+RAM_CACHE=""
+DISK_CACHE=""
+LAST_UPDATE=0
+
+while true; do
+    BAT_STATUS=$(~/.config/sway/i3blocks/battery)
+    TIME=$(~/.config/sway/i3blocks/clock)
+    KEY=$(~/.config/sway/i3blocks/keyindicator)
+    VOL=$(~/.config/sway/i3blocks/volume)
+    MIC=$(~/.config/sway/i3blocks/mic_status)
+    ETH=$(~/.config/sway/i3blocks/ethernet)
+    WIFI=$(~/.config/sway/i3blocks/wifi)
+    TITLE=$(~/.config/sway/i3blocks/window_title)
+
+    now=$(date +%s)
+
+    if (( now - LAST_UPDATE >= 10 )); then
+        CPU_CACHE=$(~/.config/sway/i3blocks/cpu_usage)
+        TEMP_CACHE=$(~/.config/sway/i3blocks/temperature)
+        RAM_CACHE=$(~/.config/sway/i3blocks/memory)
+        DISK_CACHE=$(~/.config/sway/i3blocks/disk)
+        LAST_UPDATE=$now
+    fi
+
+    echo "$TITLE | $DISK_CACHE | $RAM_CACHE | $TEMP_CACHE | $CPU_CACHE | $WIFI | $ETH | $MIC | $VOL | $KEY | $BAT_STATUS | $TIME"
+
+    sleep 0
+done
+
