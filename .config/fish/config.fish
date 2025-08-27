@@ -1,30 +1,38 @@
-# .config/fish/config.fish
-
 set -g fish_greeting ''
 
+if status is-interactive
+    
+    if not set -q DISPLAY; and test (tty) = /dev/tty1
+        exec sway
+    end
+end
+
+# prompt
 function fish_prompt
-    echo -n (printf '\033[38;2;122;162;247m')
+    
+    set_color blue
     if test $PWD = $HOME
         echo -n "~ "
     else
-        echo -n (printf '\033[38;2;157;124;216m')
+        set_color blue
         echo -n (prompt_pwd) ""
+    end
 
-        if command git rev-parse --is-inside-work-tree >/dev/null 2>&1
-            set branch (git branch --show-current 2>/dev/null)
-            if test -n "$branch"
-                echo -n ""
-                echo -n (printf '\033[38;2;247;118;142m') 
-                echo -n "$branch "
-                echo -n (printf '\033[38;2;122;162;247m') 
-            end
+    
+    if command git rev-parse --is-inside-work-tree >/dev/null 2>&1
+        set branch (git branch --show-current 2>/dev/null)
+        if test -n "$branch"
+            set_color red
+            echo -n "$branch "
         end
     end
-    echo -n (printf '\033[38;2;224;175;104m')
+
+    
+    set_color normal
     echo -n "> "      # or λ
-    echo -n (printf '\033[0m')
 end
 
+# aliases
 alias tl='java -jar ~/Documents/tlauncher/TLauncher.jar'
 alias ll='ls -lah'
 alias vi='nvim'
@@ -34,16 +42,17 @@ alias aud='alsamixer'
 alias bt='acpi'
 alias z='zathura'
 
-alias ls='exa --color=always --icons'
-alias ll='exa -lah --color=always --icons'
+alias ls='eza --color=always --icons'
+alias ll='eza -lah --color=always --icons'
 
-alias i='sudo xbps-install -S'
-alias u='sudo xbps-install -u xbps; and sudo xbps-install -u'
-alias q='sudo xbps-query -Rs'
-alias r='sudo xbps-remove -R'
-alias ro='sudo xbps-remove -o; and sudo xbps-remove -O; and sudo xbps-remove -O -O'
+alias i='sudo apt update && sudo apt install'
+alias u='sudo apt update && sudo apt upgrade -y'
+alias q='apt search'
+alias r='sudo apt remove --purge'
+alias ro='sudo apt autoremove && sudo apt clean'
 
 alias shzaid='git remote set-url origin git@github.com:Zaid-Aljasmy/dotfiles.git'
 
 # bash ~/.colorscripts/elfman
 # pfetch
+

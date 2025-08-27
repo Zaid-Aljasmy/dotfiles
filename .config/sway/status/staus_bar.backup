@@ -1,0 +1,34 @@
+#!/bin/bash
+
+CPU_CACHE=""
+TEMP_CACHE=""
+RAM_CACHE=""
+DISK_CACHE=""
+LAST_UPDATE=0
+
+while true; do
+    BAT_STATUS=$(~/.config/sway/status/battery)
+    TIME=$(~/.config/sway/status/date)
+    KEY=$(~/.config/sway/status/keyindicator)
+    VOL=$(~/.config/sway/status/volume)
+    MIC=$(~/.config/sway/status/mic_status)
+    ETH=$(~/.config/sway/status/ethernet)
+    WIFI=$(~/.config/sway/status/wifi)
+    # TITLE=$(~/.config/sway/status/window_title)
+
+    now=$(date +%s)
+
+    if (( now - LAST_UPDATE >= 20 )); then
+        CPU_CACHE=$(~/.config/sway/status/cpu_usage)
+        TEMP_CACHE=$(~/.config/sway/status/temperature)
+        RAM_CACHE=$(~/.config/sway/status/memory)
+        DISK_CACHE=$(~/.config/sway/status/disk)
+        LAST_UPDATE=$now
+    fi
+
+    echo "$DISK_CACHE | $RAM_CACHE | $TEMP_CACHE | $CPU_CACHE | $WIFI | $ETH | $MIC | $VOL | $KEY | $BAT_STATUS | $TIME"
+
+    sleep 0.5
+done
+
+

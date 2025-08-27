@@ -18,11 +18,22 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term foot
+set $term alacritty
 # Your preferred application launcher
-set $menu wmenu-run
+# set $menu wmenu-run -p "Search:"
+set $menu wmenu-run \
+    -p "Run:" \
+    -f "JetBrainsMono Nerd Font 12.5" \
+    -l 4 \
+    -N 1a1b26 \
+    -n a9b1d6 \
+    -M 55759c \
+    -m 1a1b26 \
+    -S 55759c \
+    -s 1a1b26
 
-include /etc/sway/config-vars.d/*
+# include /etc/sway/config-vars.d/*
+# include /etc/sway/config.d/*
 
 ### Output configuration
 #
@@ -31,7 +42,6 @@ include /etc/sway/config-vars.d/*
 # package `sway-backgrounds`. Installing this package drops a config file to
 # /etc/sway/config.d/
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-exec_always swaybg -i ~/Pictures/Backgrounds/od_sway.png fill
 #
 # Example configuration:
 #
@@ -43,11 +53,11 @@ exec_always swaybg -i ~/Pictures/Backgrounds/od_sway.png fill
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
+exec swayidle -w \
+         timeout 300 'swaylock -f -c 000000' \
+         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep 'swaylock -f -c 000000'
+
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
@@ -71,13 +81,14 @@ exec_always swaybg -i ~/Pictures/Backgrounds/od_sway.png fill
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+Return exec alacritty
+    bindsym $mod+Return exec $term
 
     # Kill focused window
     bindsym $mod+Shift+q kill
 
     # Start your launcher
     bindsym $mod+p exec $menu
+    bindsym $mod+shift+e exec ~/.config/sway/srcipts//powermenu
 
     # Switch to another language
 input "type:keyboard" {
@@ -86,6 +97,14 @@ input "type:keyboard" {
     repeat_delay 200
     repeat_rate 40
 }
+
+# screenshot 
+bindsym $mod+Shift+p exec grim - | tee ~/Pictures/Screenshots/screenshot_$(date +%Y-%m-%d-%H%M%S).png | wl-copy && notify-send -t 3000 "Screenshot saved and copied to clipboard"
+# screenshot with selection
+bindsym $mod+Shift+g exec grim -g "$(slurp)" - | tee ~/Pictures/Screenshots/screenshot_$(date +%Y-%m-%d-%H%M%S).png | wl-copy && notify-send -t 3000 "Screenshot saved and copied to clipboard"
+
+# lock
+bindsym $mod+d exec swaylock -C ~/.config/swaylock/config
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -98,7 +117,7 @@ input "type:keyboard" {
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 #
 # Moving around:
 #
@@ -137,6 +156,12 @@ input "type:keyboard" {
     bindsym $mod+8 workspace number 8
     bindsym $mod+9 workspace number 9
     bindsym $mod+0 workspace number 10
+
+    # Switch to previous/next workspace using $mod + Alt + Arrow keys
+    bindsym $mod+Mod1+Left  workspace prev
+    bindsym $mod+Mod1+Right workspace next
+
+
     # Move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace number 1
     bindsym $mod+Shift+2 move container to workspace number 2
@@ -182,35 +207,35 @@ input "type:keyboard" {
     # You can send windows there and get them back later.
 
     # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
+    # bindsym $mod+Shift+minus move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
+    # bindsym $mod+minus scratchpad show
 #
 # Resizing containers:
 #
-mode "resize" {
+mode "Resize" {
     # left will shrink the containers width
     # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
+    bindsym $left resize shrink width 15px
+    bindsym $down resize grow height 15px
+    bindsym $up resize shrink height 15px
+    bindsym $right resize grow width 15px
 
     # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
+    bindsym Left resize shrink width 15px
+    bindsym Down resize grow height 15px
+    bindsym Up resize shrink height 15px
+    bindsym Right resize grow width 15px
 
     # Return to default mode
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym $mod+r mode "Resize"
 #
 # Utilities:
 #
@@ -229,16 +254,17 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
+
 # set primary tokyonight colorscheme colors
-set $bg #1e1e1e
-set $fg #e5e5e5
-set $red #cd3131
-set $green #0dbc79
-set $yellow #e5e510
+set $bg #1a1b26
+set $fg #a9b1d6
+set $red #f7768e
+set $green #9ece6a
+set $yellow #e0af68
 set $blue #55759c
-set $purple #bc3fbc
-set $cyan #11a8cd
-set $white #e5e5e5
+set $purple #ad8ee6
+set $cyan #449dab
+set $white #a9b1d6
 
 bar {
     position top
@@ -246,8 +272,8 @@ bar {
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-    status_command ~/.config/sway/i3blocks/status_bar
+    # status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+    status_command while ~/.config/sway/status/status_bar 2>/dev/null; do sleep 1; done
 
    colors {
         # bar background color
@@ -272,16 +298,17 @@ client.urgent           $red $red $bg $red $red
 
 
 # default_border  type none if you want no border or pixel 3 if you want a border (choose your favorite number)
-default_border pixel 5
-for_window [floating] border pixel 5
+default_border pixel 4
+for_window [floating] border pixel 4
 for_window [floating] move position center
+smart_borders on
 
 set $mode_borders Borders: (d) disable, (p) pixel, (n) normal
 bindsym $mod+shift+b mode "$mode_borders"
 
 mode "$mode_borders" {
     bindsym d border none
-    bindsym p border pixel 5
+    bindsym p border pixel 4
     bindsym n border normal
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -289,8 +316,8 @@ mode "$mode_borders" {
 
 
 # gaps
-gaps inner 10
-gaps outer 5
+gaps inner 20
+gaps outer 20
 # smart_gaps on
 
 # Press $mod+Shift+g to enter the gap mode. 
@@ -307,7 +334,7 @@ mode "$mode_gaps" {
         bindsym o      mode "$mode_gaps_outer"
         bindsym i      mode "$mode_gaps_inner"
         bindsym d      gaps inner all set 0; gaps outer all set 0; mode "default"
-        bindsym s      gaps inner all set 7; gaps outer all set 7; mode "default"
+        bindsym e      gaps inner all set 20; gaps outer all set 20; mode "default"
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -331,13 +358,19 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-include /etc/sway/config.d/*
-
 # deamons process run in the background
 
 # mouse speed
-input "type:mouse" {
+input "12538:4928:INSTANT_USB_GAMING_MOUSE" {
     accel_profile flat
-    pointer_accel 1.0
+    pointer_accel 1
 }
 
+# background
+exec swaybg -i ~/Pictures/Backgrounds/86.jpg -m fill
+
+# notifications
+exec_always --no-startup-id mako
+
+# brightness
+exec_always --no-startup-id brightnessctl set 25%
