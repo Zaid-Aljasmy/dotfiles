@@ -33,6 +33,7 @@ function fish_prompt
 end
 
 # aliases
+alias shstart="eval (ssh-agent -c); ssh-add ~/.ssh/id_github"
 alias tl='java -jar ~/Documents/tlauncher/TLauncher.jar'
 alias ll='ls -lah'
 alias vi='nvim'
@@ -55,4 +56,3 @@ alias shzaid='git remote set-url origin git@github.com:Zaid-Aljasmy/dotfiles.git
 
 # bash ~/.colorscripts/elfman
 # pfetch
-

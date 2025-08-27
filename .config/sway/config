@@ -374,6 +374,3 @@ exec_always --no-startup-id mako
 
 # brightness
 exec_always --no-startup-id brightnessctl set 25%
-
-# Start ssh-agent for the whole session
-exec_always fish -c 'source ~/.ssh/start-ssh-agent.fish'
