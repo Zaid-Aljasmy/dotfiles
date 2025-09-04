@@ -6,7 +6,7 @@
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:JetBrainsMono Nerd Font 12.5
+font pango:JetBrainsMono Nerd Font 11.5
 
 ### Variables
 #
@@ -17,20 +17,26 @@ set $left h
 set $down j
 set $up k
 set $right l
+
+# Your preferred web browser
+set $browser firefox
 # Your preferred terminal emulator
 set $term alacritty
+
 # Your preferred application launcher
-# set $menu wmenu-run -p "Search:"
 set $menu wmenu-run \
     -p "Run:" \
-    -f "JetBrainsMono Nerd Font 12.5" \
-    -l 4 \
+    -f "JetBrainsMono Nerd Font 13.5" \
+    -l 5 \
     -N 1a1b26 \
     -n a9b1d6 \
     -M 55759c \
     -m 1a1b26 \
     -S 55759c \
     -s 1a1b26
+
+# Power menu
+set $powermenu ~/.config/sway/scripts/powermenu
 
 # include /etc/sway/config-vars.d/*
 # include /etc/sway/config.d/*
@@ -53,11 +59,11 @@ set $menu wmenu-run \
 #
 # Example configuration:
 #
-exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
-         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-         before-sleep 'swaylock -f -c 000000'
-
+ exec swayidle -w \
+          timeout 300 'swaylock -f -c 000000' \
+          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+          
+# for sleep you can use > before-sleep 'swaylock -f -c 000000'
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
@@ -80,6 +86,9 @@ exec swayidle -w \
 #
 # Basics:
 #
+    # Start a browser
+    bindsym $mod+alt+b exec $browser
+
     # Start a terminal
     bindsym $mod+Return exec $term
 
@@ -88,7 +97,7 @@ exec swayidle -w \
 
     # Start your launcher
     bindsym $mod+p exec $menu
-    bindsym $mod+shift+e exec ~/.config/sway/srcipts//powermenu
+    bindsym $mod+shift+e exec $powermenu
 
     # Switch to another language
 input "type:keyboard" {
@@ -105,6 +114,9 @@ bindsym $mod+Shift+g exec grim -g "$(slurp)" - | tee ~/Pictures/Screenshots/scre
 
 # lock
 bindsym $mod+d exec swaylock -C ~/.config/swaylock/config
+
+# copy color
+bindsym $mod+c exec grim -g "$(slurp -p)" -t ppm - | magick - -format "#%[hex:p{0,0}]" info:- | wl-copy
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -236,6 +248,13 @@ mode "Resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "Resize"
+
+# Resize with Alt + Shift + Arrow keys
+bindsym Mod1+Shift+Left  resize shrink width 70px
+bindsym Mod1+Shift+Down  resize grow height 70px
+bindsym Mod1+Shift+Up    resize shrink height 70px
+bindsym Mod1+Shift+Right resize grow width 70px
+
 #
 # Utilities:
 #
@@ -317,7 +336,7 @@ mode "$mode_borders" {
 
 # gaps
 gaps inner 20
-gaps outer 20
+gaps outer 7
 # smart_gaps on
 
 # Press $mod+Shift+g to enter the gap mode. 
@@ -334,7 +353,7 @@ mode "$mode_gaps" {
         bindsym o      mode "$mode_gaps_outer"
         bindsym i      mode "$mode_gaps_inner"
         bindsym d      gaps inner all set 0; gaps outer all set 0; mode "default"
-        bindsym e      gaps inner all set 20; gaps outer all set 20; mode "default"
+        bindsym e      gaps inner all set 20; gaps outer all set 7; mode "default"
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -358,19 +377,33 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-# deamons process run in the background
+# autostart
 
 # mouse speed
-input "12538:4928:INSTANT_USB_GAMING_MOUSE" {
-    accel_profile flat
-    pointer_accel 1
+input "INSTANT USB GAMING MOUSE" {
+    left_handed enabled
+    tap enabled
+    natural_scroll disabled
+    dwt enabled
+    accel_profile "flat" 
+    pointer_accel 0.1    
 }
 
 # background
 exec swaybg -i ~/Pictures/Backgrounds/86.jpg -m fill
 
 # notifications
-exec_always --no-startup-id mako
+exec_always --no-startup-id mako -c ~/.config/mako/config
 
 # brightness
 exec_always --no-startup-id brightnessctl set 25%
+
+# dbus 
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
+# gsettings
+exec_always gtk-theme:Tokyonight-Dark-Moon \
+    icon-theme:Tokyonight-Dark \
+    cursor-theme:Adwaita \
+    font-name:"JetBrains Mono Nerd Font 14"
+

@@ -1,37 +1,41 @@
+@define-color bg    #1a1b26; 
+@define-color fg    #a9b1d6; 
+@define-color blk   #32344a; 
+@define-color red   #f7768e; 
+@define-color grn   #9ece6a; 
+@define-color ylw   #e0af68; 
+@define-color blu   #55759C; 
+@define-color mag   #ad8ee6; 
+@define-color cyn   #0db9d7; 
+@define-color brblk #444b6a; 
+@define-color white #ffffff; 
+
 * {
     border: none;
-    border-radius: 4px;
-    /* `ttf-font-awesome` is required to be installed for icons */
-    font-family: JetBrainsMono Nerd Font, Helvetica, Arial, sans-serif, font-awesome, noto-fonts;
+    border-radius: 0px;
+    /* لا نحتاج font-awesome بعد الآن */
+    font-family: JetBrainsMono Nerd Font;
+    /* font-weight: bold; */
 
     /* adjust font-size value to your liking: */
-    font-size: 17px;
+    font-size: 15px;
 
     min-height: 0;
     
 }
 
 window#waybar {
-    background-color: rgba(50, 50, 50, 0.9);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
-    color: #ffffff;
+    background-color: @bg;
+    border-bottom: 0px solid rgba(100, 114, 125, 0.5);
+    color: @fg;
     transition-property: background-color;
     transition-duration: .5s;
     border-radius: 0;
 }
 
 window#waybar.hidden {
-    opacity: 0.2;
+    opacity: 0;
 }
-
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
 
 window#waybar.termite {
     background-color: #3F3F3F;
@@ -43,22 +47,24 @@ window#waybar.chromium {
 }
 
 #workspaces button {
-    padding: 0 0.4em;
+    padding: 0 0.2em;
     background-color: transparent;
-    color: #ffffff;
+    color: @fg;
     /* Use box-shadow instead of border so the text isn't offset */
     box-shadow: inset 0 -3px transparent;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
-    box-shadow: inset 0 -3px #ffffff;
+    background: @blu;
+    color: @fg;
+    box-shadow: inset 0 -3px @blu;
 }
 
 #workspaces button.focused {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
+    background-color: @blu;
+    color: @bg;
+    box-shadow: inset 0 -3px @blu;
 }
 
 #workspaces button.urgent {
@@ -66,9 +72,11 @@ window#waybar.chromium {
 }
 
 #mode {
-    background-color: #64727D;
-    border-bottom: 3px solid #ffffff;
+    background-color: @fg;
+    border-bottom: 3px solid @fg;
 }
+
+/* إزالة جميع الخلفيات وجعل كل المودولات شفافة */
 #clock,
 #battery,
 #cpu,
@@ -76,18 +84,18 @@ window#waybar.chromium {
 #temperature,
 #backlight,
 #network,
-#swaync,
 #pulseaudio,
-#custom-media,
 #power-profiles-daemon,
 #tray,
-#custom-power,
 #mode,
-#idle_inhibitor,
-#mpd {
-    padding: 0 10px;
-    margin: 6px 3px; 
-    color: #333333;
+#keyboard-state,
+#language {
+    padding: 0 4px;
+    margin: 2px 1px; 
+    background-color: transparent; /* إزالة الخلفية */
+    color: @fg; /* لون النص أبيض */
+    border: none;
+    box-shadow: none;
 }
 
 #window,
@@ -105,33 +113,35 @@ window#waybar.chromium {
     margin-right: 0;
 }
 
-#swaync {
-    background-color: #bbccdd;
-}
+/* إعدادات خاصة للساعة */
 #clock {
-    background-color: #bbccdd;
+    color: @fg;
+    /* font-weight: bold; */
+        padding: 0 9px;
+    margin: 2px 0px;
+    min-width: 0px;
 }
 
+/* إعدادات خاصة للبطارية */
 #battery {
-    background-color: #bbccdd;
-    color: #333333;
+    color: @fg;
+    padding: 0 2px;
+    margin: 2px 0px;
+    min-width: 0px;
 }
 
-#battery.charging {
-    color: #ffffff;
-    background-color: #26A65B;
+#battery.warning {
+    color: #f39c12; /* برتقالي للتحذير */
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: #333333;
+        color: #f53c3c;
     }
 }
 
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
+    color: #f53c3c; /* أحمر للحالة الحرجة */
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -139,123 +149,139 @@ window#waybar.chromium {
     animation-direction: alternate;
 }
 
+/* إعدادات وضعية الطاقة */
 #power-profiles-daemon {
-    padding-right: 15px;
-    background-color: #bbccdd;
-}
-#power-profiles-daemon.performance {
-    background-color: #bbccdd;
-    color: #000000;
+    color: #ffffff;
 }
 
-#power-profiles-daemon.balanced {
-    background-color: #bbccdd;
-    color: #000000;
-}
-
-#power-profiles-daemon.power-saver {
-    background-color: #bbccdd;
-    color: #000000;
-}
-
-label:focus {
-    background-color: #000000;
-}
-
+/* إعدادات المعالج */
 #cpu {
-    background-color: #bbccdd;
-    color: #333333;
+    color: @fg;
 }
 
+/* إعدادات الذاكرة */
 #memory {
-    background-color: #bbccdd;
+    color: @fg;
 }
 
+/* إعدادات إضاءة الشاشة */
 #backlight {
-    background-color: #bbccdd;
+    color: @fg;
+    padding: 0 4px;
+    margin: 2px 1px;
+    min-width: 0px;
 }
 
+/* إعدادات الشبكة */
 #network {
-    background-color: #bbccdd;
+    color: @fg;
 }
 
 #network.disconnected {
-    background-color: #f53c3c;
+    color: #e74c3c; /* أحمر لعدم الاتصال - تحذير */
 }
 
+/* إعدادات الصوت */
 #pulseaudio {
-    background-color: #bbccdd;
-    color: #333333;
+    color: @fg;
 }
 
 #pulseaudio.muted {
-    background-color: #bbccdd;
-    color: #333333;
+    color: @fg; /* رمادي للصوت المكتوم - تحذير */
 }
 
+/* إعدادات الميديا */
 #custom-media {
-    background-color: #66cc99;
-    color: #2a5c45;
+    color: #ffffff;
     min-width: 100px;
 }
 
-#custom-media.custom-spotify {
-    background-color: #66cc99;
-}
-
-#custom-media.custom-vlc {
-    background-color: #ffa000;
-}
-
+/* إعدادات درجة الحرارة */
 #temperature {
-    background-color: #bbccdd;
+    color: @fg;
 }
 
 #temperature.critical {
-    background-color: #eb4d4b;
+    color: #e74c3c; /* أحمر للحرارة العالية - تحذير */
 }
 
+/* إعدادات الطاقة المخصصة */
 #custom-power {
-    background-color: #bbccdd;
+    color: #ffffff;
+    font-weight: bold;
 }
 
+#custom-power:hover {
+    color: #e74c3c; /* أحمر عند الـ hover للإشارة للخطر */
+}
+
+/* إعدادات علبة النظام */
 #tray {
-    background-color: #bbccdd;
+    color: @fg;
 }
 
+/* إعدادات منع وضع الخمول */
 #idle_inhibitor {
-    background-color: #2d3436;
+    color: #ffffff;
 }
 
 #idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: #2d3436;
+    color: #ffffff;
 }
 
+/* إعدادات مشغل الموسيقى */
 #mpd {
-    background-color: #66cc99;
-    color: #2a5c45;
+    color: #ffffff;
 }
 
 #mpd.disconnected {
-    background-color: #f53c3c;
+    color: #e74c3c; /* أحمر لعدم الاتصال - تحذير */
 }
 
 #mpd.stopped {
-    background-color: #90b1b1;
+    color: #ffffff;
 }
 
 #mpd.paused {
-    background-color: #51a37a;
+    color: #ffffff;
 }
 
+/* إعدادات اللغة */
 #language {
-    background: #bbccdd;
-    color: #333333;
-    padding: 0 3px;
-    margin: 6px 3px;
-    min-width: 30px;
-    
+    color: @fg;
+    padding: 0 0px;
+    margin: 2px 1px;
+    min-width: 65px;
 }
 
+/* إعدادات حالة لوحة المفاتيح */
+#keyboard-state {
+    color: @fg;
+    padding: 0 2px;
+    margin: 2px 0px;
+}
 
+#keyboard-state > label {
+    padding: 0 3px;
+    color: @fg;
+}
+
+/* إعدادات النافذة النشطة */
+#window {
+    color: @fg;
+    font-style: italic;
+}
+
+/* تأثيرات hover لجميع العناصر */
+/* #clock:hover, */
+/* #battery:hover, */
+/* #cpu:hover, */
+/* #memory:hover, */
+/* #temperature:hover, */
+/* #backlight:hover, */
+/* #network:hover, */
+/* #pulseaudio:hover { */
+/*     background-color: rgba(255, 255, 255, 0.1); */
+/*     border-radius: 3px; */
+/*     transition: background-color 0.2s ease; */
+/* } */

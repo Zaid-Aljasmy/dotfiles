@@ -1,0 +1,402 @@
+الآن، يجب أن تعرف عنوان IP الخاص بالجهاز الافتراضي الخاص بك حتى تتمكن من الاتصال به.
+
+    استخدم الأمر التالي:
+    Bash
+
+    ifconfig
+
+    ابحث عن اسم الواجهة (مثل em0 أو wm0 أو vioif0)، ثم ابحث عن عنوان inet الذي يشبه 192.168.x.x أو 10.0.x.x.
+
+3. الاتصال من جهازك المضيف
+
+بعد الحصول على عنوان IP، يمكنك الاتصال من أي جهاز آخر على نفس الشبكة (في هذه الحالة، جهازك المضيف).
+
+    افتح نافذة طرفية (Terminal) على نظام التشغيل الأساسي (Windows, macOS, Linux) الخاص بك.
+
+    استخدم الأمر التالي، مع استبدال [your_username] باسم المستخدم الخاص بك و[your_ip_address] بعنوان IP الذي حصلت عليه:
+    Bash
+
+ssh [your_username]@[your_ip_address]
+
+    مثال:
+    Bash
+
+        ssh zaid@192.168.1.105
+
+سيطلب منك كلمة المرور، وبعد إدخالها بشكل صحيح، ستكون متصلاً بالجهاز الافتراضي عن طريق SSH وستتمكن من النسخ واللصق بسهولة.
+
+لقد قمت بتشغيل الأمر ifconfig، ولكن لم يظهر لك عنوان IP. هذا يعني أن واجهة الشبكة (wm0) غير مهيأة أو لا تستطيع الحصول على عنوان IP تلقائياً.
+
+لحل هذه المشكلة، ستحتاج إلى تمكين واجهة الشبكة وتهيئة الشبكة.
+
+1. تهيئة الشبكة
+
+أولاً، تأكد من أن ملف rc.conf يحتوي على الإعدادات الصحيحة للسماح للجهاز بالحصول على عنوان IP تلقائياً عبر DHCP.
+
+    افتح ملف rc.conf مرة أخرى:
+    Bash
+
+vi /etc/rc.conf
+
+أضف السطر التالي (أو تأكد من وجوده):
+Bash
+
+    ifconfig_wm0="dhcp"
+
+        ملاحظة: استبدل wm0 باسم واجهة الشبكة الخاصة بك إذا كان مختلفاً. يمكنك رؤيته في ناتج أمر ifconfig السابق.
+
+    احفظ وأغلق الملف (اضغط على Esc ثم اكتب :wq واضغط Enter).
+
+2. تشغيل واجهة الشبكة
+
+الآن، قم بتشغيل الواجهة لتجعلها تحاول الحصول على عنوان IP من الشبكة.
+
+    استخدم الأمر التالي:
+    Bash
+
+    ifconfig wm0 up
+
+        يمكنك أيضاً إعادة تشغيل الجهاز الافتراضي لتطبيق الإعدادات الجديدة، أو يمكنك تشغيل خدمة DHCP مباشرة باستخدام /etc/rc.d/dhcpcd start.
+
+3. التحقق من عنوان IP مجدداً
+
+بعد إتمام الخطوات السابقة، قم بتشغيل ifconfig مرة أخرى.
+
+    تحقق من عنوان IP:
+    Bash
+
+    ifconfig
+
+        الآن، يجب أن ترى عنوان inet تحت الواجهة wm0، مثل inet 192.168.1.120. إذا رأيته، يمكنك استخدام هذا العنوان للاتصال بـ SSH.
+
+إذا استمرت المشكلة، قد تحتاج إلى مراجعة إعدادات الشبكة في برنامج الجهاز الافتراضي نفسه (مثل QEMU/KVM)، والتأكد من أنها مضبوطة على وضع NAT أو Bridged للسماح للجهاز الافتراضي بالوصول إلى الشبكة.
+
+Your network interface (wm0) is still not receiving an IP address, which is why you can't connect via SSH.
+
+The most likely cause is an issue with the network settings in your virtual machine manager, QEMU/KVM. The current setup isn't allowing the VM to get an IP address from your router or a NAT service.
+
+To fix this, you need to change the network configuration in your virtual machine's settings.
+
+1. Access Network Settings
+
+    Close the virtual machine window.
+
+    In the Virtual Machine Manager, go to the virtual machine's settings (usually by clicking the "i" or "gear" icon).
+
+    Navigate to the Network Interface settings. It might be labeled as "NIC" or similar.
+
+2. Change Network Type
+
+There are two common settings that will work:
+
+    NAT (Network Address Translation): This is the easiest and most common option. It allows the VM to access the internet using your host's network connection. The VM will get a private IP address (like 10.0.x.x) that is not directly accessible from outside your host machine.
+
+    Bridged: This option connects the virtual network interface directly to your physical network. The VM will appear as a separate device on your network and receive an IP address from your router (like 192.168.x.x). This is the ideal choice if you want to access the VM from other devices on your network, not just your host.
+
+Choose either NAT or Bridged and apply the changes.
+
+3. Restart the Virtual Machine
+
+After saving the new network settings, restart your NetBSD virtual machine. When it boots up, it should automatically get a new IP address from the network.
+
+Once the system is up and running, use the ifconfig command again. You should now see an IP address listed under wm0, which you can use to connect via SSH.
+
+نجحت! 🎉
+
+كما هو واضح في الصورة، تمكنت واجهة الشبكة wm0 الآن من الحصول على عنوان IP. العنوان هو inet 192.168.122.149.
+
+يمكنك الآن استخدام هذا العنوان للاتصال بالجهاز الافتراضي عبر SSH من جهازك المضيف.
+
+خطوات الاتصال عبر SSH:
+
+    افتح نافذة طرفية (Terminal) جديدة على نظام التشغيل الأساسي الخاص بك.
+
+    استخدم الأمر التالي، مع استبدال zaid باسم المستخدم الخاص بك، و192.168.122.149 بعنوان IP الذي حصلت عليه:
+    Bash
+
+    ssh zaid@192.168.122.149
+
+    سيطلب منك إدخال كلمة المرور. أدخلها واضغط Enter.
+
+بمجرد الاتصال، ستكون قادراً على النسخ واللصق بسهولة، ويمكنك متابعة تثبيت Firefox باستخدام الأوامر التي ذكرناها سابقاً:
+Bash
+
+pkg_add https://ftp.netbsd.org/pub/pkgsrc/packages/NetBSD/amd64/10.1/All/pkgin.tgz
+pkgin update
+pkgin install firefox
+
+$ pkg_add https://ftp.netbsd.org/pub/pkgsrc/packages/NetBSD/amd64/10.1/All/pkgin.tgz
+
+pkg_add: no pkg found for 'https://ftp.netbsd.org/pub/pkgsrc/packages/NetBSD/amd64/10.1/All/pkgin.tgz', sorry.
+
+pkg_add: 1 package addition failed
+
+$
+
+The command failed because pkg_add doesn't support URLs directly in that format. It expects the package to be present in a local or network-mounted directory that is configured in PKG_PATH.
+
+Since you are already connected via SSH, the easiest way to solve this is to download the package manually using a command-line tool, then install it locally.
+
+1. Download the Package
+
+Use ftp or curl to download the pkgin package to your /tmp directory.
+Bash
+
+cd /tmp
+ftp https://ftp.netbsd.org/pub/pkgsrc/packages/NetBSD/amd64/10.1/All/pkgin.tgz
+
+If ftp doesn't work, you can try curl, which might be more reliable for downloading files from the internet.
+Bash
+
+cd /tmp
+curl -O https://ftp.netbsd.org/pub/pkgsrc/packages/NetBSD/amd64/10.1/All/pkgin.tgz
+
+The -O flag tells curl to save the file with its original name.
+
+2. Install the Package Locally
+
+Once the file is downloaded to /tmp, you can use pkg_add with the local file path.
+Bash
+
+pkg_add /tmp/pkgin.tgz
+
+This should install pkgin successfully. After that, you can proceed with the rest of the steps to install Firefox.
+
+3. Update and Install Firefox
+
+Bash
+
+pkgin update
+pkgin install firefox
+
+$ cd /tmp
+
+$ ftp https://ftp.netbsd.org/pub/pkgsrc/packages/NetBSD/amd64/10.1/All/pkgin.tgz
+
+Trying [2001:470:a085:999::21]:443 ...
+
+ftp: Can't connect to `2001:470:a085:999::21:443': No route to host
+
+Trying 199.233.217.201:443 ...
+
+Requesting https://ftp.netbsd.org/pub/pkgsrc/packages/NetBSD/amd64/10.1/All/pkgin.tgz
+
+Redirected to /pub/pkgsrc/packages/NetBSD/x86_64/10.1/All/pkgin.tgz
+
+Trying [2001:470:a085:999::21]:443 ...
+
+ftp: Can't connect to `2001:470:a085:999::21:443': No route to host
+
+Trying 199.233.217.201:443 ...
+
+Requesting /pub/pkgsrc/packages/NetBSD/x86_64/10.1/All/pkgin.tgz
+
+Redirected to /pub/pkgsrc/packages/NetBSD/x86_64/10.0_2025Q2/All/pkgin.tgz
+
+Trying [2001:470:a085:999::21]:443 ...
+
+ftp: Can't connect to `2001:470:a085:999::21:443': No route to host
+
+Trying 199.233.217.201:443 ...
+
+Requesting /pub/pkgsrc/packages/NetBSD/x86_64/10.0_2025Q2/All/pkgin.tgz
+
+ftp: Error retrieving file `404 Not Found'
+
+$
+
+The ftp command failed because of two reasons: a network issue and a redirection problem. The "No route to host" error indicates a problem with IPv6, but it then correctly tries IPv4. However, the server redirects to a path that does not exist (10.0_2025Q2), causing a "404 Not Found" error.
+
+This happens because the package repository structure changes. The NetBSD version you're on (10.1) might not have a dedicated package branch yet, and the repository redirected you to a version that doesn't exist. The correct architecture name in the repository is x86_64, not amd64.
+
+The correct URL for the pkgin package on NetBSD 10.1 is likely:
+
+https://cdn.netbsd.org/pub/pkgsrc/packages/NetBSD/x86_64/10.1/All/pkgin.tgz
+
+Here's how to download and install pkgin properly:
+
+1. Download the Package
+
+Use ftp or curl to download the package with the correct URL. The architecture in the URL must be x86_64, not amd64.
+Bash
+
+cd /tmp
+ftp https://cdn.netbsd.org/pub/pkgsrc/packages/NetBSD/x86_64/10.1/All/pkgin.tgz
+
+If ftp fails, try curl:
+Bash
+
+curl -O https://cdn.netbsd.org/pub/pkgsrc/packages/NetBSD/x86_64/10.1/All/pkgin.tgz
+
+2. Install the Package
+
+Once the file is downloaded to /tmp, you can install it using pkg_add.
+Bash
+
+pkg_add /tmp/pkgin.tgz
+
+This should install pkgin successfully.
+
+3. Update and Install Firefox
+
+After installing pkgin, you can proceed to update the package list and install Firefox.
+Bash
+
+pkgin update
+pkgin install firefox
+
+cd /tmp
+
+$ ftp https://cdn.netbsd.org/pub/pkgsrc/packages/NetBSD/x86_64/10.1/All/pkgin.tgz
+
+Trying [2a04:4e42:8d::262]:443 ...
+
+ftp: Can't connect to `2a04:4e42:8d::262:443': No route to host
+
+Trying 146.75.117.6:443 ...
+
+Requesting https://cdn.netbsd.org/pub/pkgsrc/packages/NetBSD/x86_64/10.1/All/pkgin.tgz
+
+Redirected to /pub/pkgsrc/packages/NetBSD/x86_64/10.0_2025Q2/All/pkgin.tgz
+
+Trying [2a04:4e42:8d::262]:443 ...
+
+ftp: Can't connect to `2a04:4e42:8d::262:443': No route to host
+
+Trying 146.75.117.6:443 ...
+
+Requesting /pub/pkgsrc/packages/NetBSD/x86_64/10.0_2025Q2/All/pkgin.tgz
+
+ftp: Error retrieving file `404 Not Found'
+
+$
+
+Based on the output, you're running into the same problem again. The server is redirecting to a path that doesn't exist, specifically /pub/pkgsrc/packages/NetBSD/x86_64/10.0_2025Q2/All/pkgin.tgz, which results in a 404 Not Found error. This indicates that the package repository for NetBSD 10.1 on the cdn.netbsd.org mirror is either not set up yet or has a different directory structure.
+
+Since you're connected via SSH, the most reliable approach is to change the package repository URL to a stable, known-good mirror. The official FTP server is often more reliable for this.
+
+1. Find the Correct URL
+
+The pkgin package for NetBSD 10.1 might not be in a directory named 10.1 yet, but it should be available under the general x86_64 path. The ftp.netbsd.org mirror is a good place to check.
+
+Let's try a different path that points to the main NetBSD FTP server and the correct architecture:
+Bash
+
+ftp https://ftp.netbsd.org/pub/pkgsrc/packages/NetBSD/x86_64/10.1/All/pkgin.tgz
+
+If that still fails, you can browse the directory listing to find the exact path.
+
+2. Alternative: Configure PKG_PATH
+
+Instead of manually downloading the file, you can configure the system to look in the right place. This is a more permanent solution for using pkg_add without the full URL.
+
+    Open the pkg_add configuration file:
+    Bash
+
+vi /etc/pkg_install.conf
+
+Add or modify the PKG_PATH variable to point to a reliable repository:
+Bash
+
+PKG_PATH=https://cdn.netbsd.org/pub/pkgsrc/packages/NetBSD/x86_64/10.1/All
+
+Note: If the 10.1 directory is still a problem, you might have to use a more general path like x86_64/current or one from an older version like 10.0 or even 9.3 to get pkgin working first. Let's try 10.1 as a first attempt.
+
+Save and close the file.
+
+Now, try to install pkgin using the simple command:
+Bash
+
+    pkg_add pkgin
+
+This approach tells the pkg_add tool where to find packages, which is the standard way of doing things on NetBSD.
+
+$ ftp https://ftp.netbsd.org/pub/pkgsrc/packages/NetBSD/x86_64/10.1/All/pkgin.tgz
+
+Trying [2001:470:a085:999::21]:443 ...
+
+ftp: Can't connect to `2001:470:a085:999::21:443': No route to host
+
+Trying 199.233.217.201:443 ...
+
+Requesting https://ftp.netbsd.org/pub/pkgsrc/packages/NetBSD/x86_64/10.1/All/pkgin.tgz
+
+Redirected to /pub/pkgsrc/packages/NetBSD/x86_64/10.0_2025Q2/All/pkgin.tgz
+
+Trying [2001:470:a085:999::21]:443 ...
+
+ftp: Can't connect to `2001:470:a085:999::21:443': No route to host
+
+Trying 199.233.217.201:443 ...
+
+Requesting /pub/pkgsrc/packages/NetBSD/x86_64/10.0_2025Q2/All/pkgin.tgz
+
+ftp: Error retrieving file `404 Not Found'
+
+$
+
+The problem is a 404 Not Found error due to a redirection to a non-existent package path (10.0_2025Q2). This means the packages for NetBSD 10.1 aren't located there yet. The repository might still be under development or the package name has changed.
+
+The best solution is to use a stable branch of the package repository to install pkgin. The NetBSD 10.0 stable packages are guaranteed to exist.
+
+1. Configure the PKG_PATH
+
+The most reliable method is to configure the package manager to look at a stable repository.
+
+    Open the package configuration file:
+    Bash
+
+vi /etc/pkg_install.conf
+
+Add or edit the following line:
+Bash
+
+    PKG_PATH=https://cdn.netbsd.org/pub/pkgsrc/packages/NetBSD/x86_64/10.0/All
+
+    This tells the system to use the packages built for NetBSD 10.0, which should be compatible with 10.1.
+
+    Save and exit vi (press Esc, then type :wq and hit Enter).
+
+2. Install pkgin
+
+Now, try the pkg_add command again. It will use the new PKG_PATH you configured.
+Bash
+
+pkg_add pkgin
+
+This should succeed. After pkgin is installed, you can proceed with the next steps.
+
+3. Update and Install Firefox
+
+Bash
+
+pkgin update
+pkgin install firefox
+
+The pkgin tool will handle the installation of Firefox and any dependencies, pulling them from the same repository.
+
+# pkg_add pkginpkgin-25.5.1: copying /usr/pkg/share/examples/pkgin/repositories.conf.example to /usr/pkg/etc/pkgin/repositories.conf#
+
+It appears pkg_add pkgin was successful. 🎉
+
+The message you see, pkgin-25.5.1: copying ..., confirms that pkgin has been installed. The system is just letting you know that it's created a configuration file for the new package manager.
+
+Now, you should be able to proceed with the next steps to install Firefox.
+
+Steps to Install Firefox
+
+    Update the package list: You need to update pkgin's local database of available packages from the remote repository.
+    Bash
+
+pkgin update
+
+This may take a minute or two.
+
+Install Firefox: Once the update is complete, you can use pkgin to install Firefox. pkgin will automatically download and install all necessary dependencies.
+Bash
+
+    pkgin install firefox
+
+    This process will download a large number of files, so be patient.
+
+

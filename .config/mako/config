@@ -1,8 +1,9 @@
+default-timeout=8000
 background-color=#1a1b26
 text-color=#a9b1d6
 border-color=#55759c
 progress-color=over #1a1b26
 font=JetBrainsMono Nerd Font 13
 [urgency=high]
-border-color=#F8BD96
-default-timeout=4000
+default-timeout=8000
+border-color=#f7768e
