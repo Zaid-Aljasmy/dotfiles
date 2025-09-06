@@ -377,6 +377,20 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
+
+set $mode_power Power Mods: (b) Balanced, (p) Performance, (s) Saver
+
+bindsym $mod+alt+p mode "$mode_power"
+
+mode "$mode_power" {
+    bindsym b exec powerprofilesctl set balanced; mode "default"
+    bindsym p exec powerprofilesctl set performance; mode "default"
+    bindsym s exec powerprofilesctl set power-saver; mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
 # autostart
 
 # mouse speed
