@@ -1,0 +1,31 @@
+#!/bin/bash
+
+color="#e5e5e5"
+
+read cpu user nice system idle iowait irq softirq steal guest guest_nice < /proc/stat
+prev_idle=$((idle + iowait))
+prev_total=$((user + nice + system + idle + iowait + irq + softirq + steal))
+
+sleep 0.5
+
+read cpu user nice system idle iowait irq softirq steal guest guest_nice < /proc/stat
+idle_new=$((idle + iowait))
+total=$((user + nice + system + idle + iowait + irq + softirq + steal))
+
+diff_total=$((total - prev_total))
+diff_idle=$((idle_new - prev_idle))
+
+if [ "$diff_total" -gt 0 ]; then
+    usage=$(( (100 * (diff_total - diff_idle)) / diff_total ))
+else
+    usage=0
+fi
+
+if [ "$usage" -lt 1 ]; then
+    usage=1
+elif [ "$usage" -gt 99 ]; then
+    usage=99
+fi
+
+echo "<span foreground='$color'>Cpu</span> $usage%"
+

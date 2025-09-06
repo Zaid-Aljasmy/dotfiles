@@ -1,0 +1,106 @@
+#!/bin/bash
+
+COLOR="#a9b1d6"
+CACHE_FILE="/tmp/cpu_stats_cache"
+MIN_INTERVAL=0.5  
+
+get_cpu_stats() {
+    local stats=($(head -1 /proc/stat))
+    local user=${stats[1]}
+    local nice=${stats[2]}
+    local system=${stats[3]}
+    local idle=${stats[4]}
+    local iowait=${stats[5]}
+    local irq=${stats[6]}
+    local softirq=${stats[7]}
+    local steal=${stats[8]}
+    
+    local active=$((user + nice + system + irq + softirq + steal))
+    local idle_total=$((idle + iowait))
+    local total=$((active + idle_total))
+    
+    echo "$active $idle_total $total"
+}
+
+
+calculate_cpu_usage() {
+    local prev_active=$1
+    local prev_total=$2
+    local curr_active=$3
+    local curr_total=$4
+    
+    local diff_active=$((curr_active - prev_active))
+    local diff_total=$((curr_total - prev_total))
+    
+    if [ "$diff_total" -gt 0 ]; then
+        
+        local usage=$((diff_active * 1000 / diff_total))
+        local whole=$((usage / 10))
+        local decimal=$((usage % 10))
+        echo "${whole}.${decimal}"
+    else
+        echo "0.0"
+    fi
+}
+
+
+get_timestamp() {
+    date +%s
+}
+
+
+current_time=$(get_timestamp)
+current_stats=($(get_cpu_stats))
+current_active=${current_stats[0]}
+current_total=${current_stats[2]}
+
+
+if [ -f "$CACHE_FILE" ]; then
+    cached_data=$(cat "$CACHE_FILE" 2>/dev/null)
+    if [ -n "$cached_data" ]; then
+        cached_time=$(echo "$cached_data" | cut -d' ' -f1)
+        cached_active=$(echo "$cached_data" | cut -d' ' -f2)
+        cached_total=$(echo "$cached_data" | cut -d' ' -f3)
+        cached_usage=$(echo "$cached_data" | cut -d' ' -f4)
+        
+        
+        time_diff=$((current_time - cached_time))
+        
+        
+        if [ "$time_diff" -lt 2 ]; then
+            echo "<span foreground='$COLOR'>Cpu</span> ${cached_usage}%"
+            exit 0
+        fi
+        
+        
+        if [ "$time_diff" -ge 1 ] && [ "$cached_total" -ne "$current_total" ]; then
+            usage=$(calculate_cpu_usage "$cached_active" "$cached_total" "$current_active" "$current_total")
+            
+            
+            usage_int=$(echo "$usage" | cut -d'.' -f1)
+            if [ "$usage_int" -ge 0 ] && [ "$usage_int" -le 100 ]; then
+                
+                echo "$current_time $current_active $current_total $usage" > "$CACHE_FILE"
+                echo "<span foreground='$COLOR'>Cpu</span> ${usage}%"
+                exit 0
+            fi
+        fi
+    fi
+fi
+
+prev_stats=($(get_cpu_stats))
+sleep 0.3
+curr_stats=($(get_cpu_stats))
+
+usage=$(calculate_cpu_usage "${prev_stats[0]}" "${prev_stats[2]}" "${curr_stats[0]}" "${curr_stats[2]}")
+
+usage_int=$(echo "$usage" | cut -d'.' -f1)
+if [ "$usage_int" -lt 0 ]; then
+    usage="0.0"
+elif [ "$usage_int" -gt 100 ]; then
+    usage="100.0"
+fi
+
+echo "$current_time $current_active $current_total $usage" > "$CACHE_FILE"
+
+echo "<span foreground='$COLOR'>Cpu</span> ${usage}%"

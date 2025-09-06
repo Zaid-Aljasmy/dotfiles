@@ -1,0 +1,13 @@
+#!/bin/bash
+
+color="#e5e5e5"
+layout=$(swaymsg -t get_inputs | grep xkb_active_layout_name | head -n1 | awk -F'"' '{print $4}')
+
+if [ "$layout" = "English (US)" ]; then
+    layout="us"
+elif [ "$layout" = "Arabic" ]; then
+    layout="ar"
+fi
+
+echo "<span foreground='$color'>Key</span> $layout"
+

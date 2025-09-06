@@ -1,0 +1,25 @@
+#!/bin/bash
+
+acpi_output=$(acpi -b)
+if [[ -z "$acpi_output" ]]; then
+    echo "Battery not found"
+    exit 1
+fi
+
+status=$(echo "$acpi_output" | awk -F', ' '{print $1}' | awk '{print $3}')
+capacity=$(echo "$acpi_output" | awk -F', ' '{print $2}' | tr -d '%')
+
+status_lower=$(echo "$status" | tr '[:upper:]' '[:lower:]')
+
+color="#e5e5e5"
+
+if [[ "$status_lower" == "charging" ]]; then
+    color="#9ece6e" 
+elif [[ "$status_lower" == "full" || "$status_lower" == "not" ]]; then
+    color="#e5e510"
+elif [[ "$capacity" -le 20 && "$status_lower" == "discharging" ]]; then
+    color="#cd3131"
+fi
+
+echo "<span foreground='$color'>Bat</span> $capacity%"
+
