@@ -1,9 +1,0 @@
-#!/bin/bash
-color="#a9b1d6"
-
-if pactl get-sink-mute @DEFAULT_SINK@ | grep -q "yes"; then
-    echo "<span foreground='$color'>Vol</span> muted"
-else
-    volume=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+%' | head -1)
-    echo "<span foreground='$color'>Vol</span> $volume"
-fi

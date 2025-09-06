@@ -1,8 +1,0 @@
-#!/bin/bash
-
-color="#a9b1d6"
-
-read -r used total <<< $(df -h / | awk 'NR==2 {print $3, $2}')
-
-echo "<span foreground='$color'>Disk</span> $used/$total"
-
