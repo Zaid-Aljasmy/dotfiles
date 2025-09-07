@@ -404,7 +404,7 @@ input "INSTANT USB GAMING MOUSE" {
 }
 
 # background
-exec swaybg -i ~/Pictures/Backgrounds/86.jpg -m fill
+exec_always swaybg -i ~/Pictures/Backgrounds/86.jpg -m fill
 
 # notifications
 exec_always --no-startup-id mako -c ~/.config/mako/config
@@ -414,10 +414,3 @@ exec_always --no-startup-id brightnessctl set 25%
 
 # dbus 
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-
-# gsettings
-exec_always gtk-theme:Tokyonight-Dark-Moon \
-    icon-theme:Tokyonight-Dark \
-    cursor-theme:Adwaita \
-    font-name:"JetBrains Mono Nerd Font 14"
-

@@ -51,10 +51,10 @@ alias ls='eza --color=always --icons'
 alias ll='eza -lah --color=always --icons'
 
 alias i='sudo apt update && sudo apt install'
-alias u='sudo apt update && sudo apt upgrade -y'
-alias q='apt search'
+alias u='sudo apt update && sudo apt upgrade'
+alias f='apt search'
 alias r='sudo apt remove --purge'
-alias ro='sudo apt autoremove && sudo apt clean'
+alias rc='sudo apt autoremove && sudo apt clean'
 
 alias shzaid='git remote set-url origin git@github.com:Zaid-Aljasmy/dotfiles.git'
 
