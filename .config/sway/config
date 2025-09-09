@@ -28,12 +28,12 @@ set $menu wmenu-run \
     -p "Run:" \
     -f "JetBrainsMono Nerd Font 13.5" \
     -l 5 \
-    -N 1a1b26 \
-    -n a9b1d6 \
-    -M 55759c \
-    -m 1a1b26 \
-    -S 55759c \
-    -s 1a1b26
+    -N 272E33 \
+    -n d3c6aa \
+    -M 6F9B7E \
+    -m 272E33 \
+    -S 6F9B7E \
+    -s 272E33
 
 # Power menu
 set $powermenu ~/.config/sway/scripts/powermenu
@@ -275,15 +275,15 @@ bindsym Mod1+Shift+Right resize grow width 70px
 # Read `man 5 sway-bar` for more information about this section.
 
 # set primary tokyonight colorscheme colors
-set $bg #1a1b26
-set $fg #a9b1d6
-set $red #f7768e
-set $green #9ece6a
-set $yellow #e0af68
-set $blue #55759c
-set $purple #ad8ee6
-set $cyan #449dab
-set $white #a9b1d6
+set $bg #272E33
+set $fg #d3c6aa
+set $red #e67e80
+set $green #a7c080
+set $yellow #dbbc7f
+set $blue #6f9b7e
+set $purple #d699b6
+set $cyan #83c092
+set $white #d3c6aa
 
 bar {
     position top
@@ -320,7 +320,7 @@ client.urgent           $red $red $bg $red $red
 default_border pixel 4
 for_window [floating] border pixel 4
 for_window [floating] move position center
-smart_borders on
+# smart_borders on
 
 set $mode_borders Borders: (d) disable, (p) pixel, (n) normal
 bindsym $mod+shift+b mode "$mode_borders"
@@ -404,7 +404,7 @@ input "INSTANT USB GAMING MOUSE" {
 }
 
 # background
-exec_always swaybg -i ~/Pictures/Backgrounds/86.jpg -m fill
+exec_always swaybg -i ~/Pictures/Backgrounds/everwall.jpg -m fill
 
 # notifications
 exec_always --no-startup-id mako -c ~/.config/mako/config

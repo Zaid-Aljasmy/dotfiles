@@ -1,6 +1,6 @@
 #!/bin/bash
 
-color="#a9b1d6"
+color="#d3c6aa"
 layout=$(swaymsg -t get_inputs | grep xkb_active_layout_name | head -n1 | awk -F'"' '{print $4}')
 
 if [ "$layout" = "English (US)" ]; then

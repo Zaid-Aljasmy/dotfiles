@@ -47,6 +47,6 @@ elif [[ "$capacity" -le 20 && "$status_lower" == "discharging" ]]; then
     label=" low"
 fi
 
-color="#a9b1d6"
+color="#d3c6aa"
 
 echo "<span foreground='$color'>Bat</span> $capacity%$label"

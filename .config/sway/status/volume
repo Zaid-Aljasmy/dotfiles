@@ -1,5 +1,5 @@
 #!/bin/bash
-color="#a9b1d6"
+color="#d3c6aa"
 
 if pactl get-sink-mute @DEFAULT_SINK@ | grep -q "yes"; then
     echo "<span foreground='$color'>Vol</span> muted"

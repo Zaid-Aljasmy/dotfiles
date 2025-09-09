@@ -1,6 +1,6 @@
 #!/bin/bash
 
-color="#a9b1d6"
+color="#d3c6aa"
 
 iface=$(ip -o link show | awk -F': ' '/ether/ {print $2}' | grep -E '^(en|eth|eno|ens|enp)' | head -n1) || exit 1
 

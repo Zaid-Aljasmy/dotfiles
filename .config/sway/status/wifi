@@ -1,6 +1,6 @@
 #!/bin/bash
 
-color="#a9b1d6"
+color="#d3c6aa"
 
 wifi_iface=$(ip link show | awk -F: '/wl/ {gsub(/ /,"",$2); print $2; exit}')
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-color="#a9b1d6"
+color="#d3c6aa"
 
 read -r used total <<< $(df -h / | awk 'NR==2 {print $3, $2}')
 
