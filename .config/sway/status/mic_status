@@ -1,6 +1,6 @@
 #!/bin/sh
 
-color="#d3c6aa"
+color="#a9b1d6"
 
 status=$(amixer get 'Capture' | grep '\[on\]')
 

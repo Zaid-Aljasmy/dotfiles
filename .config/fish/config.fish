@@ -3,7 +3,7 @@ set -g fish_greeting ''
 if status is-interactive
     if not set -q DISPLAY; and test (tty) = "/dev/tty1"
         set -x GTK_THEME "Tokyonight-Dark"
-        set -x GTK_ICON_THEME "oomox-Tokyonight-Dark"
+        set -x ICON_THEME "Tokyonight-Dark"
         set -x GTK_FONT_NAME "JetBrainsMono Nerd Font 15"
         set -x XCURSOR_THEME "Bibata-Modern-Amber"
         set -x XCURSOR_SIZE 24

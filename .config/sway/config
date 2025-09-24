@@ -27,13 +27,13 @@ set $term alacritty
 set $menu wmenu-run \
     -p "Run:" \
     -f "JetBrainsMono Nerd Font 13.5" \
-    -l 5 \
-    -N 272E33 \
-    -n d3c6aa \
-    -M 6F9B7E \
-    -m 272E33 \
-    -S 6F9B7E \
-    -s 272E33
+    -l 4 \
+    -N 1a1b26 \
+    -n a9b1d6 \
+    -M 55759c \
+    -m 1a1b26 \
+    -S 55759c \
+    -s 1a1b26
 
 # Power menu
 set $powermenu ~/.config/sway/scripts/powermenu
@@ -275,15 +275,15 @@ bindsym Mod1+Shift+Right resize grow width 70px
 # Read `man 5 sway-bar` for more information about this section.
 
 # set primary tokyonight colorscheme colors
-set $bg #272E33
-set $fg #d3c6aa
-set $red #e67e80
-set $green #a7c080
-set $yellow #dbbc7f
-set $blue #6f9b7e
-set $purple #d699b6
-set $cyan #83c092
-set $white #d3c6aa
+set $bg #1a1b26
+set $fg #a9b1d6
+set $red #f7768e
+set $green #9ece6a
+set $yellow #e0af68
+set $blue #55759c
+set $purple #ad8ee6
+set $cyan #449dab
+set $white #a9b1d6
 
 bar {
     position top
@@ -320,7 +320,7 @@ client.urgent           $red $red $bg $red $red
 default_border pixel 4
 for_window [floating] border pixel 4
 for_window [floating] move position center
-# smart_borders on
+smart_borders on
 
 set $mode_borders Borders: (d) disable, (p) pixel, (n) normal
 bindsym $mod+shift+b mode "$mode_borders"
@@ -352,8 +352,8 @@ bindsym $mod+g mode "$mode_gaps"
 mode "$mode_gaps" {
         bindsym o      mode "$mode_gaps_outer"
         bindsym i      mode "$mode_gaps_inner"
-        bindsym d      gaps inner all set 0; gaps outer all set 0; mode "default"
-        bindsym e      gaps inner all set 20; gaps outer all set 7; mode "default"
+        bindsym d      gaps inner all set 0; gaps outer all set 0
+        bindsym e      gaps inner all set 20; gaps outer all set 7
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -377,19 +377,20 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-
+# Power Profiles
 set $mode_power Power Mods: (b) Balanced, (p) Performance, (s) Saver
 
 bindsym $mod+alt+p mode "$mode_power"
 
 mode "$mode_power" {
-    bindsym b exec powerprofilesctl set balanced; mode "default"
-    bindsym p exec powerprofilesctl set performance; mode "default"
-    bindsym s exec powerprofilesctl set power-saver; mode "default"
+    bindsym b exec powerprofilesctl set balanced
+    bindsym p exec powerprofilesctl set performance
+    bindsym s exec powerprofilesctl set power-saver
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
 
 # autostart
 
@@ -404,7 +405,7 @@ input "INSTANT USB GAMING MOUSE" {
 }
 
 # background
-exec_always swaybg -i ~/Pictures/Backgrounds/everwall.jpg -m fill
+exec_always swaybg -i ~/Pictures/Backgrounds/86.jpg -m fill
 
 # notifications
 exec_always --no-startup-id mako -c ~/.config/mako/config
@@ -414,3 +415,6 @@ exec_always --no-startup-id brightnessctl set 25%
 
 # dbus 
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+# power profiles
+exec --no-startup-id powerprofilesctl set balanced
+

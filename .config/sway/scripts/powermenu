@@ -5,12 +5,12 @@ choice=$(printf "Shutdown\nReboot\nSuspend\nLogout" | wmenu \
     -p "Power Menu:" \
     -f "JetBrainsMono Nerd Font 13.5" \
     -l 4 \
-    -N 272E33 \
-    -n d3c6aa \
-    -M 6F9B7E \
-    -m 272E33 \
-    -S 6F9B7E \
-    -s 272E33
+    -N 1a1b26 \
+    -n a9b1d6 \
+    -M 55759c \
+    -m 1a1b26 \
+    -S 55759c \
+    -s 1a1b26
 )
 
 case $choice in
@@ -19,12 +19,12 @@ case $choice in
             -p "Reboot - Are you sure?" \
             -f "JetBrainsMono Nerd Font 13.5" \
             -l 2 \
-            -N 272E33 \
-            -n d3c6aa \
-            -M 6F9B7E \
-            -m 272E33 \
-            -S 6F9B7E \
-            -s 272E33
+            -N 1a1b26 \
+            -n a9b1d6 \
+            -M 55759c \
+            -m 1a1b26 \
+            -S 55759c \
+            -s 1a1b26
         )
         if [ "$confirm" = "Yes" ]; then
             systemctl reboot
@@ -35,12 +35,12 @@ case $choice in
             -p "Shutdown - Are you sure?" \
             -f "JetBrainsMono Nerd Font 13.5" \
             -l 2 \
-            -N 272E33 \
-            -n d3c6aa \
-            -M 6F9B7E \
-            -m 272E33 \
-            -S 6F9B7E \
-            -s 272E33
+            -N 1a1b26 \
+            -n a9b1d6 \
+            -M 55759c \
+            -m 1a1b26 \
+            -S 55759c \
+            -s 1a1b26
         )
         if [ "$confirm" = "Yes" ]; then
             systemctl poweroff
@@ -51,12 +51,12 @@ case $choice in
             -p "Suspend - Are you sure?" \
             -f "JetBrainsMono Nerd Font 13.5" \
             -l 2 \
-            -N 272E33 \
-            -n d3c6aa \
-            -M 6F9B7E \
-            -m 272E33 \
-            -S 6F9B7E \
-            -s 272E33
+            -N 1a1b26 \
+            -n a9b1d6 \
+            -M 55759c \
+            -m 1a1b26 \
+            -S 55759c \
+            -s 1a1b26
         )
         if [ "$confirm" = "Yes" ]; then
             systemctl suspend
@@ -67,12 +67,12 @@ case $choice in
             -p "Logout - Are you sure?" \
             -f "JetBrainsMono Nerd Font 13.5" \
             -l 2 \
-            -N 272E33 \
-            -n d3c6aa \
-            -M 6F9B7E \
-            -m 272E33 \
-            -S 6F9B7E \
-            -s 272E33
+            -N 1a1b26 \
+            -n a9b1d6 \
+            -M 55759c \
+            -m 1a1b26 \
+            -S 55759c \
+            -s 1a1b26
         )
         if [ "$confirm" = "Yes" ]; then
             pkill -KILL -u "$USER"

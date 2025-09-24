@@ -1,2 +1,2 @@
 #!/bin/bash
-date +"<span foreground='#d3c6aa'>%a %-e %b</span> - %-l:%M %p "
+date +"<span foreground='#a9b1d6'>%a %-e %b</span> - %-l:%M %p "

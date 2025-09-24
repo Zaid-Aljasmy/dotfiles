@@ -5,8 +5,8 @@ TEMP_CACHE=""
 RAM_CACHE=""
 DISK_CACHE=""
 BAT_STATUS_CACHE=""
-ETH_CACHE=""
-WIFI_CACHE=""
+# ETH_CACHE=""
+# WIFI_CACHE=""
 POWER_CACHE=""
 LAST_UPDATE=0
 
@@ -30,15 +30,15 @@ while true; do
         DISK_CACHE=$(~/.config/sway/status/disk)
         BAT_STATUS_CACHE=$(~/.config/sway/status/battery)
         POWER_CACHE=$(~/.config/sway/status/power-mods)
-        ETH_CACHE=$(~/.config/sway/status/ethernet)
-        WIFI_CACHE=$(~/.config/sway/status/wifi)
+        # ETH_CACHE=$(~/.config/sway/status/ethernet)
+        # WIFI_CACHE=$(~/.config/sway/status/wifi)
         LAST_UPDATE=$now
     fi
     
     
 update_fast
     
-echo "$DISK_CACHE | $RAM_CACHE | $TEMP_CACHE | $CPU_CACHE | $WIFI_CACHE | $ETH_CACHE | $MIC | $VOL | $KEY | $BAT_STATUS_CACHE $POWER_CACHE | $DATE"
+echo "$DISK_CACHE | $RAM_CACHE | $TEMP_CACHE | $CPU_CACHE | $MIC | $VOL | $KEY | $BAT_STATUS_CACHE $POWER_CACHE | $DATE"
     
     
 sleep 1

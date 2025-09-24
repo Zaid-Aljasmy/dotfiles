@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 battery_path="/sys/class/power_supply/BAT0"
 if [[ ! -d "$battery_path" ]]; then
     battery_path="/sys/class/power_supply/BAT1"
@@ -21,23 +20,6 @@ fi
 
 status_lower=$(echo "$status" | tr '[:upper:]' '[:lower:]')
 
-power_profile=""
-if [[ "$status_lower" == "charging" ]]; then
-    power_profile="performance"
-elif [[ "$capacity" -le 20 && "$status_lower" == "discharging" ]]; then
-    power_profile="power-saver"
-else
-
-    power_profile="balanced"
-fi
-
-if command -v powerprofilesctl &> /dev/null; then
-    current_profile=$(powerprofilesctl get 2>/dev/null)
-    if [[ "$current_profile" != "$power_profile" ]]; then
-        powerprofilesctl set "$power_profile" &> /dev/null
-    fi
-fi
-
 label=""
 if [[ "$status_lower" == "charging" ]]; then
     label=" chr"
@@ -47,6 +29,7 @@ elif [[ "$capacity" -le 20 && "$status_lower" == "discharging" ]]; then
     label=" low"
 fi
 
-color="#d3c6aa"
+color="#a9b1d6"
 
 echo "<span foreground='$color'>Bat</span> $capacity%$label"
+

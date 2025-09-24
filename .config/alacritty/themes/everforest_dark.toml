@@ -13,7 +13,7 @@ green   = '#a7c080'
 yellow  = '#dbbc7f'
 blue    = '#7fbbb3'
 magenta = '#d699b6'
-cyan    = '#83c092'
+cyan    = '#83c092'  #  or  #639174 for border
 white   = '#d3c6aa'
 
 # Bright colors

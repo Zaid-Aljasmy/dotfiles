@@ -1,11 +1,9 @@
 return {
-  "sainnhe/everforest",
+  "bluz71/vim-moonfly-colors",
   lazy = false,           
   priority = 1000,       
   config = function()
 
-    vim.g.everforest_background = "hard"         
-    vim.g.everforest_transparent_background = true 
     vim.opt.termguicolors = true       
 
     local code_style = {
@@ -25,7 +23,7 @@ return {
        Visual = { bg = "#2E383C", fg = "NONE" },
     }
 
-    vim.cmd("colorscheme everforest")
+    vim.cmd("colorscheme moonfly")
   end,
 }
 

@@ -24,15 +24,15 @@ return {
       dashboard.button("q", "  Exit", ":qa<CR>"),
     }
       -- dashboard.section.footer.val = "I Use Neovim BTW!"
-    local alpha = require("alpha")
-    local dashboard = require("alpha.themes.dashboard")
-    local stats = require("lazy").stats()
-    local user = vim.loop.os_getenv("USER") or "Unknown"
-    local date = os.date(" Date: %A, %d %B %Y")
-      dashboard.section.footer.val = {
-      " User: " .. user,
-      date,
-    }
+    -- local alpha = require("alpha")
+    -- local dashboard = require("alpha.themes.dashboard")
+    -- local stats = require("lazy").stats()
+    -- local user = vim.loop.os_getenv("USER") or "Unknown"
+    -- local date = os.date(" Date: %A, %d %B %Y")
+    --   dashboard.section.footer.val = {
+    --   " User: " .. user,
+    --   date,
+    -- }
 
 
       alpha.setup(dashboard.config)
