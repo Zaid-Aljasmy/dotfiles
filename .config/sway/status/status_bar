@@ -2,12 +2,13 @@
 
 CPU_CACHE=""
 TEMP_CACHE=""
-RAM_CACHE=""
-DISK_CACHE=""
+# RAM_CACHE=""
+# DISK_CACHE=""
 BAT_STATUS_CACHE=""
 # ETH_CACHE=""
 # WIFI_CACHE=""
 POWER_CACHE=""
+# TITLE=""
 LAST_UPDATE=0
 
 
@@ -17,6 +18,7 @@ update_fast() {
     MIC=$(~/.config/sway/status/mic_status)
     DATE=$(~/.config/sway/status/date)
     POWER=$(~/.config/sway/status/power-mods)
+    # TITLE=$(~/.config/sway/status/window_title)
 }
 
 while true; do
@@ -26,8 +28,8 @@ while true; do
     if (( now - LAST_UPDATE >= 20 )); then
         CPU_CACHE=$(~/.config/sway/status/cpu_usage)
         TEMP_CACHE=$(~/.config/sway/status/temperature)
-        RAM_CACHE=$(~/.config/sway/status/memory)
-        DISK_CACHE=$(~/.config/sway/status/disk)
+        # RAM_CACHE=$(~/.config/sway/status/memory)
+        # DISK_CACHE=$(~/.config/sway/status/disk)
         BAT_STATUS_CACHE=$(~/.config/sway/status/battery)
         POWER_CACHE=$(~/.config/sway/status/power-mods)
         # ETH_CACHE=$(~/.config/sway/status/ethernet)
@@ -38,7 +40,7 @@ while true; do
     
 update_fast
     
-echo "$DISK_CACHE | $RAM_CACHE | $TEMP_CACHE | $CPU_CACHE | $MIC | $VOL | $KEY | $BAT_STATUS_CACHE $POWER_CACHE | $DATE"
+echo "$TEMP_CACHE | $CPU_CACHE | $MIC | $VOL | $KEY | $BAT_STATUS_CACHE $POWER_CACHE | $DATE"
     
     
 sleep 1

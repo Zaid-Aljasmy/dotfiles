@@ -1,27 +1,13 @@
 return {
   "bluz71/vim-moonfly-colors",
-  lazy = false,           
-  priority = 1000,       
+  name = "moonfly",
+  lazy = false,
+  priority = 1000,
   config = function()
-
-    vim.opt.termguicolors = true       
-
-    local code_style = {
-      comments = "NONE",
-      conditionals = "NONE",
-      constants = "NONE",
-      functions = "NONE",
-      keywords = "NONE",
-      numbers = "NONE",
-      operators = "NONE",
-      strings = "NONE",
-      types = "NONE",
-      variables = "NONE",
-    }
-
-    local highlights = {
-       Visual = { bg = "#2E383C", fg = "NONE" },
-    }
+    vim.g.moonflyTransparent = true      
+    vim.g.moonflyTerminalColors = true   
+    vim.g.moonflyItalics = true          
+    vim.g.moonflyUnderlineMatchParen = true
 
     vim.cmd("colorscheme moonfly")
   end,

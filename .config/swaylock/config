@@ -1,8 +1,7 @@
 # ==== Background Settings ====
 
 # Background image path
-image=/home/zaid/Pictures/Backgrounds/86.jpg
-
+image=/home/zaid/Pictures/Backgrounds/jdm4.jpg
 # Image scaling mode: fill, fit, center, tile, stretch
 scaling=fill
 

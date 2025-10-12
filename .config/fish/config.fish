@@ -5,7 +5,7 @@ if status is-interactive
         set -x GTK_THEME "Tokyonight-Dark"
         set -x ICON_THEME "Tokyonight-Dark"
         set -x GTK_FONT_NAME "JetBrainsMono Nerd Font 15"
-        set -x XCURSOR_THEME "Bibata-Modern-Amber"
+        set -x XCURSOR_THEME "Apple-X-Cursor"
         set -x XCURSOR_SIZE 24
         exec sway
     end
