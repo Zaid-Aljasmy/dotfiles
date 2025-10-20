@@ -6,11 +6,10 @@
     // Choose the order of the modules
     "modules-left": [
         "sway/workspaces",
-        "sway/window",
+        // "sway/window",
         "sway/mode",
         "custom/media",
         "swaync",
-        "power-profiles-daemon",
         "tray"],
     "modules-center": [], //add "sway/window" if you need a window title in waybar
     "modules-right": ["cpu",
@@ -20,6 +19,7 @@
         "network",
         // "backlight",
         "sway/language",
+        "power-profiles-daemon",
         "battery",
         "battery#bat2",
         "clock",

@@ -292,7 +292,7 @@ bar {
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     # status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-    status_command while ~/.config/sway/status/status_bar 2>/dev/null; do sleep 1; done
+    status_command while true; do ~/.config/sway/status/status_bar; sleep 1; done
 
    colors {
         # bar background color
@@ -353,7 +353,7 @@ mode "$mode_gaps" {
         bindsym o      mode "$mode_gaps_outer"
         bindsym i      mode "$mode_gaps_inner"
         bindsym d      gaps inner all set 0; gaps outer all set 0
-        bindsym e      gaps inner all set 20; gaps outer all set 7
+        bindsym e      gaps inner all set 7; gaps outer all set 1
 
         bindsym Return mode "default"
         bindsym Escape mode "default"

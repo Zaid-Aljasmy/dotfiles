@@ -36,6 +36,9 @@ function fish_prompt
     echo -n "> "      # or λ
 end
 
+# fzf extension
+eval "$(fzf --fish)"
+
 # aliases
 alias shstart="eval (ssh-agent -c); ssh-add ~/.ssh/id_github"
 alias tl='java -jar ~/Documents/tlauncher/TLauncher.jar'
@@ -47,8 +50,8 @@ alias aud='alsamixer'
 alias bt='acpi'
 alias z='zathura'
 
-alias ls='eza --color=always --icons'
-alias ll='eza -lah --color=always --icons'
+alias ls='eza --group-directories-first --color=always --icons'
+alias ll='eza -lah --group-directories-first --color=always --icons'
 
 alias i='sudo apt update && sudo apt install'
 alias u='sudo apt update && sudo apt upgrade'
