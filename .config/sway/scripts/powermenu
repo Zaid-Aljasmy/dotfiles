@@ -4,7 +4,7 @@
 choice=$(printf "Shutdown\nReboot\nSuspend\nLogout" | wmenu \
     -p "Power Menu:" \
     -f "JetBrainsMono Nerd Font 13.5" \
-    -l 4 \
+    -l 0 \
     -N 1a1b26 \
     -n a9b1d6 \
     -M 55759c \

@@ -27,7 +27,7 @@ set $term foot
 set $menu wmenu-run \
     -p "Run:" \
     -f "JetBrainsMono Nerd Font 13.5" \
-    -l 4 \
+    -l 0 \
     -N 1a1b26 \
     -n a9b1d6 \
     -M 55759c \
@@ -287,12 +287,12 @@ set $white #a9b1d6
 
 bar {
     position top
-    # swaybar_command waybar
+    swaybar_command waybar
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     # status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-    status_command while true; do ~/.config/sway/status/status_bar; sleep 1; done
+    # status_command while true; do ~/.config/sway/status/status_bar; sleep 1; done
 
    colors {
         # bar background color
