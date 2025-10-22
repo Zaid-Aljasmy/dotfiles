@@ -18,7 +18,7 @@ case $choice in
         confirm=$(printf "Yes\nNo" | wmenu \
             -p "Reboot - Are you sure?" \
             -f "JetBrainsMono Nerd Font 13.5" \
-            -l 2 \
+            -l 0 \
             -N 1a1b26 \
             -n a9b1d6 \
             -M 55759c \
@@ -34,7 +34,7 @@ case $choice in
         confirm=$(printf "Yes\nNo" | wmenu \
             -p "Shutdown - Are you sure?" \
             -f "JetBrainsMono Nerd Font 13.5" \
-            -l 2 \
+            -l 0 \
             -N 1a1b26 \
             -n a9b1d6 \
             -M 55759c \
@@ -50,7 +50,7 @@ case $choice in
         confirm=$(printf "Yes\nNo" | wmenu \
             -p "Suspend - Are you sure?" \
             -f "JetBrainsMono Nerd Font 13.5" \
-            -l 2 \
+            -l 0 \
             -N 1a1b26 \
             -n a9b1d6 \
             -M 55759c \
@@ -66,7 +66,7 @@ case $choice in
         confirm=$(printf "Yes\nNo" | wmenu \
             -p "Logout - Are you sure?" \
             -f "JetBrainsMono Nerd Font 13.5" \
-            -l 2 \
+            -l 0 \
             -N 1a1b26 \
             -n a9b1d6 \
             -M 55759c \
