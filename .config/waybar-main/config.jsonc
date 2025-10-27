@@ -26,8 +26,8 @@
         "temperature",
         "custom/sep",
         "cpu",
-        "custom/sep",
-        "backlight",
+        // "custom/sep",
+        // "backlight",
         "custom/sep",
         // "network",
         // "custom/sep",
@@ -38,7 +38,6 @@
         "sway/language",
         "custom/sep",
         "battery",
-        // "custom/sep",
         // "power-profiles-daemon",
         "custom/sep",
         "clock",
@@ -57,7 +56,7 @@
     //     }
     // },
      "sway/language": {
-        "format": "󰌌 {}",
+        "format": "Key {}",
         "tooltip-format": "Language: {long}"
     },
 
@@ -78,53 +77,42 @@
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%a %d %b - %I:%M %p}</big>\n<tt><small>{calendar}</small></tt>",
         "format": "{:%a %d %b - %I:%M %p}",
-        // "format": "{:%I:%M %p}",
-        // "format-alt": "{:%a %d %b - %I:%M %p}"
+        // "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
-        "format": " {usage}%",
+        "format": "Cpu {usage}%   ",
         "tooltip": true,
         "interval" : 5
     },
     "memory": {
-        "format": " {used}GiB"
+        "format": "Ram {used}GiB"
     },
     "temperature": {
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 50,
-        "half-threshold": 40,
-        "low-theshold": 20,
-        "format": "{icon}      {temperatureC}°C ",
-        "format-critical": "{icon}      {temperatureC}°C ",
-        "format-half": "{icon}      {temperatureC}°C ",
-        "format-low": "{icon}      {temperatureC}°C ",
-        "format-icons": ["", "", ""]
+        "critical-threshold": 60,
+        "format": "Temp {temperatureC}°C ",
+        "format-critical": "Temp {temperatureC}°C"
     },
-        "backlight": {
-        // "device": "acpi_video1",
-        "format": "{icon} {percent}%",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    "backlight": {
+        // "device": "intel_backlight",
+        "format": "Bri {percent}%   "
     },
-
-        "battery": {
+    "battery": {
         "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15,
-            // "full": 79
+            "good": 70,
+            "warning": 25,
+            "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}%     ",
-        "format-plugged": "{capacity}% {icon}",
-        "format-warning": "{capacity}% {icon}",
-        // "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        "format-full": "{capacity}% {icon}",
-        "format-icons": ["     ", "     ", "     ", "      ", " "],
-        "interval": 1,
+        "format": "   Bat {capacity}%   ",
+        "format-full": "Bat {capacity}% full ",
+        "format-charging": "   Bat {capacity}% chr   ",
+        "format-plugged": "   Bat {capacity}% full   ",
+        // "format-alt": "Bat {capacity}% |",
+        "format-warning": "   Bat {capacity}%   ",
+        "format-critical": "   Bat {capacity}%   ",
+        "interval": 1
     },
-
     // "battery#bat2": {
     //     "bat": "BAT2",
     //     "format": "Bat2 {capacity}% ",
@@ -132,50 +120,43 @@
     //     "interval": 1
     // },
 
-        "power-profiles-daemon": {
-      "format": " {icon} ",
-      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-      "tooltip": true,
-      "format-icons": {
-        "default": "",
-        "performance": "",
-        "balanced": "",
-        "power-saver": ""
+     "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-alt": false,
+        "on-click": false,
+        "on-click-right": false,
+        "format-icons": {
+        "default": "",
+        "performance": "(Perf)",
+        "balanced": "(Balanc)",
+        "power-saver": "(Saver)"
       }
     },
 
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "      {signalStrength}%",
-        "format-ethernet": " up",
+        "format-wifi": "WiFi {signalStrength}%",
+        "format-ethernet": "Eth up",
         "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": "Net {ifname} (No IP) ",
         "format-disconnected": "   Net down   ",
         // "format-alt": "{ifname}: {ipaddr}/{cidr} "
     },
-        "pulseaudio": {
+    "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon}  {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": "  {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "    ",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
+        "format": "Vol {volume}%           Mic {format_source} ",
+        "format-bluetooth": "Vol {volume}% (BT)  Mic {format_source} ",
+        "format-bluetooth-muted": "Vol Muted (BT)Mic {format_source}",
+        "format-muted": "Vol Muted          Mic {format_source} ",
+        "format-source": "{volume}%",
+        "format-source-muted": "Muted"
     },
         "disk": {
         "interval": 30,
         "path": "/",
-        "format": "     {used}",
+        "format": "   Disk {used}    "
     },
 
         "custom/sep": {
@@ -184,4 +165,3 @@
     }
     
 }
-
