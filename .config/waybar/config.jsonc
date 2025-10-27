@@ -150,7 +150,7 @@
         "format-ethernet": " up",
         "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": "Net {ifname} (No IP) ",
-        "format-disconnected": "   Net down   ",
+        "format-disconnected": "    No Network",
         // "format-alt": "{ifname}: {ipaddr}/{cidr} "
     },
         "pulseaudio": {
