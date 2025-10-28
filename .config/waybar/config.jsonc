@@ -115,13 +115,13 @@
             // "full": 79
         },
         "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}%     ",
+        "format-charging": "{capacity}%    ",
         "format-plugged": "{capacity}% {icon}",
         "format-warning": "{capacity}% {icon}",
         // "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         "format-full": "{capacity}% {icon}",
-        "format-icons": ["     ", "     ", "     ", "      ", " "],
+        "format-icons": ["       ", "       ", "       ", "       ", "       "],
         "interval": 1,
     },
 
@@ -170,7 +170,7 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        // "on-click": "pavucontrol"
     },
         "disk": {
         "interval": 30,

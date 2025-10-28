@@ -417,4 +417,3 @@ exec_always --no-startup-id brightnessctl set 25%
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 # power profiles
 exec --no-startup-id powerprofilesctl set balanced
-
