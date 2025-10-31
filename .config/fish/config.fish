@@ -37,7 +37,12 @@ function fish_prompt
 end
 
 # fzf extension
+
 eval "$(fzf --fish)"
+# Tokyo Night theme for fzf with transparency:
+set -gx FZF_DEFAULT_OPTS '--color=fg:#a9b1d6,bg:-1,hl:#7aa2f7,fg+:#c8d3ea,bg+:#32344a,hl+:#7aa2f7,info:#449dab,prompt:#9ece6a,pointer:#f7768e,marker:#e0af68,spinner:#ad8ee6,header:#787c99'
+# fzf colors (https://github.com/junegunn/fzf/wiki/Color-schemes) 
+
 
 # aliases
 alias shstart="eval (ssh-agent -c); ssh-add ~/.ssh/id_github"
