@@ -14,10 +14,10 @@
         "custom/media"
     ],
     "modules-center": [
-        
+
     ],
     "modules-right": [
-        // "cpu",
+        // "mpd",
         // "custom/sep",
         "disk",
         "custom/sep",
@@ -56,6 +56,38 @@
     //         "unlocked": "OFF"
     //     }
     // },
+
+        "mpd": {
+        "format": "[ {stateIcon} {consumeIcon} {randomIcon} {repeatIcon} {singleIcon}{title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) {volume}%  ] ",
+        "format-disconnected": "[ Music Disconnected   ] ",
+        "format-stopped": "[{consumeIcon} {randomIcon} {repeatIcon}{singleIcon} Music Stopped   ] ",
+        "unknown-tag": "N/A",
+        "interval": 0,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": " ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": " 1"
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)",
+        "disable-scroll": true,
+        "on-click": "",
+        "on-click-middle": "",
+        "on-click-right": ""
+    },
+
      "sway/language": {
         "format": "󰌌 {}",
         "tooltip-format": "Language: {long}"
@@ -76,11 +108,20 @@
     },
     "clock": {
         // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%a %d %b - %I:%M %p}</big>\n<tt><small>{calendar}</small></tt>",
+        "tooltip-format": "<big>{:%a %d %b}</big>\n<tt><small>{calendar}</small></tt>",
         "format": "{:%a %d %b - %I:%M %p}",
-        // "format": "{:%I:%M %p}",
+        // "format": "           {:%I:%M %p}",
         // "format-alt": "{:%a %d %b - %I:%M %p}"
     },
+
+    // "custom/clock": {
+    //     "exec": "date +'%a %-e %b - %-l:%M %p '",
+    //     "interval": 0,
+    //     "return-type": "string",
+    //     "tooltip": false,
+    //     "format": "{}"
+    // },
+
     "cpu": {
         "format": " {usage}%",
         "tooltip": true,
@@ -92,7 +133,7 @@
     "temperature": {
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 50,
+        "critical-threshold": 60,
         "half-threshold": 40,
         "low-theshold": 20,
         "format": "{icon}      {temperatureC}°C ",
@@ -157,14 +198,14 @@
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon}  {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-bluetooth-muted": "󰂲 {icon} {format_source}",
         "format-muted": "  {format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "    ",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
-            "headset": "",
+            "headset": "",
             "phone": "",
             "portable": "",
             "car": "",

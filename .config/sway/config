@@ -82,6 +82,9 @@ set $powermenu ~/.config/sway/scripts/powermenu
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
+# for_window [class="Spotify"] opacity 0.9
+# for_window [app_id="firefox"] opacity 0.95
+
 ### Key bindings
 #
 # Basics:
@@ -335,7 +338,7 @@ mode "$mode_borders" {
 
 
 # gaps
-gaps inner 7
+gaps inner 10
 gaps outer 1
 # smart_gaps on
 
@@ -353,7 +356,7 @@ mode "$mode_gaps" {
         bindsym o      mode "$mode_gaps_outer"
         bindsym i      mode "$mode_gaps_inner"
         bindsym d      gaps inner all set 0; gaps outer all set 0
-        bindsym e      gaps inner all set 7; gaps outer all set 1
+        bindsym e      gaps inner all set 10; gaps outer all set 1
 
         bindsym Return mode "default"
         bindsym Escape mode "default"

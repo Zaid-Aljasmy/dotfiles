@@ -15,7 +15,7 @@
     border-radius: 0px;
     font-family: JetBrainsMono Nerd Font;
     font-weight: bold;
-    font-size: 16.6px;
+    font-size: 15.7px;
     min-height: 0;
     
 }
@@ -133,7 +133,7 @@ window#waybar.chromium {
 
 #clock {
     color: @fg;
-    padding: 0px 9px 0px 0px;
+    padding: 0px 9px 0px 2px;
     margin: 2px 0px;
     min-width: 0px;
 }
@@ -257,28 +257,28 @@ window#waybar.chromium {
 /*     color: #ffffff; */
 /* } */
 /**/
-/* #mpd { */
-/*     color: #ffffff; */
-/* } */
-/**/
-/* #mpd.disconnected { */
-/*     color: @red;  */
-/* } */
-/**/
-/* #mpd.stopped { */
-/*     color: #ffffff; */
-/* } */
-/**/
-/* #mpd.paused { */
-/*     color: #ffffff; */
-/* } */
+#mpd {
+    color: @fg;
+}
+
+#mpd.disconnected {
+    color: @red; 
+}
+
+#mpd.stopped {
+    color: @fg;
+}
+
+#mpd.paused {
+    color: @fg;
+}
 
 #language {
     color: @fg;
     /* border-bottom: 3px solid @blu; */
     padding: 0 0px;
     margin: 2px 1px;
-    min-width: 50px;
+    min-width: 38px;
 }
 
 #keyboard-state {
