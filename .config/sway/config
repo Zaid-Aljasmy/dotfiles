@@ -26,7 +26,7 @@ set $term foot
 # Your preferred application launcher
 set $menu wmenu-run \
     -p "Run:" \
-    -f "JetBrainsMono Nerd Font Bold 13.5" \
+    -f "JetBrainsMono Nerd Font Bold 13.1" \
     -l 0 \
     -N 1a1b26 \
     -n a9b1d6 \
