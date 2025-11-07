@@ -108,14 +108,14 @@
     },
     "clock": {
         // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%a %d %b}</big>\n<tt><small>{calendar}</small></tt>",
+        "tooltip-format": "<big>{:%A %d %b}</big>\n<tt><small>{calendar}</small></tt>",
         "format": "{:%a %d %b - %I:%M %p}",
         // "format": "           {:%I:%M %p}",
         // "format-alt": "{:%a %d %b - %I:%M %p}"
     },
 
     // "custom/clock": {
-    //     "exec": "date +'%a %-e %b - %-l:%M %p '",
+    //     "exec": "date +'%a %-e %b - %-l:%M %p'",
     //     "interval": 0,
     //     "return-type": "string",
     //     "tooltip": false,
@@ -134,7 +134,7 @@
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 60,
-        "half-threshold": 40,
+        "half-threshold": 50,
         "low-theshold": 20,
         "format": "{icon}      {temperatureC}°C ",
         "format-critical": "{icon}      {temperatureC}°C ",
@@ -220,6 +220,7 @@
     },
 
         "custom/sep": {
+        "tooltip" : false,
         "format" : "|",
         "interval" : 0
     }

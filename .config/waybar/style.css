@@ -82,6 +82,7 @@ window#waybar.chromium {
 }
 
 #custom-sep,
+/* #custom-clock */
 #clock,
 #battery,
 #cpu,
@@ -138,6 +139,13 @@ window#waybar.chromium {
     min-width: 0px;
 }
 
+/* #custom-clock { */
+/*     color: @fg; */
+/*     padding: 0px 9px 0px 2px; */
+/*     margin: 2px 0px; */
+/*     min-width: 0px; */
+/* } */
+
 #battery {
     color: @fg;
     /* border-bottom: 3px solid @blu; */
@@ -169,7 +177,7 @@ window#waybar.chromium {
 
 #battery.charging {
     /* border-bottom: 3px solid @grn; */
-    color: @grn; 
+    color: @fg; 
 }
 
 
