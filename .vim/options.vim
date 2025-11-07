@@ -5,7 +5,7 @@ set showmatch
 syntax on
 " Line numbers
 set number
-" set relativenumber
+set relativenumber
 
 " Indentation and tabs
 set tabstop=4
