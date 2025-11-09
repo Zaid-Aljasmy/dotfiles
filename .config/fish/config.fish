@@ -47,6 +47,8 @@ set -gx FZF_DEFAULT_OPTS '--color=fg:#a9b1d6,bg:-1,hl:#7aa2f7,fg+:#c8d3ea,bg+:#3
 export BAT_THEME="ansi"
 
 # aliases
+alias mnt="sudo mount /dev/sdb1 ~/usb"
+alias umnt="sudo umount /dev/sdb1 ~/usb"
 alias shstart="eval (ssh-agent -c); ssh-add ~/.ssh/id_github"
 alias tl='java -jar ~/Documents/tlauncher/TLauncher.jar'
 alias ll='ls -lah'
