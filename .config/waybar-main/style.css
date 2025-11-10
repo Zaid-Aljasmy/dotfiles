@@ -15,9 +15,21 @@
     border-radius: 0px;
     font-family: JetBrainsMono Nerd Font;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 15.8px;
     min-height: 0;
     
+}
+
+.modules-right {
+  background-color: @bg; 
+}
+
+.modules-center {
+  background-color: @bg; 
+}
+
+.modules-left {
+  background-color: @bg; 
 }
 
 window#waybar {
@@ -125,7 +137,7 @@ window#waybar.chromium {
 #clock {
     color: @fg;
     /* font-weight: bold; */
-        padding: 0 9px;
+    padding: 0px 9px 0px 2px;
     margin: 2px 0px;
     min-width: 0px;
 }
@@ -247,7 +259,7 @@ window#waybar.chromium {
     color: @fg;
     padding: 0 0px;
     margin: 2px 1px;
-    min-width: 70px;
+    min-width: 27px;
 }
 
 #keyboard-state {

@@ -56,7 +56,7 @@
     //     }
     // },
      "sway/language": {
-        "format": "Key {}",
+        "format": "{}",
         "tooltip-format": "Language: {long}"
     },
 
@@ -80,7 +80,7 @@
         // "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
-        "format": "Cpu {usage}%   ",
+        "format": "Cpu {usage}%  ",
         "tooltip": true,
         "interval" : 5
     },
@@ -104,13 +104,13 @@
             "warning": 25,
             "critical": 15
         },
-        "format": "   Bat {capacity}%   ",
+        "format": "  Bat {capacity}%   ",
         "format-full": "Bat {capacity}% full ",
-        "format-charging": "   Bat {capacity}% chr   ",
-        "format-plugged": "   Bat {capacity}% full   ",
+        "format-charging": "  Bat {capacity}% chr   ",
+        "format-plugged": "  Bat {capacity}% full   ",
         // "format-alt": "Bat {capacity}% |",
-        "format-warning": "   Bat {capacity}%   ",
-        "format-critical": "   Bat {capacity}%   ",
+        "format-warning": "  Bat {capacity}%   ",
+        "format-critical": "  Bat {capacity}%   ",
         "interval": 1
     },
     // "battery#bat2": {
@@ -156,7 +156,7 @@
         "disk": {
         "interval": 30,
         "path": "/",
-        "format": "   Disk {used}    "
+        "format": "   Disk {used}   "
     },
 
         "custom/sep": {

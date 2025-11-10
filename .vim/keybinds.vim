@@ -57,3 +57,57 @@ nnoremap <leader>rl :source ~/.vim/vimrc<CR>
 
 " Source current file
 nnoremap <leader><leader> :so<CR>
+
+" split window horizontally
+nnoremap ss :split<CR>
+" split window vertically
+nnoremap sv :vsplit<CR>
+
+" -- Increase vertical split width (Alt + Shift + Right Arrow)
+nnoremap <A-S-Left> :vertical resize +2<CR>
+
+" -- Decrease vertical split width (Alt + Shift + Left Arrow)
+nnoremap <A-S-Right> :vertical resize -2<CR>
+
+" -- Increase window height (Alt + Shift + Up Arrow)
+nnoremap <A-S-Down> :resize +2<CR>
+
+" -- Decrease window height (Alt + Shift + Down Arrow)
+nnoremap <A-S-Up> :resize -2<CR>
+
+" -- Navigate between tabs
+nnoremap <C-Right> :bnext<CR>
+nnoremap <C-Left> :bprevious<CR>
+
+" -- Navigate between windows
+nnoremap <M-Left> <C-w>h
+nnoremap <M-Down> <C-w>j
+nnoremap <M-Up> <C-w>k
+nnoremap <M-Right> <C-w>l
+
+" -- Fast horizontal movement (left/right) with Shift + Arrow keys in normal mode
+nnoremap <S-Right> 7l   " Move 7 characters right
+nnoremap <S-Left> 7h    " Move 7 characters left
+
+" -- Fast horizontal movement (left/right) with Shift + Arrow keys in visual mode
+vnoremap <S-Right> 7l   " Move 7 characters right
+vnoremap <S-Left> 7h    " Move 7 characters left
+
+" -- Fast vertical movement (up/down) with Shift + Arrow keys in normal mode
+nnoremap <S-Down> 4j    " Move 4 lines down
+nnoremap <S-Up> 4k      " Move 4 lines up
+
+" -- Fast vertical movement (up/down) with Shift + Arrow keys in visual mode
+vnoremap <S-Down> 4j    " Move 4 lines down
+vnoremap <S-Up> 4k      " Move 4 lines up
+
+" -- Fast vertical movement (up/down) with Shift + Arrow keys in insert mode
+inoremap <S-Down> <C-o>4j   " Move 4 lines down
+inoremap <S-Up> <C-o>4k     " Move 4 lines up
+
+" -- Redo shortcut
+nnoremap <M-r> <C-r>
+
+" -- Close the buffer tab
+nnoremap <leader>x :bd!<CR>
+
