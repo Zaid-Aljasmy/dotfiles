@@ -5,7 +5,7 @@ set showmatch
 syntax on
 " Line numbers
 set number
-" set relativenumber
+set relativenumber
 
 " Indentation and tabs
 set tabstop=4
@@ -64,7 +64,7 @@ set smartcase
 set noswapfile
 
 " -- Disable backup file
-set nobackup
+" set nobackup
 
 " -- Highlight column at 80 characters
 set colorcolumn=80
@@ -83,4 +83,3 @@ set noruler
 
 " -- Disable netrw banner
 let g:netrw_banner = 0
-
