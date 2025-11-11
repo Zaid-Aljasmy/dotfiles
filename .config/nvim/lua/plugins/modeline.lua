@@ -22,10 +22,15 @@ return {
                     tabline = 1000,
                     winbar = 1000,
                 }
-            }
+            },
+            
+            -- tabline = {
+            --     lualine_a = {'buffers'},
+            --     lualine_z = {'tabs'}
+            -- }
         }
     }
 }
 
-
 -- left = '', right = '' 
+
