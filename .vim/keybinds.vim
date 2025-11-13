@@ -24,6 +24,9 @@ xnoremap <leader>p "_dP
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 
+" Copy shortcut
+vmap <M-s> "+y
+
 " Make <C-c> behave like <Esc> in insert mode
 inoremap <C-c> <Esc>
 

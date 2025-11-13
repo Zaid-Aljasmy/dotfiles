@@ -22,7 +22,6 @@ function fish_prompt
         echo -n (prompt_pwd) ""
     end
 
-    
     if command git rev-parse --is-inside-work-tree >/dev/null 2>&1
         set branch (git branch --show-current 2>/dev/null)
         if test -n "$branch"
@@ -31,7 +30,6 @@ function fish_prompt
         end
     end
 
-    
     set_color red
     echo -n "> "      # or λ
 end
