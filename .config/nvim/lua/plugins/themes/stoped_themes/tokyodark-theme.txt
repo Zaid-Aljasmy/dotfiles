@@ -1,0 +1,26 @@
+return {
+  "tiagovla/tokyodark.nvim",
+  lazy = false,
+  priority = 1000,
+  config = function()
+    require("tokyodark").setup({
+      transparent_background = false,
+      sidebars = "transparent",
+      floats = "transparent",
+      gamma = 1.00,
+      terminal_colors = true,
+      styles = {
+        comments = {},
+        keywords = {},
+        identifiers = {},
+        functions = {},
+        variables = {},
+      },
+      custom_highlights = {},
+      custom_palette = {},
+    })
+    vim.cmd("colorscheme tokyodark")
+  end,
+}
+
+
