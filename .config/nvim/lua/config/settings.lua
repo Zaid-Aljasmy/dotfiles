@@ -20,14 +20,14 @@ vim.opt.smartcase = true
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.colorcolumn = "80"
-vim.opt.signcolumn = "yes:1" -- Enable signcolumn
+-- vim.opt.signcolumn = "yes:1" -- Enable signcolumn
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.showmode = false
 vim.opt.ruler = false
 
 -- Disable netrw banner
-vim.g.netrw_banner = 0
+-- vim.g.netrw_banner = 0
 
 -- Restore cursor position:
 vim.cmd([[

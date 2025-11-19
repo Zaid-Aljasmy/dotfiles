@@ -1,5 +1,8 @@
 // -*- mode: jsonc -*-
 {
+    // "margin-top": 8,
+    // "margin-left": 10,
+    // "margin-right": 10,
     // "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
     "height": 25, // Waybar height (to be removed for auto height)
@@ -190,7 +193,7 @@
         "format-wifi": "      {signalStrength}%",
         "format-ethernet": " up",
         "tooltip-format": "{ifname} via {gwaddr}",
-        "format-linked": "Net {ifname} (No IP) ",
+        "format-linked": "Net {ifname}",
         "format-disconnected": "    No Network",
         // "format-alt": "{ifname}: {ipaddr}/{cidr} "
     },

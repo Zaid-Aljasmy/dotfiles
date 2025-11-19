@@ -7,6 +7,11 @@ M.main_dir = home .. "/LaTeX/LaTeX-PDF"
 M.build_dir = M.main_dir .. "/build"
 M.pdf_dir = M.main_dir .. "/pdf"
 
+local function zathura_running()
+  local pid = vim.fn.system("pidof zathura")
+  return pid ~= "" and pid ~= nil
+end
+
 M.build_and_view = function()
   local texfile = vim.fn.expand("%:p")
   local filename = vim.fn.expand("%:t:r")
@@ -29,9 +34,8 @@ M.build_and_view = function()
     vim.fn.system(string.format("mv -f %s %s", build_pdf, final_pdf))
   end
 
-  if not M.zathura_opened then
+  if not zathura_running() then
     vim.fn.jobstart("zathura " .. final_pdf, { detach = true })
-    M.zathura_opened = true
   end
 end
 

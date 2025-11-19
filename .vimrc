@@ -5,3 +5,4 @@ source ~/.vim/colors.vim
 source ~/.vim/fzf.vim
 source ~/.vim/lightline.vim
 source ~/.vim/lsp.vim
+source ~/.vim/custom_plugins/LaTeX-PDF-Preview/latex-pdf-preview.vim

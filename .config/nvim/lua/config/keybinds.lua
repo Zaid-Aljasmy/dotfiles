@@ -43,8 +43,8 @@ vim.keymap.set("n", "<M-Up>", "<C-w>k", { noremap = true, silent = true })
 vim.keymap.set("n", "<M-Right>", "<C-w>l", { noremap = true, silent = true })
 
 -- Navigate between tabs
-vim.keymap.set("n", "<C-Right>", ":bnext<CR>", { desc = "Next buffer with Ctrl+Right" })
-vim.keymap.set("n", "<C-Left>", ":bprevious<CR>", { desc = "Previous buffer with Ctrl+Left" })
+vim.keymap.set("n", "<C-Right>", ":bnext<CR>", { silent = true, desc = "Next buffer with Ctrl+Right" })
+vim.keymap.set("n", "<C-Left>", ":bprevious<CR>", { silent = true, desc = "Previous buffer with Ctrl+Left" })
 
 -- Fast horizontal movement (left/right) with Shift + Arrow keys in normal mode
 vim.keymap.set("n", "<S-Right>", "7l", { noremap = true, silent = true })  -- Move 7 characters right

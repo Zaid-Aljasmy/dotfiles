@@ -25,7 +25,8 @@ nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 
 " Copy shortcut
-vmap <M-s> "+y
+" vnoremap <silent> <M-s> "+y
+vnoremap <leader>y :w !wl-copy<CR><CR>
 
 " Make <C-c> behave like <Esc> in insert mode
 inoremap <C-c> <Esc>
@@ -79,8 +80,8 @@ nnoremap <A-S-Down> :resize +2<CR>
 nnoremap <A-S-Up> :resize -2<CR>
 
 " -- Navigate between tabs
-nnoremap <C-Right> :bnext<CR>
-nnoremap <C-Left> :bprevious<CR>
+nnoremap <silent> <C-Right> :bnext<CR>
+nnoremap <silent> <C-Left> :bprevious<CR>
 
 " -- Navigate between windows
 nnoremap <M-Left> <C-w>h
@@ -89,28 +90,31 @@ nnoremap <M-Up> <C-w>k
 nnoremap <M-Right> <C-w>l
 
 " -- Fast horizontal movement (left/right) with Shift + Arrow keys in normal mode
-nnoremap <S-Right> 7l   " Move 7 characters right
-nnoremap <S-Left> 7h    " Move 7 characters left
+nnoremap <S-Right> 7l
+nnoremap <S-Left> 7h
 
 " -- Fast horizontal movement (left/right) with Shift + Arrow keys in visual mode
-vnoremap <S-Right> 7l   " Move 7 characters right
-vnoremap <S-Left> 7h    " Move 7 characters left
+vnoremap <S-Right> 7l
+vnoremap <S-Left> 7h
 
 " -- Fast vertical movement (up/down) with Shift + Arrow keys in normal mode
-nnoremap <S-Down> 4j    " Move 4 lines down
-nnoremap <S-Up> 4k      " Move 4 lines up
+nnoremap <S-Down> 4j
+nnoremap <S-Up> 4k
 
 " -- Fast vertical movement (up/down) with Shift + Arrow keys in visual mode
-vnoremap <S-Down> 4j    " Move 4 lines down
-vnoremap <S-Up> 4k      " Move 4 lines up
+vnoremap <S-Down> 4j
+vnoremap <S-Up> 4k
 
 " -- Fast vertical movement (up/down) with Shift + Arrow keys in insert mode
-inoremap <S-Down> <C-o>4j   " Move 4 lines down
-inoremap <S-Up> <C-o>4k     " Move 4 lines up
+inoremap <S-Down> <C-o>4j
+inoremap <S-Up> <C-o>4k
 
 " -- Redo shortcut
 nnoremap <M-r> <C-r>
 
 " -- Close the buffer tab
-nnoremap <leader>x :bd!<CR>
+nnoremap <silent> <leader>x :bd!<CR>
+
+" -- Run the LaTeX PDF Preview plugin
+nnoremap <silent> <leader>p :call BuildAndView()<CR>
 

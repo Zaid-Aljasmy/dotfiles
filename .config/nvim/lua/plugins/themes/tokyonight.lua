@@ -9,6 +9,9 @@ return {
       terminal_colors = true,
       styles = {
         comments = {italic = true},
+        conditionals = {italic = true},
+        loops = {italic = true},
+        strings = {italic = true},
         keywords = {italic = true},
         functions = {italic = true},
         variables = {italic = true},

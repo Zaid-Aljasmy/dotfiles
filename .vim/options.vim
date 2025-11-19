@@ -3,6 +3,7 @@ set softtabstop=4
 set smartindent
 set showmatch
 syntax on
+
 " Line numbers
 set number
 set relativenumber
@@ -82,4 +83,4 @@ set noshowmode
 set noruler
 
 " -- Disable netrw banner
-let g:netrw_banner = 0
+" let g:netrw_banner = 0
