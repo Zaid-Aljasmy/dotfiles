@@ -69,5 +69,8 @@ alias rc='sudo apt autoremove && sudo apt clean'
 
 alias shzaid='git remote set-url origin git@github.com:Zaid-Aljasmy/dotfiles.git'
 
+# Neovim opt
+set -U fish_user_paths $fish_user_paths /opt/nvim-linux-x86_64/bin
+
 # bash ~/.colorscripts/elfman
 # pfetch
