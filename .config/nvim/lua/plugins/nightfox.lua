@@ -1,0 +1,41 @@
+return {
+  "EdenEast/nightfox.nvim",
+  opts = {
+    options = {
+      compile_path = vim.fn.stdpath("cache") .. "/nightfox",
+      compile_file_suffix = "_compiled",
+      transparent = false,
+      terminal_colors = true,
+      dim_inactive = false,
+      module_default = true,
+      colorblind = {
+        enable = false,
+        simulate_only = false,
+        severity = { protan = 0, deutan = 0, tritan = 0 },
+      },
+      styles = {
+        comments = "italic",
+        conditionals = "bold",
+        constants = "bold",
+        functions = "bold",
+        keywords = "bold",
+        numbers = "bold",
+        operators = "bold",
+        strings = "bold",
+        types = "bold",
+        variables = "bold",
+      },
+      inverse = {
+        match_paren = false,
+        visual = false,
+        search = false,
+      },
+      modules = {},
+    },
+    palettes = {},
+    specs = {},
+    groups = {},
+  },
+  lazy = false,
+  priority = 1000,
+}

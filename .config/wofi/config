@@ -1,0 +1,33 @@
+# mode & placement
+# show=drun
+location=top           
+width=1000
+# height=400
+lines=16
+columns=1              
+# dynamic_lines=true
+#
+# icons
+allow_images=true      
+image_size=36          
+#
+# search & UX
+matching=fuzzy
+insensitive=true
+hide_scroll=true
+prompt=Search:
+#
+# # terminal
+term=foot
+#
+# keybinds (vim-ish)
+key_up=Ctrl-k
+key_down=Ctrl-j
+key_left=Ctrl-h
+key_right=Ctrl-l
+key_submit=Return
+key_forward=Tab
+key_backward=Shift-ISO_Left_Tab
+#
+# # stylesheet
+style=/home/zaid/.config/wofi/style.css

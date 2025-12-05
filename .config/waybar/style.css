@@ -15,7 +15,7 @@
   border-radius: 0px;
   font-family: JetBrainsMono Nerd Font;
   font-weight: bold;
-  font-size: 15.8px;
+  font-size: 17.4px;
   min-height: 0;
 
 }
@@ -135,7 +135,7 @@ window#waybar.chromium {
 
 #clock {
   color: @fg;
-  padding: 0px 9px 0px 2px;
+  padding: 0px 13px 0px 2px;
   margin: 2px 0px;
   min-width: 0px;
 }

@@ -1,11 +1,11 @@
 set -g fish_greeting ''
 
 if status is-interactive
-    if not set -q DISPLAY; and test (tty) = "/dev/tty1"
-        set -x GTK_THEME "Tokyonight-Dark"
-        set -x ICON_THEME "Tokyonight-Dark"
+    if not set -q DISPLAY; and test (tty) = /dev/tty1
+        set -x GTK_THEME Tokyonight-Dark
+        set -x ICON_THEME Tokyonight-Dark
         set -x GTK_FONT_NAME "JetBrainsMono Nerd Font 15"
-        set -x XCURSOR_THEME "Apple-X-Cursor"
+        set -x XCURSOR_THEME Apple-X-Cursor
         set -x XCURSOR_SIZE 24
         exec sway
     end
@@ -13,7 +13,7 @@ end
 
 # prompt
 function fish_prompt
-    
+
     set_color blue
     if test $PWD = $HOME
         echo -n "~ "
@@ -31,7 +31,7 @@ function fish_prompt
     end
 
     set_color red
-    echo -n "> "      # or λ
+    echo -n "> " # or λ
 end
 
 # fzf extension
@@ -72,5 +72,7 @@ alias shzaid='git remote set-url origin git@github.com:Zaid-Aljasmy/dotfiles.git
 # Neovim opt
 set -U fish_user_paths $fish_user_paths /opt/nvim-linux-x86_64/bin
 
+set -gx PATH $PATH $HOME/.config/emacs/bin
+set -x TERMINAL foot
 # bash ~/.colorscripts/elfman
 # pfetch

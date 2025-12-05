@@ -18,16 +18,18 @@ set $down j
 set $up k
 set $right l
 
-# Your preferred web browser
+# My web browser
 set $browser firefox
-# Your preferred terminal emulator
+# My terminal emulator
 set $term foot
 
-# Your preferred application launcher
-set $menu wmenu-run \
+# My applications launcher
+set $wofi wofi --show drun --allow-images
+set $wmenu wmenu-run \
     -p "Run:" \
-    -f "JetBrainsMono Nerd Font Bold 13.1" \
+    -f "JetBrainsMono Nerd Font Bold 14.3" \
     -l 0 \
+    -i \
     -N 1a1b26 \
     -n a9b1d6 \
     -M 55759c \
@@ -36,7 +38,8 @@ set $menu wmenu-run \
     -s 1a1b26
 
 # Power menu
-set $powermenu ~/.config/sway/scripts/powermenu
+set $wmenu-powermenu ~/.config/sway/scripts/powermenu
+set $wofi-powermenu ~/.config/wofi/powermenu
 
 # include /etc/sway/config-vars.d/*
 # include /etc/sway/config.d/*
@@ -98,17 +101,18 @@ set $powermenu ~/.config/sway/scripts/powermenu
     # Kill focused window
     bindsym $mod+Shift+q kill
 
-    # Start your launcher
-    bindsym $mod+p exec $menu
-    bindsym $mod+shift+e exec $powermenu
+    # Start a launcher
+    bindsym $mod+p exec $wmenu
+    bindsym $mod+shift+e exec $wmenu-powermenu
 
     # Switch to another language
 input "type:keyboard" {
     xkb_layout "us,ara"
-    xkb_options "grp:alt_space_toggle,bell:none"
+    xkb_options "grp:alt_space_toggle,bell:none,caps:swapescape"
     repeat_delay 200
     repeat_rate 40
 }
+# or use caps:escape
 
 # screenshot 
 bindsym $mod+Shift+p exec grim - | tee ~/Pictures/Screenshots/screenshot_$(date +%Y-%m-%d-%H%M%S).png | wl-copy && notify-send -t 3000 "Screenshot saved and copied to clipboard"
@@ -175,8 +179,8 @@ bindsym $mod+c exec grim -g "$(slurp -p)" -t ppm - | magick - -format "#%[hex:p{
     # Switch to previous/next workspace using $mod + Alt + Arrow keys
     bindsym $mod+Mod1+Left  workspace prev
     bindsym $mod+Mod1+Right workspace next
-    bindsym $mod+Mod1+h  workspace prev
-    bindsym $mod+Mod1+l workspace next
+    bindsym $mod+Mod1+$left  workspace prev
+    bindsym $mod+Mod1+$right workspace next
 
 
     # Move focused container to workspace
@@ -255,10 +259,14 @@ mode "Resize" {
 bindsym $mod+r mode "Resize"
 
 # Resize with Alt + Shift + Vim keys
-bindsym Mod1+Shift+H  resize shrink width 70px
-bindsym Mod1+Shift+J  resize grow height 70px
-bindsym Mod1+Shift+K    resize shrink height 70px
-bindsym Mod1+Shift+L resize grow width 70px
+bindsym Mod1+Shift+$left  resize shrink width 70px
+bindsym Mod1+Shift+$down  resize grow height 70px
+bindsym Mod1+Shift+$up    resize shrink height 70px
+bindsym Mod1+Shift+$right resize grow width 70px
+bindsym Mod1+Shift+left  resize shrink width 70px
+bindsym Mod1+Shift+down  resize grow height 70px
+bindsym Mod1+Shift+up    resize shrink height 70px
+bindsym Mod1+Shift+right resize grow width 70px
 
 #
 # Utilities:
@@ -410,7 +418,7 @@ input "INSTANT USB GAMING MOUSE" {
 }
 
 # background
-exec_always swaybg -i ~/Pictures/Backgrounds/jdm2.jpg -m fill
+exec_always swaybg -i ~/Pictures/Backgrounds/forest.png -m fill
 
 # notifications
 exec_always --no-startup-id mako -c ~/.config/mako/config

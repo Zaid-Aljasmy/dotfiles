@@ -28,7 +28,7 @@ nnoremap N Nzzzv
 nnoremap <Leader>e :enew<CR>
 
 " Copy shortcut
-vnoremap <leader>y :w !wl-copy<CR><CR>
+" vnoremap <leader>y :w !wl-copy<CR><CR>
 
 " Make <C-c> behave like <Esc> in insert mode
 inoremap <C-c> <Esc>
@@ -55,8 +55,8 @@ nnoremap <leader>s :s/\<<C-r><C-w>\>//gI<Left><Left><Left>
 nnoremap <leader>x :!chmod +x %<CR>
 
 " Yank via OSCYank
-" nnoremap <silent> <leader>y <Plug>OSCYankOperator
-" vnoremap <silent> <leader>y <Plug>OSCYankVisual
+nnoremap <silent> <leader>y <Plug>OSCYankOperator
+vnoremap <silent> <leader>y <Plug>OSCYankVisual
 
 " Reload vimrc (adjust path as needed)
 nnoremap <leader>rl :source ~/.vim/vimrc<CR>
