@@ -15,7 +15,7 @@
   border-radius: 0px;
   font-family: JetBrainsMono Nerd Font;
   font-weight: bold;
-  font-size: 17.4px;
+  font-size: 19px;
   min-height: 0;
 
 }
@@ -111,14 +111,14 @@ window#waybar.chromium {
   /* background-color: @blu; */
 }
 
-#language {
-  padding: 0 4px;
-  margin: 2px 1px;
-  background-color: transparent;
-  color: @fg;
-  border: none;
-  box-shadow: none;
-}
+/* #language { */
+/*   padding: 0 4px; */
+/*   margin: 2px 1px; */
+/*   background-color: transparent; */
+/*   color: @fg; */
+/*   border: none; */
+/*   box-shadow: none; */
+/* } */
 
 #window,
 #workspaces {
@@ -288,6 +288,7 @@ window#waybar.chromium {
   padding: 0 0px;
   margin: 2px 1px;
   min-width: 38px;
+  /* or use 55 with 17.5 font size */
 }
 
 #keyboard-state {
