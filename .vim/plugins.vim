@@ -18,6 +18,7 @@ function! s:ensure(repo)
 endfunction
 
 " My plugins
+call s:ensure('lervag/vimtex')
 call s:ensure('junegunn/fzf')
 call s:ensure('junegunn/fzf.vim')
 " call s:ensure('tomasiser/vim-code-dark')
