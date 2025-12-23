@@ -1,0 +1,42 @@
+#!/bin/bash
+
+export LC_ALL=C
+STATUS_DIR="$HOME/.config/sway/status"
+
+CPU_CACHE=""
+TEMP_CACHE=""
+RAM_CACHE=""
+DISK_CACHE=""
+BAT_STATUS_CACHE=""
+POWER_CACHE=""
+LAST_UPDATE=0
+
+safe_run() {
+    "$@" 2>/dev/null || echo "N/A"
+}
+
+update_fast() {
+    VOL=$(safe_run "$STATUS_DIR/volume")
+    KEY=$(safe_run "$STATUS_DIR/keyindicator")
+    MIC=$(safe_run "$STATUS_DIR/mic_status")
+    DATE=$(safe_run "$STATUS_DIR/date")
+    POWER=$(safe_run "$STATUS_DIR/power-mods")
+}
+
+while true; do
+    now=$(date +%s)
+    if (( now - LAST_UPDATE >= 20 )); then
+        CPU_CACHE=$(safe_run "$STATUS_DIR/cpu_usage")
+        TEMP_CACHE=$(safe_run "$STATUS_DIR/temperature")
+        RAM_CACHE=$(safe_run "$STATUS_DIR/memory")
+        DISK_CACHE=$(safe_run "$STATUS_DIR/disk")
+        BAT_STATUS_CACHE=$(safe_run "$STATUS_DIR/battery")
+        POWER_CACHE=$(safe_run "$STATUS_DIR/power-mods")
+        LAST_UPDATE=$now
+    fi
+
+    update_fast
+    echo "$DISK_CACHE | $RAM_CACHE | $TEMP_CACHE | $CPU_CACHE | $MIC | $VOL | $KEY | $BAT_STATUS_CACHE $POWER_CACHE | $DATE"
+    sleep 1s
+done
+

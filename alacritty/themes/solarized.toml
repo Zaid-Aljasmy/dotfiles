@@ -1,0 +1,48 @@
+# Colors (Solarized Osaka)
+# Source https://github.com/craftzdog/solarized-osaka.nvim
+
+# Default colors
+[colors.primary]
+background = '#001a1d'
+foreground = '#a0b0b0'
+
+# Normal colors
+[colors.normal]
+black   = '#073642'
+red     = '#dc322f'
+green   = '#859900'
+yellow  = '#b58900'
+blue    = '#268bd2'
+magenta = '#d33682'
+cyan    = '#2aa198'
+white   = '#eee8d5'
+
+# Bright colors
+[colors.bright]
+black   = '#4c4c4c'
+red     = '#cb4b16'
+green   = '#586e75'
+yellow  = '#657b83'
+blue    = '#839496'
+magenta = '#6c71c4'
+cyan    = '#93a1a1'
+white   = '#fdf6e3'
+
+
+
+# my solarized colcor for i3bar and border 
+
+# black = '#073642'
+# red = '#e25a57'
+# orange = '#d76335'
+# green = '#9cb321'
+# yellow = '#caa52b'
+# blue = '#4a9fe0'
+# magenta = '#e05a9b'
+# purple = '#9397dc'
+# cyan = '#3bb7ae'   # for i3 borders use this #1f7977
+# white = '#eee8d5
+
+
+
+

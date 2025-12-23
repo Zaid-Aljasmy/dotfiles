@@ -1,0 +1,54 @@
+#!/bin/bash
+
+for iface in /sys/class/net/*; do
+    iface_name=$(basename "$iface")
+    [[ "$iface_name" == "lo" ]] && continue
+    [[ "$(cat "$iface/operstate" 2>/dev/null)" == "up" ]] && INTERFACE="$iface_name" && break
+done
+
+if [[ -z "$INTERFACE" ]]; then
+    echo "No active network"
+    exit 1
+fi
+
+get_bytes() {
+    local line
+    line=$(grep -E "^\s*$INTERFACE:" /proc/net/dev)
+    if [[ -z "$line" ]]; then
+        echo "0 0"
+        return
+    fi
+    read -r iface rx _ _ _ _ _ _ _ tx _ < <(echo "$line" | sed 's/://')
+    echo "$rx $tx"
+}
+
+convert_unit() {
+    local bytes=$1
+    local units=("B/s" "KB/s" "MB/s" "GB/s")
+    local i=0
+    while (( bytes >= 1024 && i < ${#units[@]} - 1 )); do
+        bytes=$(( bytes / 1024 ))
+        ((i++))
+    done
+    echo "${bytes}${units[i]}"
+}
+
+attempts=3
+while (( attempts > 0 )); do
+    read rx1 tx1 < <(get_bytes)
+    sleep 1
+    read rx2 tx2 < <(get_bytes)
+
+    rx_rate=$(( rx2 > rx1 ? rx2 - rx1 : 0 ))
+    tx_rate=$(( tx2 > tx1 ? tx2 - tx1 : 0 ))
+
+    if (( rx_rate > 0 || tx_rate > 0 )); then
+        break
+    fi
+    ((attempts--))
+done
+
+rx_human=$(convert_unit "$rx_rate")
+tx_human=$(convert_unit "$tx_rate")
+
+echo "  $rx_human    $tx_human"

@@ -1,0 +1,167 @@
+// -*- mode: jsonc -*-
+{
+    // "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 25, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 0, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": [
+        "sway/workspaces",
+        // "sway/window",
+        "sway/mode",
+        "sway/scratchpad",
+        "custom/media"
+    ],
+    "modules-center": [
+        
+    ],
+    "modules-right": [
+        // "cpu",
+        // "custom/sep",
+        "disk",
+        "custom/sep",
+        "memory",
+        "custom/sep",
+        "temperature",
+        "custom/sep",
+        "cpu",
+        // "custom/sep",
+        // "backlight",
+        "custom/sep",
+        // "network",
+        // "custom/sep",
+        "pulseaudio",
+        "custom/sep",
+        "network",
+        "custom/sep",
+        "sway/language",
+        "custom/sep",
+        "battery",
+        // "power-profiles-daemon",
+        "custom/sep",
+        "clock",
+        "tray",
+        "custom/power"
+    ],
+    // Modules configuration
+
+    // "keyboard-state": {
+    //     "numlock": true,
+    //     "capslock": true,
+    //     "format": "{name} {icon} ",
+    //     "format-icons": {
+    //         "locked": "ON",
+    //         "unlocked": "OFF"
+    //     }
+    // },
+     "sway/language": {
+        "format": "{}",
+        "tooltip-format": "Language: {long}"
+    },
+
+    "sway/mode": {
+        // "format": "<span style=\"italic\">{}</span>"
+    },
+    "sway/scratchpad": {
+        "format": "Scratch {count} |",
+        "show-empty": false,
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%a %d %b - %I:%M %p}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%a %d %b - %I:%M %p}",
+        // "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "Cpu {usage}%  ",
+        "tooltip": true,
+        "interval" : 5
+    },
+    "memory": {
+        "format": "Ram {used}GiB"
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 60,
+        "format": "Temp {temperatureC}°C ",
+        "format-critical": "Temp {temperatureC}°C"
+    },
+    "backlight": {
+        // "device": "intel_backlight",
+        "format": "Bri {percent}%   "
+    },
+    "battery": {
+        "states": {
+            "good": 70,
+            "warning": 25,
+            "critical": 15
+        },
+        "format": "  Bat {capacity}%   ",
+        "format-full": "Bat {capacity}% full ",
+        "format-charging": "  Bat {capacity}% chr   ",
+        "format-plugged": "  Bat {capacity}% full   ",
+        // "format-alt": "Bat {capacity}% |",
+        "format-warning": "  Bat {capacity}%   ",
+        "format-critical": "  Bat {capacity}%   ",
+        "interval": 1
+    },
+    // "battery#bat2": {
+    //     "bat": "BAT2",
+    //     "format": "Bat2 {capacity}% ",
+    //     "format-charging": "Charging2 {capacity}% ",
+    //     "interval": 1
+    // },
+
+     "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-alt": false,
+        "on-click": false,
+        "on-click-right": false,
+        "format-icons": {
+        "default": "",
+        "performance": "(Perf)",
+        "balanced": "(Balanc)",
+        "power-saver": "(Saver)"
+      }
+    },
+
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "WiFi {signalStrength}%",
+        "format-ethernet": "Eth up",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": "Net {ifname} (No IP) ",
+        "format-disconnected": "   Net down   ",
+        // "format-alt": "{ifname}: {ipaddr}/{cidr} "
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "Vol {volume}%           Mic {format_source} ",
+        "format-bluetooth": "Vol {volume}% (BT)  Mic {format_source} ",
+        "format-bluetooth-muted": "Vol Muted (BT)Mic {format_source}",
+        "format-muted": "Vol Muted          Mic {format_source} ",
+        "format-source": "{volume}%",
+        "format-source-muted": "Muted"
+    },
+        "disk": {
+        "interval": 30,
+        "path": "/",
+        "format": "   Disk {used}   "
+    },
+
+        "custom/sep": {
+        "format" : "|",
+        "interval" : 0
+    }
+    
+}

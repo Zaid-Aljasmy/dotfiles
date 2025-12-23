@@ -1,0 +1,40 @@
+#!/bin/sh
+
+choice=$(
+  printf " Shutdown\n Reboot\n󰤄 Suspend\n󰍃 Logout" | wofi --dmenu -p "Power Menu:"
+)
+
+case $choice in
+" Reboot")
+  confirm=$(
+    printf "Yes\nNo" | wofi --dmenu -p "Reboot - Are you sure?"
+  )
+  if [ "$confirm" = "Yes" ]; then
+    systemctl reboot
+  fi
+  ;;
+" Shutdown")
+  confirm=$(
+    printf "Yes\nNo" | wofi --dmenu -p "Shutdown - Are you sure?"
+  )
+  if [ "$confirm" = "Yes" ]; then
+    systemctl poweroff
+  fi
+  ;;
+"󰤄 Suspend")
+  confirm=$(
+    printf "Yes\nNo" | wofi --dmenu -p "Suspend - Are you sure?"
+  )
+  if [ "$confirm" = "Yes" ]; then
+    systemctl suspend
+  fi
+  ;;
+"󰍃 Logout")
+  confirm=$(
+    printf "Yes\nNo" | wofi --dmenu -p "Logout - Are you sure?"
+  )
+  if [ "$confirm" = "Yes" ]; then
+    pkill -KILL -u "$USER"
+  fi
+  ;;
+esac
